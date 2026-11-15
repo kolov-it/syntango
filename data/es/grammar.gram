@@ -263,8 +263,17 @@ rule vp.verb: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] 
 rule vp.object: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] -> V[obj=yes, clitic_case=dat|refl|sedat, finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g]:verb NP[case=obl]:direct-object
   "The verb takes a direct object, unless lo, la, los or las already is its object (lo hice, not *lo hice un pastel)."
 
-rule vp.object-personal: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] -> V[obj=yes, clitic_case=dat|refl|sedat, finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g]:verb Prep[lemma=a]:direct-object NP[case=obl, person=?op, person!=?p]:direct-object
-  "A person as the direct object takes a (veo a María, busco a mi hermano)."
+rule vp.object-personal: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] -> V[obj=yes, clitic_case=dat|refl|sedat, finite=?f, form=?fm, mood=?m, person=?p, person!=1|2, number=?n, gender=?g]:verb Prep[lemma=a]:direct-object NP[case=obl, infinitive!=yes]:direct-object
+  "A person or an animal as the direct object takes a (Juan ve a María, la niña ama al perro, quiero ver a mi hermano)."
+
+# A 1st or 2nd person object is the subject itself when it has the verb's
+# person, and that takes a reflexive (me veo a mí mismo), so it is kept out
+# here; a 3rd person object can be anyone (Juan ve a María). The split keys
+# on finite=yes because a non-finite verb has no person and is the rule above's.
+# al + infinitive is a time adverbial, never a personal object (se rio al
+# ver su sombrero), so neither rule takes np.infinitive.
+rule vp.object-personal-local: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] -> V[obj=yes, clitic_case=dat|refl|sedat, finite=yes, finite=?f, form=?fm, mood=?m, person=1|2, person=?p, number=?n, gender=?g]:verb Prep[lemma=a]:direct-object NP[case=obl, infinitive!=yes, person!=?p]:direct-object
+  "After a 1st or 2nd person verb, a person as the direct object takes a, and is someone other than the subject (veo a María, te busco a ti)."
 
 rule vp.infinitive: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g] -> V[clitic_case=dat|refl|sedat, lemma=poder|deber|querer|saber|soler|ver|oír|hacer|dejar|desear|preferir|necesitar|esperar|pensar|intentar|lograr|conseguir|decidir|prometer|odiar|amar|temer|evitar|parecer|gustar|encantar|importar|interesar|apetecer|sentir|escuchar|mirar|permitir|prohibir|mandar|merecer|procurar|pretender|planear|olvidar|recordar|lamentar|admitir|negar|asegurar|confesar|creer|declarar|afirmar|imaginar|resultar|convenir|bastar|costar|faltar|urgir|acordar|ansiar|anhelar|elegir|fingir|osar|rehusar|proponer|ordenar|impedir|aconsejar|sugerir|agradecer|confiar|ofrecer|jurar|aceptar|adorar|reconocer|detestar|soportar|aguantar|tolerar|suponer, finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g]:verb VP[form=inf]
   "A verb followed by an infinitive without a preposition: modal, perception and causative verbs and those that take an infinitive as their object (quiero salir, lo vi llegar, me gusta leer)."
@@ -690,7 +699,7 @@ rule clause.infinitive-subject: S -> VP[form=inf]:subject VP[finite=yes, person=
 rule clause.infinitive-subject-after: S -> VP[finite=yes, form=fin, person=3, number=sg] VP[form=inf]:subject
   "An infinitive as the subject after the verb (me gusta leer, ayuda saber que…, cuesta creerlo)."
 
-rule np.infinitive: NP[person=3, number=sg, gender=m] -> Det[definite=yes, gender=m, number=sg] VP[form=inf]
+rule np.infinitive: NP[person=3, number=sg, gender=m, infinitive=yes] -> Det[definite=yes, gender=m, number=sg] VP[form=inf]
   "el + infinitive: the action as a noun (el fumar, el comer)."
 
 rule pp.al-infinitive: PP[prep=al] -> Prep[lemma=a] Det[definite=yes, gender=m, number=sg] VP[form=inf]
