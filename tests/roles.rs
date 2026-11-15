@@ -396,7 +396,7 @@ async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
 
 /// Issue #40: a verb that is only intransitive (data/it/intransitive-verbs.tsv)
 /// takes no direct object, neither a noun phrase nor lo/la/li/le; verbs with a
-/// transitive use keep theirs.
+/// transitive use keep theirs, and lo before a linking verb is its predicate.
 #[tokio::test]
 async fn intransitive_verbs_take_no_direct_object() {
     let no_object = |a: &SentenceAnalysis| {
@@ -423,6 +423,21 @@ async fn intransitive_verbs_take_no_direct_object() {
     // the infinitive whose object it is.
     assert!(set("Lo vado.").await.parses.is_empty());
     agreed(&set("Lo vado a prendere.").await, &[("Lo", Some(DirectObject)), ("prendere", Some(Verb))]);
+    // lo before a linking verb stands for its predicate: a subject
+    // complement, not an object (literature sentence 876, without its
+    // sentence-initial E, which the grammar does not take yet).
+    agreed(&set("Lo sembra.").await, &[("Lo", Some(SubjectComplement)), ("sembra", Some(Verb))]);
+    let lit = |t| run("tests/fixtures/it-literature.json", t);
+    agreed(
+        &lit("Lo diventerai, se saprai meritarlo.").await,
+        &[("Lo", Some(SubjectComplement)), ("diventerai", Some(Verb))],
+    );
+    has(&set("Lo sono.").await, "Lo", SubjectComplement);
+    // A linking verb's infinitive takes a noun phrase as its complement.
+    agreed(
+        &set("A tutti piacerebbe credere che i sogni possano diventare realtà.").await,
+        &[("realtà", Some(SubjectComplement))],
+    );
     // Verbs with a transitive use keep their direct object.
     agreed(&set("Tom corse un rischio.").await, &[("rischio", Some(DirectObject))]);
     agreed(&set("La vecchia saliva le scale con difficoltà.").await, &[("scale", Some(DirectObject))]);

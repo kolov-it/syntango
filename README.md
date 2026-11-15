@@ -334,7 +334,9 @@ the one a verb page needs: *which verb, or not a verb at all*.
   *Siamo andati ieri sera al cinema* the evening is when, not what, and in
   *Arrivò il treno* the train is the subject. Nor can *lo/la/li/le* be its
   object (*Lo vado* has no parse), but they can climb to it from an
-  infinitive (*Lo vado a prendere*). Verbs with any common transitive use
+  infinitive (*Lo vado a prendere*). Before a linking verb (*essere*,
+  *sembrare*, *diventare*, *restare*, *rimanere*) *lo* stands for the
+  predicate, a subject complement (*Lo sembra*, *Lo diventerai*). Verbs with any common transitive use
   keep the object: *correre un rischio*, *salire le scale*, *passare il sale*,
   *vivere una vita*.
 - A **partitive subject after the verb** is plural (*sono arrivati dei

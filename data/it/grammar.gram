@@ -220,6 +220,12 @@ rule vp.copula: VP[finite=yes, form=fin, mood=?m, person=?p, number=?n, gender=?
 rule vp.copula-noun: VP[finite=yes, form=fin, mood=?m, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> Cop[mood=?m, person=?p, number=?n, takes_di=?d, takes_a=?ta]:verb NP[case=nom|obl]:subject-complement
   "essere + a noun phrase says what the subject is (è un graffio)."
 
+rule vp.copula-lo: VP[finite=yes, form=fin, mood=?m, person=?p, number=?n, takes_di=?d, takes_a=?ta] -> Pron[lemma=lo, clitic=yes, attached!=yes, gender=m, number=sg]:subject-complement Cop[mood=?m, person=?p, number=?n, takes_di=?d, takes_a=?ta]:verb
+  "lo stands for a predicate already said, before a linking verb (cop.verb: essere, sembrare, diventare, restare, rimanere, stare): Sei stanca? Lo sono. E lo diventerai. It stays lo whatever the subject's gender and number."
+
+rule vp.copula-lo-nonfinite: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere|sembrare|diventare|restare|rimanere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb Pron[lemma=lo, clitic=yes, attached=yes, gender=m, number=sg]:subject-complement
+  "lo on an infinitive or gerund of those verbs stands for its predicate (vuole diventarlo, potrebbe esserlo, sembrandolo)."
+
 rule vp.prepositional-phrase: VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> VP[finite=?f, form=?fm, mood=?m, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] PP[prep!=di]:adverbial
   "A prepositional phrase adds where, when, for whom or how. Not one with di: that one belongs to the noun before it (la porta di casa), or the verb takes it (parlare di)."
 
@@ -522,10 +528,10 @@ rule vp.passive-agent: VP[finite=yes, form=fin, mood=?m, person=?p, number=?n, g
 rule vp.copula-infinitive-adjective: VP[finite=no, form=inf, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere|sembrare|diventare|restare|rimanere|stare, form=inf, takes_di=?d, takes_a=?ta]:verb AP[participle_essere=no]:subject-complement
   "An infinitive linking verb + adjective (essere imbarazzate)."
 
-rule vp.copula-nonfinite-noun: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb NP[case=nom|obl]:subject-complement
-  "essere as an infinitive or gerund + noun phrase: a subject complement, never an object (essere un avvocato, essendo un medico)."
+rule vp.copula-nonfinite-noun: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere|sembrare|diventare|restare|rimanere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb NP[case=nom|obl]:subject-complement
+  "essere, sembrare, diventare, restare or rimanere as an infinitive or gerund + noun phrase: a subject complement, never an object (essere un avvocato, essendo un medico, possano diventare realtà)."
 
-rule vp.copula-nonfinite-noun-adverb: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb Adv[neg=no]:adverbial NP[case=nom|obl]:subject-complement
+rule vp.copula-nonfinite-noun-adverb: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere|sembrare|diventare|restare|rimanere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb Adv[neg=no]:adverbial NP[case=nom|obl]:subject-complement
   "The same with an adverb between (essere sempre un avvocato). A rule of its own rather than V: a V from a compound infinitive has no lemma, and would let avere avuto take a subject complement."
 
 rule vp.floating-quantifier: VP[finite=?f, form=?fm, mood=?m, person=?p, number=pl, gender=?g, takes_di=?d, takes_a=?ta] -> VP[finite=?f, form=?fm, mood=?m, person=?p, number=pl, gender=?g, takes_di=?d, takes_a=?ta] Pron[lemma=tutto, number=pl]:subject
