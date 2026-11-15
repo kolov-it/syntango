@@ -547,6 +547,22 @@ rule time.weekday-part: TimeNP -> Noun[number=sg, lemma=domenica|lunedì|marted�
 rule vp.time: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] TimeNP:adverbial
   "A time expression after the verb says when or how often (mi esercito ogni giorno)."
 
+rule vp.a-time: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=open] ATime:adverbial
+  "a + a time says when, also while the verb's recipient is open (ho dato l'esame a giugno, gliel'ho detto alle tre): a time is never who receives. With the recipient filled or no recipient at all, vp.a-phrase takes it like any a phrase."
+
+rule atime.bare: ATime -> Prep[lemma=a] Noun[lemma=gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre|mezzogiorno|mezzanotte|mezzodì]
+  "a + a month, noon or midnight (a giugno, a mezzanotte)."
+
+rule atime.feast: ATime -> Prep[lemma=a] ProperNoun[lemma=Natale|Pasqua|Capodanno|Ferragosto|Carnevale|Ognissanti|Pentecoste]
+  "a + a feast day (a Natale, a Pasqua)."
+
+rule atime.day-part: ATime -> Prep[lemma=a] Det[definite=yes, number=sg] Noun[number=sg, lemma=mattina|mattino|pomeriggio|sera|notte|alba|tramonto|mezzogiorno|mezzanotte]
+  "a + the part of the day (alla sera, al mattino, all'alba); the nouns of time.day-part, with dawn and sunset."
+
+rule atime.hour: ATime -> Prep[lemma=a] Det[definite=yes, gender=f, number=pl] Num
+  "a + le + a number: the hour (alle tre, alle cinque)."
+
+
 rule clause.time-first: S[indep=?i] -> TimeNP:adverbial S[indep=?i]
   "A time expression at the start of the clause (Ogni mattina corro)."
 

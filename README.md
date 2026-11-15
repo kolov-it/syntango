@@ -47,7 +47,7 @@ commit of master, so it can lag behind this repository.
 
 ![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
 
-**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 181 rules)
+**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 186 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
 possessives; clitic pronouns before and after the verb; compound tenses, the
@@ -365,6 +365,8 @@ the one a verb page needs: *which verb, or not a verb at all*.
   *regalare*, *mostrare*, *prestare*, *restituire*, *offrire*; issue #53)
   takes an *a* phrase after it as the recipient while nothing else fills
   that slot: *Ho dato il libro a Parigi* is "to Paris", never "in Paris".
+  A time still says when (*Ho dato l'esame a giugno*, *alle tre*, *a
+  Natale*): a time is never who receives.
   A dative or reflexive clitic fills it, after which an *a* phrase can say
   where again (*Gli ho dato il libro a Parigi*), also one that climbed to a
   modal (*Glielo voglio dare a Parigi*). The slot is the infinitive's under a

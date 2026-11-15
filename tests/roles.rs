@@ -425,6 +425,16 @@ async fn an_a_phrase_fills_an_open_recipient() {
     let a = set("Ho dato a Maria il libro.").await;
     only_indirect(&a, &["a", "Maria"]);
     agreed(&a, &[("libro", Some(DirectObject))]);
+    // A time still says when: a time is never who receives. The recipient
+    // reading stays too, as for any a phrase after the verb.
+    let a = set("Ho dato l'esame a giugno.").await;
+    has(&a, "giugno", Adverbial);
+    has(&a, "giugno", IndirectObject);
+    has(&set("Ho dato il libro a mezzanotte.").await, "mezzanotte", Adverbial);
+    agreed(
+        &set("Ho dato il libro alle tre.").await,
+        &[("alle", Some(Adverbial)), ("tre", Some(Adverbial))],
+    );
     // A place is the recipient too: "to Paris", never "in Paris".
     only_indirect(&set("Ho dato il libro a Parigi.").await, &["a", "Parigi"]);
     // lo leaves the recipient open, gli fills it.
