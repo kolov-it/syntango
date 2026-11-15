@@ -472,8 +472,11 @@ rule cop.di-adverbial: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, num
 rule cop.proclitic: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] -> Clitics[attached=no] Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c]
   "A clitic before the linking verb (mi è sconosciuto, mi sembra strano)."
 
-rule cop.perfect: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, participle_compound=no] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=essere|sembrare|diventare|restare|rimanere|stare|risultare, form=pastpart, number=?n, takes_di=?d, takes_a=?ta]
+rule cop.perfect: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=sembrare|diventare|restare|rimanere|stare|risultare, form=pastpart, number=?n, takes_di=?d, takes_a=?ta]
   "A linking verb in a compound tense (è stato, è diventata, è risultato)."
+
+rule cop.perfect-essere: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, participle_compound=no] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=essere, form=pastpart, number=?n, takes_di=?d, takes_a=?ta]
+  "essere in a compound tense as the linking verb (è stato, sarà stata); an essere verb's participle after it is not a state (vp.copula)."
 
 # indirect questions
 rule vp.indirect-question: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> V[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta]:verb Wh S

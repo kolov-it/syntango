@@ -362,12 +362,14 @@ async fn bare_plural_noun_after_essere_stays_a_predicate() {
 
 /// Issue #49: only essere has a compound tense; after the other linking
 /// verbs an essere verb's participle is a state, also coordinated (sembra
-/// nato e cresciuto qui) and alone (sembra arrivato).
+/// nato e cresciuto qui), alone (sembra arrivato) and in a compound tense
+/// (è rimasto scomparso).
 #[tokio::test]
 async fn participle_after_other_linking_verbs_stays_an_adjective() {
     for (text, word) in [
         ("Sembra nato e cresciuto qui.", "nato"),
         ("Sembra arrivato.", "arrivato"),
+        ("È rimasto scomparso.", "scomparso"),
     ] {
         let a = run(Lang::It, text).await;
         let t = a.roles.iter().find(|r| r.token == word).unwrap();
