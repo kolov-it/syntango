@@ -300,6 +300,18 @@ the one a verb page needs: *which verb, or not a verb at all*.
 - **Adjectives whose meaning drifted** from the verb stay adjectives:
   `data/it/drifted-participles.txt` (*esatto* is "exact", not *esigere*'s
   participle).
+- A **main clause** has no present subjunctive in the 1st or 2nd person
+  (*Tu parli troppo*, *Noi parliamo italiano*, *Abbiamo parlato* are
+  indicative), and no 3rd person one after *lui* (*Lui parli* is not a
+  sentence); the subjunctive stands alone after *che* (*Che entri!*, *Che
+  tu sia benedetto!*, *Che sia vero?*), as a wish in the imperfect (*Fosse
+  vero!*, *Magari parlasse*) and as the polite or wishing 3rd person without
+  a subject pronoun or with *Lei* / *Loro* (*Parli pure*, *Venga qui*,
+  *Viva gli sposi*). In a subordinate clause it is unrestricted (*Voglio che
+  tu parli*, *In caso tu venga licenziato, …*). An imperative has no subject
+  before it (*Noi parliamo* is not one, *Parliamo!* is), and a 1st person
+  imperative is never an auxiliary (*abbiamo parlato* is not "let's have
+  spoken"). The grammar marks it with `indep` (issue #48).
 - A **present participle** is an adjective (*pesante*, *corrente*) unless it
   carries the verb's complements (*il fiume passante per Parigi*).
 - A phrase right after a participle can belong to the participle or to the
@@ -531,7 +543,8 @@ features up (`aux_mood`, `aux_tense`, `aux_person`, `aux_number`,
 `aux_form`), and a passive rule marks `voice=passive`; Spanish `SerV` and
 `PassP` pass them through. The extractor reads these complete chart items
 (`Forest::items_where`) and never enumerates parses: an ambiguity such as
-*abbiamo* (indicative or subjunctive) is two items over the same words. The
+*abbiamo* in *Penso che abbiamo già mangiato* (indicative or subjunctive)
+is two items over the same words. The
 auxiliary's tense names the compound tense, and a participle stacked on
 another (*stato*, *sido*, *été*) makes a passive compound. One JSON line per example on stdout; counts and throughput
 on stderr:
@@ -560,8 +573,8 @@ on stderr:
 - **`status`**: `decided` when every parse reads the word as this verb in one
   cell and voice with the same auxiliaries; `ambiguous` when some parse reads
   it otherwise (`other_readings`: another word, another cell, an adjective
-  use, an auxiliary). *Abbiamo già mangiato* is ambiguous: *abbiamo* is
-  indicative or subjunctive. Ambiguity is reported, never resolved; only
+  use, an auxiliary). *Penso che abbiamo già mangiato* is ambiguous:
+  *abbiamo* is indicative or subjunctive. Ambiguity is reported, never resolved; only
   decided examples are printed unless `--include-ambiguous`.
 - **Auxiliaries are not examples of their verb**: *ho* in *ho mangiato* is the
   auxiliary of *mangiare*, not an example of *avere*, and likewise the

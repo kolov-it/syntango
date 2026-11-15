@@ -3066,6 +3066,1729 @@
         "source": "kaikki",
         "surface": "venerdì"
       }
+    ],
+    "parli": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parli"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parli"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parli"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parli"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parli"
+      }
+    ],
+    "troppo": [
+      {
+        "confidence": "high",
+        "lemma": "troppo",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "troppo"
+      },
+      {
+        "confidence": "high",
+        "lemma": "troppo",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "troppo"
+      },
+      {
+        "confidence": "high",
+        "lemma": "troppo",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "troppo"
+      }
+    ],
+    "parliamo": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parliamo"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parliamo"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person imperative plural",
+          "tags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parliamo"
+      }
+    ],
+    "italiano": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "italiano",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "italiano"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "italiano",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "italiano"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Italiano",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "italiano"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Italiano",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "italiano"
+      }
+    ],
+    "abbiamo": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person imperative plural",
+          "tags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      }
+    ],
+    "parlato": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "parlato",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "parlato"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "parlato",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "parlato"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parlato"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Parlato",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "parlato"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Parlato",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "parlato"
+      }
+    ],
+    "tom": [],
+    "pure": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "puro",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "pure"
+      },
+      {
+        "confidence": "high",
+        "lemma": "pure",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "pure"
+      },
+      {
+        "confidence": "high",
+        "lemma": "pure",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "pure"
+      }
+    ],
+    "venga": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "venga"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "venga"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "venga"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "venga"
+      }
+    ],
+    "qui": [
+      {
+        "confidence": "high",
+        "lemma": "qui",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "qui"
+      }
+    ],
+    "voglio": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "volere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "voglio"
+      }
+    ],
+    "fosse": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperfect singular subjunctive third-person",
+          "tags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "fosse"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "fossa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "fosse"
+      }
+    ],
+    "vero": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "vero",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "vero"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "vero",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "vero"
+      }
+    ],
+    "viva": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "vivo",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "lemma": "viva",
+        "partOfSpeech": "intj",
+        "source": "kaikki",
+        "surface": "viva"
+      }
+    ],
+    "sposi": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "masculine plural",
+          "tags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "sposo",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sposare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sposare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sposare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sposare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "sposare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Sposi",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "sposi"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Sposi",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "sposi"
+      }
+    ],
+    "sia": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "lemma": "sia",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "sia"
+      }
+    ],
+    "benedetto": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "benedire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "benedetto"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "benedetto",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "benedetto"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "Benedetto",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "benedetto"
+      }
+    ],
+    "già": [
+      {
+        "confidence": "high",
+        "lemma": "già",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "già"
+      }
+    ],
+    "entri": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entri"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person present singular subjunctive",
+          "tags": [
+            "first-person",
+            "present",
+            "singular",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "singular",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entri"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "present second-person singular subjunctive",
+          "tags": [
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entri"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "present singular subjunctive third-person",
+          "tags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entri"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entri"
+      }
+    ],
+    "entrino": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "plural present subjunctive third-person",
+          "tags": [
+            "plural",
+            "present",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "third",
+          "rawTags": [
+            "plural",
+            "present",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entrino"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperative plural third-person",
+          "tags": [
+            "imperative",
+            "plural",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "plural",
+            "third-person"
+          ]
+        },
+        "lemma": "entrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "entrino"
+      }
+    ],
+    "parlasse": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperfect singular subjunctive third-person",
+          "tags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parlasse"
+      }
+    ],
+    "magari": [
+      {
+        "confidence": "high",
+        "lemma": "magari",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "magari"
+      }
     ]
   }
 }

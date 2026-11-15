@@ -13,7 +13,9 @@ pub use tokenize::{after_quote, tokenize};
 use std::collections::HashSet;
 
 use crate::lang::{Case, Language};
-use crate::morph::{Analysis, FormKind, Lang, Number, PartOfSpeech, Reading};
+use crate::morph::{
+    Analysis, Features, FormKind, Lang, Mood, Number, PartOfSpeech, Person, Reading, Tense,
+};
 use crate::syntax::feats::{self, FeatMap};
 use crate::syntax::grammar::{Grammar, GrammarError};
 use crate::syntax::lattice::{Lattice, Morpheme};
@@ -182,6 +184,16 @@ impl Italian {
             host_feats.insert("takes_a".to_owned(), if takes { "yes" } else { "no" }.to_owned());
             let intransitive = self.intransitive_verbs.contains(&non_pronominal(&reading.lemma));
             host_feats.insert("intransitive".to_owned(), if intransitive { "yes" } else { "no" }.to_owned());
+            if let Some(feature) = present_subjunctive_restriction(&reading.features) {
+                host_feats.insert(feature.to_owned(), "no".to_owned());
+            }
+            // There is no "let's have spoken": a 1st person imperative
+            // (abbiamo, siamo, stiamo) is never an auxiliary.
+            if reading.features.mood == Some(Mood::Imperative)
+                && reading.features.person == Some(Person::First)
+            {
+                host_feats.insert("auxiliary".to_owned(), "no".to_owned());
+            }
         }
         let pos = match reading.pos {
             PartOfSpeech::Noun => Some("noun"),
@@ -235,6 +247,22 @@ impl Italian {
                 .collect();
         }
         sequences
+    }
+}
+
+/// Where a present subjunctive cannot head a sentence of its own, as the
+/// grammar's `indep` and `pron_indep` features mark it: in the 1st and 2nd
+/// person never (*Tu parli* is indicative only), in the 3rd person not after
+/// the subject pronoun *lui* (*Parli pure*, *Venga qui*, *Lei parli pure* are
+/// polite commands, *Lui parli* is not). After *che* and in subordinate
+/// clauses the grammar does not look at either.
+fn present_subjunctive_restriction(f: &Features) -> Option<&'static str> {
+    if f.mood != Some(Mood::Subjunctive) || f.tense != Some(Tense::Present) {
+        return None;
+    }
+    match f.person? {
+        Person::First | Person::Second => Some("indep"),
+        Person::Third => Some("pron_indep"),
     }
 }
 
