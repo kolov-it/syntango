@@ -126,7 +126,7 @@ rule nom.adjective-before: Nom[number=?n, gender=?g, onset=?o, utterance=?u] -> 
 
 # ------------------------------------------------- prepositional phrases
 
-rule pp.basic: PP[prep=?x, infinitive=no, name=?nm, pronoun=?pr] -> Prep[lemma=?x] NP[case=obl, name=?nm, pronoun=?pr]
+rule pp.basic: PP[prep=?x, infinitive=no, name=?nm, pronoun=?pr, bare=?b] -> Prep[lemma=?x] NP[case=obl, name=?nm, pronoun=?pr, bare=?b]
   "A preposition takes a noun phrase (di + il = del, a + la = alla)."
 
 # --------------------------------------------- the verb and its clitics

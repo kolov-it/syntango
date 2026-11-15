@@ -453,6 +453,16 @@ async fn an_a_phrase_fills_an_open_recipient() {
         "Parigi",
         Adverbial,
     );
+    // A bare noun is never the indirect object before the object, whether
+    // a casa is built as a bare phrase or as a + a bare noun phrase.
+    for s in ["Porto a casa il libro.", "Portammo a casa Tom."] {
+        let a = set(s).await;
+        assert!(
+            !token(&a, "casa").roles.contains(&Some(IndirectObject)),
+            "{s}: {:?}",
+            token(&a, "casa").roles
+        );
+    }
     // a + an infinitive still says what for.
     has(
         &set("Ho dato la macchina a riparare.").await,
