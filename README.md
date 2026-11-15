@@ -296,10 +296,11 @@ the one a verb page needs: *which verb, or not a verb at all*.
   adjective use, unless a passive marker is there (*venire*, *è stato*,
   *da* + agent, *essere* in the passato remoto or future). Reflexives take
   *essere* with any verb (*mi sono alzato*). The auxiliary comes from the
-  lexicon (`grammar.auxiliaries`). Nor is a bare noun spelled like such a
-  participle a subject complement there: *sono venuto*, *è successo* are
+  lexicon (`grammar.auxiliaries`). Nor is a bare singular noun spelled like
+  such a participle a subject complement there: *sono venuto*, *è successo* are
   compound tenses, not "I am newcomer", "it is success" (with an article the
-  noun stays: *è stato un successo*). A participle that also names a state
+  noun stays: *è stato un successo*; a bare plural stays too: *questi sono
+  stati europei*). A participle that also names a state
   keeps both readings: *è morto* is "he died" and "he is dead"
   (`data/it/state-participles.txt`).
 - **Adjectives whose meaning drifted** from the verb stay adjectives:

@@ -320,10 +320,11 @@ fn merge_participle_adjectives(readings: &mut Vec<Vec<Morpheme>>, drifted: &Hash
 ///   also names a state (`state`: è morto, he died or he is dead);
 ///   `ap.participle` passes it on, so elsewhere the participle is still used
 ///   like an adjective (il treno arrivato);
-/// - a noun spelled like such a participle (il venuto, lo stato, il
-///   successo), which `np.bare` passes on: a bare noun right after essere is
-///   not that word (sono venuto is not "I am newcomer"), with an article it
-///   is (è il nuovo venuto, è stato un successo).
+/// - a singular noun spelled like such a participle (il venuto, lo stato, il
+///   successo), which `np.bare` passes on: a bare singular noun right after
+///   essere is not that word (sono venuto is not "I am newcomer"), with an
+///   article it is (è il nuovo venuto, è stato un successo). A bare plural
+///   can be a predicate (questi sono stati europei, sono partiti politici).
 fn mark_essere_participles(readings: &mut [Vec<Morpheme>], state: &HashSet<String>) {
     let is_past = |m: &Morpheme| m.cat == "Verb" && m.feats.get("form").map(String::as_str) == Some("pastpart");
     let takes_essere = |m: &Morpheme| m.feats.get("takes_essere").map(String::as_str) == Some("yes");
@@ -335,7 +336,7 @@ fn mark_essere_participles(readings: &mut [Vec<Morpheme>], state: &HashSet<Strin
         if is_past(m) && m.feats.contains_key("takes_essere") {
             let value = if takes_essere(m) && !is_state { "yes" } else { "no" };
             m.feats.insert("participle_essere".to_owned(), value.to_owned());
-        } else if essere && m.cat == "Noun" {
+        } else if essere && m.cat == "Noun" && m.feats.get("number").map(String::as_str) != Some("pl") {
             m.feats.insert("participle_essere".to_owned(), "yes".to_owned());
         }
     }

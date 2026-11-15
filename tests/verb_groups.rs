@@ -284,8 +284,8 @@ fn group_lists(a: &SentenceAnalysis) -> BTreeSet<String> {
 }
 
 /// Issue #49: after essere, the participle of a verb that takes essere is the
-/// compound tense, neither an adjective nor a bare noun spelled like it
-/// (venuto, stato, successo). `suonare` is the lexicon's reading of sono
+/// compound tense, neither an adjective nor a bare singular noun spelled like
+/// it (venuto, stato, successo). `suonare` is the lexicon's reading of sono
 /// (out of scope here): it stays a parse of its own.
 #[tokio::test]
 async fn essere_participle_after_essere_is_the_compound_tense() {
@@ -302,6 +302,9 @@ async fn essere_participle_after_essere_is_the_compound_tense() {
             &[
                 "venire indicative.present_perfect.3p [0, 1]",
                 "suonare indicative.present.1s [0]",
+                // A bare plural noun can be a predicate (they are newcomers).
+                "essere indicative.present.1s [0]",
+                "essere indicative.present.3p [0]",
             ],
         ),
         (
@@ -332,6 +335,29 @@ async fn essere_participle_after_essere_is_the_compound_tense() {
         let expected: BTreeSet<String> = expected.iter().map(|s| (*s).to_owned()).collect();
         assert_eq!(group_lists(&a), expected, "{text}");
     }
+}
+
+/// Issue #49: a bare plural noun spelled like an essere verb's participle
+/// can be a predicate: sono stati politici is "they have been political" and
+/// "they are political states".
+#[tokio::test]
+async fn bare_plural_noun_after_essere_stays_a_predicate() {
+    let a = run(Lang::It, "Sono stati politici.").await;
+    let lists = group_lists(&a);
+    assert!(
+        lists.contains("essere indicative.present_perfect.3p [0, 1]"),
+        "{lists:?}"
+    );
+    assert!(
+        lists.contains("essere indicative.present.3p [0]"),
+        "{lists:?}"
+    );
+    let stati = a.roles.iter().find(|r| r.token == "stati").unwrap();
+    assert!(
+        stati.roles.contains(&Some(Role::SubjectComplement)),
+        "{:?}",
+        stati.roles
+    );
 }
 
 /// Issue #49: morto also names a state (data/it/state-participles.txt), so
