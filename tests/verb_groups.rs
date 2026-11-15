@@ -360,6 +360,21 @@ async fn bare_plural_noun_after_essere_stays_a_predicate() {
     );
 }
 
+/// Issue #49: only essere has a compound tense; after the other linking
+/// verbs an essere verb's participle is a state, also coordinated (sembra
+/// nato e cresciuto qui) and alone (sembra arrivato).
+#[tokio::test]
+async fn participle_after_other_linking_verbs_stays_an_adjective() {
+    for (text, word) in [
+        ("Sembra nato e cresciuto qui.", "nato"),
+        ("Sembra arrivato.", "arrivato"),
+    ] {
+        let a = run(Lang::It, text).await;
+        let t = a.roles.iter().find(|r| r.token == word).unwrap();
+        assert_eq!(t.roles, [Some(Role::SubjectComplement)], "{text}");
+    }
+}
+
 /// Issue #49: morto also names a state (data/it/state-participles.txt), so
 /// è morto is both "he died" and "he is dead"; the passive of a verb that
 /// takes avere and its state reading stay.

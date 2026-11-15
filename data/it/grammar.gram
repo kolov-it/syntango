@@ -130,10 +130,10 @@ rule v.plain: V[lemma=?l, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?
 rule cop.verb: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta] -> Verb[lemma=sembrare|diventare|restare|rimanere|stare, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta]
   "A linking verb: essere, sembrare, diventare, restare, rimanere, stare."
 
-rule cop.essere: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=no] -> Verb[lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta]
+rule cop.essere: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=no, participle_compound=no] -> Verb[lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta]
   "essere as a linking verb. A bare noun right after it that is spelled like an essere verb's participle is that participle (vp.copula-noun)."
 
-rule cop.adverb: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b] Adv[neg=no]:adverbial
+rule cop.adverb: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] Adv[neg=no]:adverbial
   "An adverb right after the linking verb (è solo, è molto)."
 
 rule v.adverb-after: V[lemma=?l, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, intransitive=?it] -> V[lemma=?l, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, intransitive=?it] Adv[neg=no]:adverbial
@@ -234,8 +234,8 @@ rule vp.preposition-infinitive: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pro
 rule vp.che-clause: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> V[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta]:verb Conj[lemma=che] S
   "The verb introduces a clause with che (disse che…)."
 
-rule vp.copula: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta]:verb AP[participle_essere=no, number=?n, gender=?g]:subject-complement
-  "With essere, sembrare, diventare, restare, rimanere or stare, the adjective agrees with the subject in gender and number (la casa è bella). A participle here is a state (le luci sono accese) only for verbs that take avere; for an essere verb it is a compound tense (sono salite), unless the participle also names a state (è morto: data/it/state-participles.txt)."
+rule vp.copula: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, participle_compound=?c]:verb AP[participle_essere=?c, number=?n, gender=?g]:subject-complement
+  "With essere, sembrare, diventare, restare, rimanere or stare, the adjective agrees with the subject in gender and number (la casa è bella). After essere, a participle here is a state (le luci sono accese) only for verbs that take avere; for an essere verb it is a compound tense (sono salite), unless the participle also names a state (è morto: data/it/state-participles.txt). The other linking verbs have no compound tense, so any participle is a state after them (sembra nato e cresciuto qui)."
 
 rule vp.copula-noun: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b]:verb NP[case=nom|obl, participle_essere=?b]:subject-complement
   "essere + a noun phrase says what the subject is (è un graffio). Right after essere, a bare singular noun spelled like the participle of a verb that takes essere is that participle, a compound tense (sono venuto, è successo); with an article it is the noun (è il nuovo venuto, è stato un successo), and a bare plural can be one (questi sono stati europei). Other linking verbs have no such compound: diventano stati indipendenti."
@@ -466,13 +466,13 @@ rule nplist.more: NPList -> NP Punct NPList
 rule vp.copula-infinitive: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=3, number=sg, takes_di=?d, takes_a=?ta] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=3, number=sg, takes_di=?d, takes_a=?ta]:verb AP:subject-complement VP[form=inf]:subject
   "essere + adjective + infinitive: the infinitive is the real subject (è sbagliato dire bugie)."
 
-rule cop.di-adverbial: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b] DiAdv:adverbial
+rule cop.di-adverbial: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] DiAdv:adverbial
   "A fixed di phrase right after the linking verb (è diventato di nuovo attivo, è di solito puntuale)."
 
-rule cop.proclitic: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b] -> Clitics[attached=no] Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b]
+rule cop.proclitic: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c] -> Clitics[attached=no] Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, noun_participle=?b, participle_compound=?c]
   "A clitic before the linking verb (mi è sconosciuto, mi sembra strano)."
 
-rule cop.perfect: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=essere|sembrare|diventare|restare|rimanere|stare|risultare, form=pastpart, number=?n, takes_di=?d, takes_a=?ta]
+rule cop.perfect: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, participle_compound=no] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=essere|sembrare|diventare|restare|rimanere|stare|risultare, form=pastpart, number=?n, takes_di=?d, takes_a=?ta]
   "A linking verb in a compound tense (è stato, è diventata, è risultato)."
 
 # indirect questions
@@ -560,8 +560,11 @@ rule pp.dopo-participle: PP[prep=dopo, infinitive=no] -> Prep[lemma=dopo] Verb[f
 rule vp.passive-agent: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf]:verb Verb[form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta]:verb Prep[lemma=da]:agent NP[case=obl]:agent
   "essere + past participle + da + agent: the passive (è amato da tutti)."
 
-rule vp.copula-infinitive-adjective: VP[finite=no, form=inf, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere|sembrare|diventare|restare|rimanere|stare, form=inf, takes_di=?d, takes_a=?ta]:verb AP[participle_essere=no]:subject-complement
+rule vp.copula-infinitive-adjective: VP[finite=no, form=inf, takes_di=?d, takes_a=?ta] -> Verb[lemma=sembrare|diventare|restare|rimanere|stare, form=inf, takes_di=?d, takes_a=?ta]:verb AP:subject-complement
   "An infinitive linking verb + adjective (essere imbarazzate)."
+
+rule vp.copula-infinitive-essere-adjective: VP[finite=no, form=inf, takes_di=?d, takes_a=?ta] -> Verb[lemma=essere, form=inf, takes_di=?d, takes_a=?ta]:verb AP[participle_essere=no]:subject-complement
+  "essere as an infinitive + adjective (essere stanchi); an essere verb's participle after it is the perfect infinitive (essere venuto)."
 
 rule vp.copula-nonfinite-noun: VP[finite=no, form=?fm, takes_di=?d, takes_a=?ta] -> Verb[lemma=sembrare|diventare|restare|rimanere, form=inf|ger, form=?fm, takes_di=?d, takes_a=?ta]:verb NP[case=nom|obl]:subject-complement
   "sembrare, diventare, restare or rimanere as an infinitive or gerund + noun phrase: a subject complement, never an object (possano diventare realtà, sembrando un sogno)."
