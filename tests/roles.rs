@@ -664,12 +664,85 @@ async fn es_adverbials() {
             ("casa", Some(Adverbial)),
         ],
     );
-    // An a phrase is an adverbial, even after a verb of giving or saying:
-    // Spanish has no dative-verb list yet (Italian #33). Here a casa is also
-    // read as a personal-a object.
+    // ir takes no dative (data/es/dative-verbs.tsv), so a casa is an
+    // adverbial; it is also read as a personal-a object.
     let a = es_set("Ayer fui a casa.").await;
     agreed(&a, &[("Ayer", Some(Adverbial)), ("fui", Some(Verb))]);
     differs(&a, "casa", Adverbial, &[DirectObject]);
+}
+
+/// Issue #42: an a phrase after a verb that takes a dative
+/// (data/es/dative-verbs.tsv) is an indirect object, as well as an adverbial;
+/// after any other verb it is only an adverbial.
+#[tokio::test]
+async fn es_a_phrase_after_a_dative_verb_is_an_indirect_object() {
+    let has = |a: &SentenceAnalysis, word: &str, role: Role| {
+        let t = token(a, word);
+        assert!(
+            t.roles.contains(&Some(role)),
+            "{word}: {role} missing from {:?}",
+            t.roles
+        );
+    };
+    let a = es_set("Le di el libro a María.").await;
+    agreed(&a, &[("Le", Some(IndirectObject)), ("libro", Some(DirectObject))]);
+    has(&a, "a", IndirectObject);
+    has(&a, "María", IndirectObject);
+    has(&a, "María", Adverbial);
+    // al = a + el: both halves take the phrase's role.
+    let a = es_set("Dije la verdad al chico.").await;
+    has(&a, "al", IndirectObject);
+    has(&a, "chico", IndirectObject);
+    // Without a direct object.
+    let a = es_set("Le gusta a Marco.").await;
+    has(&a, "Marco", IndirectObject);
+    has(&a, "Marco", Adverbial);
+    has(&es_set("Pregunté al profesor.").await, "profesor", IndirectObject);
+    // se of se lo doubles it.
+    let a = es_set("Se lo dimos a su padre.").await;
+    agreed(&a, &[("Se", Some(IndirectObject)), ("lo", Some(DirectObject))]);
+    has(&a, "padre", IndirectObject);
+    // Fronted, with the subject after the verb.
+    let a = es_set("A Marco le gusta el libro.").await;
+    has(&a, "Marco", IndirectObject);
+    has(&a, "libro", Subject);
+    // A climbed clitic leaves the indirect object to the infinitive that
+    // takes it, not to the modal (poder, querer, tener que take none).
+    for s in [
+        "Lo puedo dar a María.",
+        "Se lo quiero dar a María.",
+        "Lo tengo que dar a María.",
+        "Lo quiero poder dar a María.",
+    ] {
+        has(&es_set(s).await, "María", IndirectObject);
+    }
+    has(&es_set("Le voy a escribir a Juan.").await, "Juan", IndirectObject);
+    // Before an infinitive, the indirect object is the infinitive's, also
+    // fronted; a verb that takes one itself (gustar) keeps it.
+    has(&es_set("Le puedo dar el libro a María.").await, "María", IndirectObject);
+    has(&es_set("A María le puedo dar el libro.").await, "María", IndirectObject);
+    has(&es_set("A Juan le gusta correr.").await, "Juan", IndirectObject);
+    // tener que is not tener: a Madrid is where ir goes.
+    agreed(&es_set("Tengo que ir a Madrid.").await, &[("Madrid", Some(Adverbial))]);
+    // junto read as an adverb keeps its a phrase, even after cantar, which
+    // takes an indirect object.
+    for s in ["Canta junto a María.", "Le canta una canción junto a María."] {
+        let a = es_set(s).await;
+        assert!(!a.parses.is_empty(), "{s}: no parse");
+        assert!(
+            !token(&a, "María").roles.contains(&Some(IndirectObject)),
+            "{s}: {:?}",
+            token(&a, "María").roles
+        );
+    }
+    // ir does not take one: a Madrid is where.
+    agreed(
+        &es_set("Voy a Madrid.").await,
+        &[("a", Some(Adverbial)), ("Madrid", Some(Adverbial))],
+    );
+    // junto a is a compound preposition, never an indirect object.
+    let a = es_set("Vive junto a María.").await;
+    assert!(!token(&a, "María").roles.contains(&Some(IndirectObject)));
 }
 
 // ------------------------------------------------------------- French (#37)

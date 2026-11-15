@@ -155,8 +155,10 @@ keeps both roles. No parse, no roles.
 Spanish and French are marked the same way. Spanish: *lo/la/los/las* are
 direct objects, *le/les* and the *se* of *se lo doy* indirect objects, the
 personal *a* (*veo **a María***) a direct object or an adverbial, both
-returned; an *a* phrase after a verb of giving is an adverbial until
-Spanish has a dative-verb list. French: *ne* and *pas* are adverbials inside
+returned; an *a* phrase after a verb that takes a dative (*le di el libro
+**a María***, *le gusta **a Marco***; `data/es/dative-verbs.tsv`) is an
+indirect object or an adverbial, both returned, also fronted (***A Marco**
+le gusta el libro*). French: *ne* and *pas* are adverbials inside
 the verb group, a subject pronoun after the verb (*parlez-**vous***) is the
 subject, a *par* phrase is the agent after a passive and an adverbial after an
 active verb (*je passe **par la gare***), a floating *tous* between the
@@ -370,6 +372,13 @@ cargo run --release -- eval es data/es/homograph-set.jsonl \
   (there is = *hay*).
 - **Bare infinitives** only after the verbs that take them (*poder, deber,
   querer, saber, soler, ver, oír, hacer, dejar*, *gustar*…).
+- An **a phrase after a verb that takes a dative** is an indirect object
+  (`data/es/dative-verbs.tsv`: *dar*, *decir*, *enviar*, *gustar*,
+  *preguntar*; from Wiktionary, the Tatoeba sentences, and a model-generated
+  list checked by a second model): *Le di el libro a María*, *Dije la verdad
+  al chico*, *Le gusta a Marco*, and fronted, *A Marco le gusta el libro*. It
+  keeps its adverbial reading as well, so both are returned; after any other
+  verb it is only an adverbial (*Voy a Madrid*).
 
 On the Tatoeba set (5,000 sentences, 2,034 ambiguous forms of 832 page verbs,
 at most 3 sentences a form, alternating spaCy's verb and non-verb readings)

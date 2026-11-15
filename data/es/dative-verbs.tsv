@@ -1,0 +1,163 @@
+# Verbs that take an indirect object written as a + noun phrase: the person
+# or thing that receives, is told, is asked or is affected (dar el libro a
+# María, telefonear a Juan, gustar a Marco). A dative clitic can stand for it
+# or double it (le doy el libro, le di el libro a María, le gusta a Marco).
+# Only after these verbs does the grammar read an a phrase as an indirect
+# object (vp.indirect-object, clause.indirect-object-first); the a phrase
+# keeps its adverbial reading too (dar el libro a la salida), so a sentence
+# where both fit is ambiguous. A place after a verb of motion (ir a Madrid),
+# the personal a of a direct object (ver a María), a + infinitive and a + que
+# are not indirect objects. ir is left out on purpose: its dative sense
+# (le voy al Barça, "I support") is rare beside ir a + place.
+#
+# One verb per line as the infinitive, then where the evidence comes from,
+# then for model-proposed verbs an example phrase:
+#   wiktionary-sense    a sense note "[with dative]", "[with a 'someone']",
+#                       "(uses indirect object)" or the like in English
+#                       Wiktionary (Kaikki.org extract of 2026-10-07, Spanish
+#                       verbs), where the a phrase is one a dative clitic can
+#                       replace
+#   wiktionary-example  a Wiktionary usage example with le / les + the verb +
+#                       a + a person or thing (le di eso a mi mamá)
+#   tatoeba             a sentence of tatoeba-pool.jsonl.gz (which holds
+#                       homograph-set.jsonl) with le / les + the verb + a + a
+#                       noun phrase as its indirect object
+#   llm:generated+proofread
+#                       proposed by a language model (Claude Opus), with the
+#                       example phrase in the third column, and accepted by a
+#                       second, independent model (Claude Sonnet) that saw only
+#                       the list and rejected 1 of 86 proposals (2026-11-15)
+abrir	llm:generated+proofread	abrir la puerta a los invitados
+acercar	llm:generated+proofread	acercar una silla a la abuela
+aconsejar	llm:generated+proofread	aconsejar paciencia a los jóvenes
+advertir	llm:generated+proofread	advertir el peligro a los vecinos
+agradar	tatoeba
+agradecer	llm:generated+proofread	agradecer el favor a su vecino
+alquilar	llm:generated+proofread	alquilar un piso a unos estudiantes
+anunciar	llm:generated+proofread	anunciar la boda a la familia
+apetecer	llm:generated+proofread	a Juan le apetece un café
+arder	wiktionary-sense
+arreglar	llm:generated+proofread	arreglar el coche a un vecino
+asignar	llm:generated+proofread	asignar una tarea a cada alumno
+atribuir	llm:generated+proofread	atribuir el cuadro a Goya
+bastar	llm:generated+proofread	una palabra basta a los sabios
+caer	llm:generated+proofread	Juan le cae bien a todos
+cantar	llm:generated+proofread	cantar una canción a su hija
+ceder	llm:generated+proofread	ceder el asiento a una anciana
+chillar	wiktionary-sense
+cholerear	wiktionary-example
+cobrar	llm:generated+proofread	cobrar diez euros a cada cliente
+comprar	llm:generated+proofread	comprar flores a su madre
+comunicar	llm:generated+proofread	comunicar la noticia a los empleados
+conceder	llm:generated+proofread	conceder un premio al ganador
+confesar	llm:generated+proofread	confesar la verdad a su madre
+confiar	llm:generated+proofread	confiar un secreto a su amiga
+contar	llm:generated+proofread	contar un secreto a su amiga
+contestar	llm:generated+proofread	contestar a su jefe
+convenir	llm:generated+proofread	el acuerdo conviene a todos
+copar	wiktionary-sense
+corresponder	llm:generated+proofread	la herencia corresponde a los hijos
+cortar	llm:generated+proofread	cortar el pelo a un cliente
+costar	llm:generated+proofread	el examen le costó mucho a Juan
+creer	tatoeba
+dar	wiktionary-sense,wiktionary-example,tatoeba
+deber	llm:generated+proofread	deber dinero a un amigo
+decir	wiktionary-example,tatoeba
+dedicar	tatoeba
+dejar	wiktionary-sense
+demostrar	llm:generated+proofread	demostrar su amor a su esposa
+desear	llm:generated+proofread	desear suerte a los jugadores
+devolver	llm:generated+proofread	devolver el dinero a su hermano
+dirigir	tatoeba
+doler	wiktionary-sense,tatoeba
+donar	llm:generated+proofread	donar dinero a una fundación
+echar	wiktionary-example,tatoeba
+encantar	llm:generated+proofread	el chocolate les encanta a los niños
+encargar	llm:generated+proofread	encargar un trabajo a un experto
+enorgullecer	wiktionary-example
+enseñar	tatoeba
+entrar	wiktionary-sense
+entregar	llm:generated+proofread	entregar el paquete al vecino
+enviar	llm:generated+proofread	enviar una carta a su madre
+esconder	llm:generated+proofread	esconder la verdad a sus padres
+escribir	llm:generated+proofread	escribir una carta a su novia
+exigir	llm:generated+proofread	exigir una explicación al gobierno
+explicar	llm:generated+proofread	explicar la lección a los alumnos
+facilitar	llm:generated+proofread	facilitar el trabajo a los empleados
+faltar	wiktionary-sense
+faxear	wiktionary-example
+flipar	wiktionary-sense
+garantizar	llm:generated+proofread	garantizar el empleo a los trabajadores
+gastar	wiktionary-example
+gritar	wiktionary-sense
+gustar	wiktionary-sense,wiktionary-example,tatoeba
+hablar	wiktionary-sense
+hacer	wiktionary-example,tatoeba
+impedir	llm:generated+proofread	impedir el paso a los coches
+importar	wiktionary-sense
+interesar	llm:generated+proofread	el libro interesa a los lectores
+lanzar	llm:generated+proofread	lanzar la pelota al niño
+lavar	llm:generated+proofread	lavar el pelo al niño
+leer	llm:generated+proofread	leer un cuento a los niños
+llevar	wiktionary-sense,wiktionary-example
+mandar	llm:generated+proofread	mandar un mensaje a Juan
+mencionar	llm:generated+proofread	mencionar el asunto al jefe
+mentir	tatoeba
+molestar	wiktionary-sense
+mostrar	llm:generated+proofread	mostrar las fotos a los abuelos
+nacer	wiktionary-sense
+negar	llm:generated+proofread	negar la entrada a los periodistas
+obedecer	llm:generated+proofread	obedecer a sus padres
+ocultar	tatoeba
+ocurrir	llm:generated+proofread	se le ocurrió una idea a Juan
+ofrecer	llm:generated+proofread	ofrecer un café a los invitados
+ordenar	llm:generated+proofread	ordenar silencio a los alumnos
+otorgar	llm:generated+proofread	otorgar una beca a la estudiante
+pagar	tatoeba
+parecer	llm:generated+proofread	la idea le parece bien a Juan
+pasar	tatoeba
+pedir	llm:generated+proofread	pedir ayuda a un amigo
+pegar	tatoeba
+perdonar	llm:generated+proofread	perdonar la deuda a un amigo
+permitir	llm:generated+proofread	permitir la entrada a los socios
+pertenecer	wiktionary-example
+placer	wiktionary-sense
+plantear	llm:generated+proofread	plantear una duda al profesor
+poner	wiktionary-sense,wiktionary-example
+preguntar	wiktionary-example,tatoeba
+preocupar	llm:generated+proofread	la noticia preocupa a los padres
+preparar	llm:generated+proofread	preparar la cena a los niños
+prestar	tatoeba
+prohibir	llm:generated+proofread	prohibir el paso a los coches
+prometer	llm:generated+proofread	prometer ayuda a sus padres
+proponer	llm:generated+proofread	proponer un trato al cliente
+quedar	wiktionary-sense
+quitar	wiktionary-sense,tatoeba
+reclamar	llm:generated+proofread	reclamar el dinero al banco
+recomendar	llm:generated+proofread	recomendar un libro a un amigo
+recordar	llm:generated+proofread	recordar la cita a su marido
+regalar	tatoeba
+repartir	llm:generated+proofread	repartir caramelos a los niños
+reprochar	llm:generated+proofread	reprochar su actitud a su hermano
+responder	llm:generated+proofread	responder a la profesora
+rezar	tatoeba
+robar	llm:generated+proofread	robar la cartera a un turista
+sacar	tatoeba
+sentar	tatoeba
+servir	llm:generated+proofread	servir la sopa a los invitados
+sobrar	llm:generated+proofread	le sobra dinero a su hermano
+solicitar	llm:generated+proofread	solicitar un permiso al director
+sonreír	llm:generated+proofread	sonreír a los niños
+suceder	llm:generated+proofread	algo le sucedió a tu hermano
+sugerir	llm:generated+proofread	sugerir una idea al jefe
+suplicar	llm:generated+proofread	suplicar perdón a su padre
+susurrar	llm:generated+proofread	susurrar un secreto a su hermana
+telefonear	llm:generated+proofread	telefonear a su madre
+temer	tatoeba
+tener	wiktionary-example
+tirar	tatoeba
+tocar	wiktionary-example
+traer	llm:generated+proofread	traer un regalo a los niños
+transmitir	llm:generated+proofread	transmitir la noticia a la familia
+vender	llm:generated+proofread	vender la casa a un vecino
+venir	wiktionary-sense
