@@ -933,3 +933,137 @@ async fn floating_quantifier_inside_the_verb_group() {
     .await;
     assert!(found.is_empty(), "{found:?}");
 }
+
+/// Issue #59: three passato remoto spellings Word Holder's strict run decided
+/// wrongly, and their variants: a participle after a headline's colon, an
+/// adverb + participle phrase without a verb, and a question word + infinitive
+/// with its object. it-strict.json is it-set.json's answers for these
+/// sentences, plus equamente (an adverb) and Noemalife (unknown, a name).
+#[tokio::test]
+async fn strict_run_participle_and_infinitive_readings_exist() {
+    let past_historic = Some("indicative.past_historic");
+    for (verb, text, other) in [
+        // Headline: topic, colon, absolute participle or participle phrase.
+        (
+            "concludere",
+            "Noemalife: concluse trattative con Almaviva.",
+            "Verb concludere non_finite.past_participle",
+        ),
+        (
+            "chiudere",
+            "Milano: chiuse le scuole.",
+            "Verb chiudere non_finite.past_participle",
+        ),
+        (
+            "dividere",
+            "Risorse: divise tra Comune e Regione.",
+            "Verb dividere non_finite.past_participle",
+        ),
+        // Adverb + participle phrase.
+        (
+            "dividere",
+            "Equamente divise tra Comune e Regione.",
+            "Verb dividere non_finite.past_participle",
+        ),
+        (
+            "concedere",
+            "Gentilmente concesse dal museo.",
+            "Verb concedere non_finite.past_participle",
+        ),
+        // Question word + infinitive + object: le is the article.
+        ("risorgere", "Come trovare le risorse?", "Noun risorsa"),
+        ("spendere", "Come dividere le spese?", "Noun spesa"),
+    ] {
+        let e = one("it-strict", verb, past_historic, text).await;
+        assert_eq!(e.status, Status::Ambiguous, "{text}: {e:?}");
+        assert!(
+            e.other_readings.iter().any(|r| r == other),
+            "{text}: {:?}",
+            e.other_readings
+        );
+    }
+    // The infinitive takes its object and phrases.
+    for (verb, text, marked_text) in [
+        (
+            "trovare",
+            "Come trovare le risorse?",
+            "Come [trovare] le risorse?",
+        ),
+        (
+            "dividere",
+            "Come dividere le spese?",
+            "Come [dividere] le spese?",
+        ),
+        ("andare", "Dove andare?", "Dove [andare]?"),
+        ("dire", "Che cosa dire?", "Che cosa [dire]?"),
+        (
+            "partire",
+            "Perché partire subito?",
+            "Perché [partire] subito?",
+        ),
+        (
+            "chiedere",
+            "A chi chiedere aiuto?",
+            "A chi [chiedere] aiuto?",
+        ),
+        ("leggere", "Quale libro leggere?", "Quale libro [leggere]?"),
+        (
+            "dividere",
+            "Non so come dividere le spese.",
+            "Non so come [dividere] le spese.",
+        ),
+    ] {
+        let e = one("it-strict", verb, None, text).await;
+        assert_eq!(marked(&e), marked_text, "{e:?}");
+        assert_eq!(e.cells, ["non_finite.infinitive"], "{text}");
+    }
+    // A participle phrase is still no sentence without the adverb: Volta a
+    // sinistra is a command, not volgere's participle.
+    let (found, _) = run_in(
+        "it-strict",
+        "volgere",
+        None,
+        &["Volta a sinistra all'incrocio."],
+        all(),
+    )
+    .await;
+    assert!(found.is_empty(), "{found:?}");
+}
+
+/// Issue #59, two more from the strict run: a participle after non that
+/// shares the passive's essere (amate, non comprese), and an essere verb's
+/// participle that also names a state after essere (data/it/state-participles.txt).
+#[tokio::test]
+async fn negated_second_participle_and_state_participles() {
+    for (verb, text) in [
+        ("comprendere", "Le donne devono essere amate, non comprese."),
+        ("comprendere", "Le donne sono amate ma non comprese."),
+    ] {
+        let e = one("it-strict", verb, Some("indicative.past_historic"), text).await;
+        assert_eq!(e.status, Status::Ambiguous, "{text}: {e:?}");
+        assert_eq!(
+            e.other_readings,
+            ["Adj comprese (the participle used as an adjective)"],
+            "{text}"
+        );
+    }
+    for (verb, text, adjective, cell) in [
+        (
+            "dispiacere",
+            "Sono dispiaciuto.",
+            "Adj dispiaciuto (the participle used as an adjective)",
+            "indicative.present_perfect.1s",
+        ),
+        (
+            "sedere",
+            "Era seduto.",
+            "Adj seduto (the participle used as an adjective)",
+            "indicative.pluperfect.3s",
+        ),
+    ] {
+        let e = one("it-strict", verb, None, text).await;
+        assert_eq!(e.status, Status::Ambiguous, "{text}: {e:?}");
+        assert_eq!(e.cells, [cell], "{text}");
+        assert_eq!(e.other_readings, [adjective], "{text}");
+    }
+}

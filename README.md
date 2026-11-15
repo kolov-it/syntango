@@ -47,7 +47,7 @@ commit of master, so it can lag behind this repository.
 
 ![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
 
-**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 209 rules)
+**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 225 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
 possessives; clitic pronouns before and after the verb; compound tenses, the
@@ -56,9 +56,13 @@ gerund; *tutti* between the auxiliary and the participle (*erano tutti
 sorpresi*); participles used like adjectives, participle phrases and
 participle clauses (*Arrivato a casa, …*; *dopo mangiato*), absolute
 participles anywhere set off by commas or alone (*…, incluse le ragazze*;
-*Esclusi i carabinieri.*); examples after a comma (*…, ad esempio le rose*);
+*Esclusi i carabinieri.*), after a headline's colon (*Noemalife: concluse
+trattative con Almaviva.*) or after an adverb (*Equamente divise tra Comune e
+Regione.*); examples after a comma (*…, ad esempio le rose*); a second adjective or
+participle after *non* (*devono essere amate, non comprese*);
 infinitive complements, *che* and *cui* clauses, indirect questions,
-questions, subordinate clauses, commas, coordination and time expressions;
+questions (also with an infinitive: *Come trovare le risorse?*, *non so dove
+andare*), subordinate clauses, commas, coordination and time expressions;
 sentences without a verb (*La forza del destino!*, a noun phrase after `;` or
 `:`).
 

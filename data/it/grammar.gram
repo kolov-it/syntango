@@ -541,6 +541,18 @@ rule vp.indirect-question-infinitive: VP[finite=?f, form=?fm, mood=?m, indep=?in
 rule ap.coordination: AP[participle_di=no, participle_essere=?e, number=?n, gender=?g] -> AP[participle_essere=?e, number=?n, gender=?g] Conj[type=coord] AP[number=?n, gender=?g]
   "Two adjectives joined by e or o (intelligente e pratico, sani e salvi). Right after essere, an essere verb's participle first makes it a compound tense (sono nato e cresciuto)."
 
+rule ap.negated-contrast: AP[participle_di=no, participle_essere=?e, number=?n, gender=?g] -> AP[participle_essere=?e, number=?n, gender=?g] NotLink AP[participle_essere=?e, number=?n, gender=?g]
+  "An adjective or participle, then non and another that the first replaces; the verb is not said again (devono essere amate, non comprese; è stanco ma non malato)."
+
+rule notlink.comma: NotLink -> Punct[lemma!=.|?|!|;|:] Adv[lemma=non]
+  ", non"
+
+rule notlink.conjunction: NotLink -> Conj[lemma=ma|e] Adv[lemma=non]
+  "ma non, e non"
+
+rule notlink.comma-conjunction: NotLink -> Punct[lemma!=.|?|!|;|:] Conj[lemma=ma|e] Adv[lemma=non]
+  ", ma non / , e non"
+
 rule np.list: NP[pronoun=no, number=pl] -> NP Punct NPList
   "A list of noun phrases separated by commas, the last joined by e or o (cibo, feste e balli)."
 
@@ -673,11 +685,20 @@ rule absp.bare-plural: AbsP -> Verb[form=pastpart, drifted=no, number=pl, gender
 rule text.absolute-participle: Text -> AbsP
   "An absolute participle is a sentence on its own, as a headline (Esclusi i carabinieri. Concessi gli arresti domiciliari.)."
 
-rule frag.colon-absolute-participle: Frag -> Frag Punct[lemma=:] AbsP
-  "After a headline's topic and a colon, an absolute participle (Noemalife: concluse trattative con Almaviva; Milano: arrestati due ladri)."
+# A headline names its topic, then a colon and what happened, in a
+# participle: Noemalife: concluse trattative con Almaviva.
 
-rule frag.colon-participle-phrase: Frag -> Frag Punct[lemma=:] PartP
-  "After a headline's topic and a colon, a participle phrase (Bilancio: approvato dal consiglio)."
+rule topic.fragment: Topic -> Frag
+  "A noun phrase or another sentence without a verb (Noemalife, Il Comune di Roma)."
+
+rule topic.bare-noun: Topic -> Nom
+  "A noun without an article, as a headline's topic (Sanità, Calcio, Risorse)."
+
+rule frag.colon-absolute-participle: Frag -> Topic Punct[lemma=:] AbsP
+  "After a headline's topic and a colon, an absolute participle (Noemalife: concluse trattative con Almaviva; Milano: chiuse le scuole; Sanità: chiusi due ospedali)."
+
+rule frag.colon-participle-phrase: Frag -> Topic Punct[lemma=:] PartP
+  "After a headline's topic and a colon, a participle phrase (Risorse: divise tra Comune e Regione)."
 
 rule frag.adverb-participle-phrase: Frag -> Adv[neg=no]:adverbial PartP
   "An adverb and a participle phrase, without a verb, say how something was done (Equamente divise tra Comune e Regione). Without the adverb a participle phrase is no sentence of its own: Volta a sinistra all'incrocio is a command."
