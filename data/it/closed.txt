@@ -152,6 +152,14 @@ ve = vi:Pron{case=dat,person=2,number=pl,clitic=yes,combining=yes}
 ve = vi:Pron{case=refl,person=2,number=pl,clitic=yes,combining=yes}
 glie = gli:Pron{case=dat,person=3,clitic=yes,combining=yes}
 
+# --- glie- and the clitic after it, written as one word before the verb
+glielo = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=m,clitic=yes}
+gliela = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=f,clitic=yes}
+gliel' = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,clitic=yes}
+glieli = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=m,clitic=yes}
+gliele = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=f,clitic=yes}
+gliene = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + ne:Pron{case=gen,clitic=yes}
+
 # --- conjunctions
 e = e:Conj{type=coord}
 ed = e:Conj{type=coord}

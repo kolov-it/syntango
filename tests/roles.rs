@@ -345,9 +345,10 @@ async fn contracted_prepositions_keep_their_phrase_role() {
         &set("Tom è alla stazione.").await,
         &[("alla", Some(Adverbial)), ("stazione", Some(Adverbial))],
     );
-    // a + il: an adverbial phrase, or part of the object (il libro al ragazzo).
+    // a + il: dare's recipient (#53), or part of the object (il libro al
+    // ragazzo).
     let a = set("Ho dato il libro al ragazzo.").await;
-    differs(&a, "al", Adverbial, &[DirectObject]);
+    differs(&a, "al", IndirectObject, &[DirectObject]);
     assert!(token(&a, "al").roles.iter().all(Option::is_some));
 }
 
@@ -363,8 +364,9 @@ async fn di_phrases_partitives_and_verbless_sentences() {
 }
 
 /// Issue #33: an a phrase after a verb that takes a dative
-/// (data/it/dative-verbs.tsv) is an indirect object, as well as an adverbial;
-/// after any other verb it is only an adverbial.
+/// (data/it/dative-verbs.tsv) is an indirect object, as well as an adverbial
+/// unless the verb's recipient is open (#53); after any other verb it is only
+/// an adverbial.
 #[tokio::test]
 async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
     let has = |a: &SentenceAnalysis, word: &str, role: Role| {
@@ -375,10 +377,10 @@ async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
             t.roles
         );
     };
-    let a = set("Ho dato il libro a Maria.").await;
+    let a = set("Ho scritto una lettera a Roma.").await;
     has(&a, "a", IndirectObject);
-    has(&a, "Maria", IndirectObject);
-    has(&a, "Maria", Adverbial);
+    has(&a, "Roma", IndirectObject);
+    has(&a, "Roma", Adverbial);
     // al = a + il: both halves take the phrase's role.
     let a = set("Ho detto la verità al ragazzo.").await;
     has(&a, "al", IndirectObject);
@@ -393,6 +395,55 @@ async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
     has(&a, "film", Subject);
     // andare does not take one: a Roma is where.
     agreed(&set("Vado a Roma.").await, &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))]);
+}
+
+/// Issue #53: after dare and the other verbs of data/it/recipient-verbs.tsv,
+/// a + a noun phrase fills the recipient while nothing else fills it: never
+/// where or when. A dative clitic fills it, after which an a phrase can say
+/// where again. A name or a personal pronoun never makes a noun's a phrase
+/// (il libro a Maria is not a kind of book); a common noun does (pasta al
+/// pomodoro).
+#[tokio::test]
+async fn an_a_phrase_fills_an_open_recipient() {
+    let only_indirect = |a: &SentenceAnalysis, words: &[&str]| {
+        assert_eq!(a.parses.len(), 1, "{:?}", a.roles);
+        let expected: Vec<_> = words.iter().map(|w| (*w, Some(IndirectObject))).collect();
+        agreed(a, &expected);
+    };
+    let has = |a: &SentenceAnalysis, word: &str, role: Role| {
+        let t = token(a, word);
+        assert!(t.roles.contains(&Some(role)), "{word}: {role} missing from {:?}", t.roles);
+    };
+    // After the object and before it, in a compound tense.
+    let a = set("Ho dato il libro a Maria.").await;
+    only_indirect(&a, &["a", "Maria"]);
+    agreed(&a, &[("libro", Some(DirectObject))]);
+    let a = set("Ho dato a Maria il libro.").await;
+    only_indirect(&a, &["a", "Maria"]);
+    agreed(&a, &[("libro", Some(DirectObject))]);
+    // A place is the recipient too: "to Paris", never "in Paris".
+    only_indirect(&set("Ho dato il libro a Parigi.").await, &["a", "Parigi"]);
+    // lo leaves the recipient open, gli fills it.
+    only_indirect(&set("L'ho dato a Maria.").await, &["a", "Maria"]);
+    has(&set("Gli ho dato il libro a Parigi.").await, "Parigi", Adverbial);
+    // Under a modal: the infinitive's recipient; a clitic that climbed to the
+    // modal fills it, from before or after (dargli).
+    only_indirect(&set("Voglio dare il libro a Maria.").await, &["a", "Maria"]);
+    let lit = |t| run("tests/fixtures/it-literature.json", t);
+    has(&lit("Glielo voglio dare a Parigi.").await, "Parigi", Adverbial);
+    has(&lit("Gli voglio dare il libro a Parigi.").await, "Parigi", Adverbial);
+    has(&lit("Voglio dargli il libro a Parigi.").await, "Parigi", Adverbial);
+    // a + an infinitive still says what for.
+    has(&set("Ho dato la macchina a riparare.").await, "a", Adverbial);
+    // scrivere also takes a place: both readings, but no noun phrase una
+    // lettera a Roma.
+    let a = set("Ho scritto una lettera a Roma.").await;
+    differs(&a, "Roma", Adverbial, &[IndirectObject]);
+    assert!(!token(&a, "Roma").roles.contains(&Some(DirectObject)), "{:?}", token(&a, "Roma").roles);
+    agreed(&set("Vado a Roma.").await, &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))]);
+    // A common noun keeps its a phrase.
+    let a = run("tests/fixtures/it-handwritten.json", "Ho mangiato la pasta al pomodoro.").await;
+    has(&a, "pomodoro", DirectObject);
 }
 
 /// Issue #40: a verb that is only intransitive (data/it/intransitive-verbs.tsv)
