@@ -38,6 +38,8 @@
 #                       second, independent model (Claude Sonnet) that saw only
 #                       the list and rejected 24 of 67 proposals
 #                       (2026-11-15)
+#   linking             a linking verb (linking-verbs.tsv): what follows it is
+#                       its subject complement (risulta vero)
 abbondare	wiktionary
 abusare	wiktionary
 accadere	wiktionary
@@ -210,6 +212,7 @@ risiedere	llm:generated+proofread	risiede a Milano
 risorgere	wiktionary
 risplendere	wiktionary
 ritornare	tatoeba,literature
+risultare	linking
 riuscire	wiktionary
 ronzare	wiktionary
 russare	wiktionary

@@ -4789,6 +4789,565 @@
         "source": "kaikki",
         "surface": "magari"
       }
+    ],
+    "una": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "num",
+        "source": "kaikki",
+        "surface": "una"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "article",
+        "source": "kaikki",
+        "surface": "una"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "una"
+      }
+    ],
+    "donna": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "donna",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "donna"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Donna",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "donna"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Donna",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "donna"
+      }
+    ],
+    "famoso": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "famoso",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "famoso"
+      }
+    ],
+    "pare": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "pare",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "pare"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "archaic feminine plural poetic",
+          "tags": [
+            "archaic",
+            "feminine",
+            "plural",
+            "poetic"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "archaic",
+            "feminine",
+            "plural",
+            "poetic"
+          ]
+        },
+        "lemma": "para",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "pare"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "pare"
+      }
+    ],
+    "sogno": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "sogno",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "sogno"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sognare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sogno"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Sogno",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "sogno"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Sogno",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "sogno"
+      }
+    ],
+    "stanco": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "stanco",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "stanco"
+      },
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanco"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Stanco",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "stanco"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Stanco",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "stanco"
+      }
+    ],
+    "ricco": [
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "ricco",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "ricco"
+      },
+      {
+        "confidence": "high",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "ricco",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "ricco"
+      }
+    ],
+    "divenne": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "historic past singular third-person",
+          "tags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ],
+          "tense": "preterite"
+        },
+        "lemma": "divenire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "divenne"
+      }
+    ],
+    "appariva": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "imperfect indicative singular third-person",
+          "tags": [
+            "imperfect",
+            "indicative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "indicative",
+            "singular",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "apparire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "appariva"
+      }
+    ],
+    "divenuto": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "divenire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "divenuto"
+      }
+    ],
+    "divenni": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "first-person historic past singular",
+          "tags": [
+            "first-person",
+            "historic",
+            "past",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "historic",
+            "past",
+            "singular"
+          ],
+          "tense": "preterite"
+        },
+        "lemma": "divenire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "divenni"
+      }
+    ],
+    "risulta": [
+      {
+        "confidence": "high",
+        "form": {
+          "label": "present singular third-person",
+          "tags": [
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "risultare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "risulta"
+      }
     ]
   }
 }

@@ -29,6 +29,7 @@ const STATE_PARTICIPLES: &str = include_str!("../../../data/it/state-participles
 const DI_VERBS: &str = include_str!("../../../data/it/di-verbs.tsv");
 const DATIVE_VERBS: &str = include_str!("../../../data/it/dative-verbs.tsv");
 const INTRANSITIVE_VERBS: &str = include_str!("../../../data/it/intransitive-verbs.tsv");
+const LINKING_VERBS: &str = include_str!("../../../data/it/linking-verbs.tsv");
 const BARE_UTTERANCE: &str = include_str!("../../../data/it/bare-utterance-nouns.tsv");
 
 /// Categories the function-word list owns: the lexicon's readings in these
@@ -57,6 +58,8 @@ pub struct Italian {
     dative_verbs: HashSet<String>,
     /// Verbs that never take a direct object (andare, arrivare).
     intransitive_verbs: HashSet<String>,
+    /// Linking verbs other than essere (sembrare, diventare).
+    linking_verbs: HashSet<String>,
     /// Nouns and adjectives that make a sentence without an article
     /// (Grazie!, Buon viaggio!), as "lemma pos" pairs.
     bare_utterance: HashSet<(String, String)>,
@@ -95,6 +98,7 @@ impl Italian {
             di_verbs: first_column(DI_VERBS),
             dative_verbs: first_column(DATIVE_VERBS),
             intransitive_verbs: first_column(INTRANSITIVE_VERBS),
+            linking_verbs: word_list(LINKING_VERBS),
             bare_utterance: lemma_pos_pairs(BARE_UTTERANCE),
             grammar: Grammar::parse(GRAMMAR)?,
         })
@@ -190,6 +194,8 @@ impl Italian {
             host_feats.insert("takes_a".to_owned(), if takes { "yes" } else { "no" }.to_owned());
             let intransitive = self.intransitive_verbs.contains(&non_pronominal(&reading.lemma));
             host_feats.insert("intransitive".to_owned(), if intransitive { "yes" } else { "no" }.to_owned());
+            let linking = self.linking_verbs.contains(&non_pronominal(&reading.lemma));
+            host_feats.insert("linking".to_owned(), if linking { "yes" } else { "no" }.to_owned());
             if let Some(feature) = present_subjunctive_restriction(&reading.features) {
                 host_feats.insert(feature.to_owned(), "no".to_owned());
             }
@@ -399,7 +405,7 @@ fn lemma_pos_pairs(text: &str) -> HashSet<(String, String)> {
 }
 
 /// The infinitive without its pronouns, as `di-verbs.tsv`,
-/// `dative-verbs.tsv` and `intransitive-verbs.tsv` list it: the
+/// `dative-verbs.tsv`, `intransitive-verbs.tsv` and `linking-verbs.tsv` list it: the
 /// lexicon gives pronominal verbs both ways (accorgersi, ricordare).
 fn non_pronominal(lemma: &str) -> String {
     for suffix in ["sene", "si", "ne"] {
@@ -426,6 +432,9 @@ mod tests {
         assert!(it.di_verbs.contains("parlare") && !it.di_verbs.contains("portare"));
         assert!(it.dative_verbs.contains("dare") && !it.dative_verbs.contains("andare"));
         assert!(it.intransitive_verbs.contains("andare") && !it.intransitive_verbs.contains("correre"));
+        assert!(it.linking_verbs.contains("divenire") && !it.linking_verbs.contains("essere"));
+        // A noun phrase after a linking verb is never its object.
+        assert!(it.linking_verbs.is_subset(&it.intransitive_verbs));
         assert!(it.bare_utterance.contains(&("grazie".to_owned(), "noun".to_owned())));
     }
 
