@@ -347,6 +347,11 @@ async fn subject_complement_agreement_after_essere() {
         "{:?}",
         group_lists(&a)
     );
+    // Only essere has the compound tense: after diventare the bare noun
+    // stays a subject complement (diventano stati, "they become states").
+    let a = run(Lang::It, "Diventano stati.").await;
+    let stati = a.roles.iter().find(|r| r.token == "stati").unwrap();
+    assert_eq!(stati.roles, [Some(Role::SubjectComplement)]);
     let a = run(Lang::It, "È stato un successo.").await;
     let successo = a.roles.iter().find(|r| r.token == "successo").unwrap();
     assert!(
