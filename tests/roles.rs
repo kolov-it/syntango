@@ -439,6 +439,12 @@ async fn an_a_phrase_fills_an_open_recipient() {
     let a = set("Ho dato l'esame a giugno.").await;
     has(&a, "giugno", Adverbial);
     has(&a, "giugno", IndirectObject);
+    // Also with an adjective after it.
+    has(
+        &set("Ho dato l'esame a giugno scorso.").await,
+        "scorso",
+        Adverbial,
+    );
     has(
         &set("Ho dato il libro a mezzanotte.").await,
         "mezzanotte",

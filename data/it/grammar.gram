@@ -607,6 +607,9 @@ rule atime.day-part: ATime -> Prep[lemma=a] Det[definite=yes, number=sg] Noun[nu
 rule atime.hour: ATime -> Prep[lemma=a] Det[definite=yes, gender=f, number=pl] Num
   "a + le + a number: the hour (alle tre, alle cinque)."
 
+rule atime.adjective: ATime -> ATime AP
+  "A time with an adjective after it (a giugno scorso, a Natale prossimo), like time.adjective."
+
 
 rule clause.time-first: S[indep=?i] -> TimeNP:adverbial S[indep=?i]
   "A time expression at the start of the clause (Ogni mattina corro)."
