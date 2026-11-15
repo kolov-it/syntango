@@ -372,7 +372,8 @@ the one a verb page needs: *which verb, or not a verb at all*.
 - A **noun's *a* phrase** (*barca a vela*, *pasta al pomodoro*) never has a
   name or a personal pronoun: *il libro a Maria* is not a kind of book. The
   lexicon does not tell a person's name from a place's, so no name is
-  taken (*la vita a Parigi* is not a noun phrase either).
+  taken: *la vita a Parigi* is not a noun phrase either, so *La vita a
+  Parigi è bella* has no parse (no sentence of the homograph set is affected).
 - A **verb that is only intransitive** takes no direct object
   (`data/it/intransitive-verbs.tsv`: *andare*, *venire*, *arrivare*,
   *nascere*, *restare*; from Wiktionary, the labelled and literature
