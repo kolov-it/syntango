@@ -5,7 +5,9 @@
 # recipient, is "in Paris" (grammar.gram: recipient, vp.a-phrase). A verb
 # that also takes a place or a time with a stays out: scrivere (ho scritto
 # una lettera a Roma), mandare and spedire (a destination), vendere,
-# insegnare, fornire, assegnare, dedicare, pagare, lasciare, passare.
+# insegnare, fornire, assegnare, dedicare, pagare, lasciare, passare,
+# offrire (la cena a Roma), mostrare (un quadro a Venezia), consegnare (a
+# domicilio). A time after any of them still says when (vp.a-time).
 #
 # Each verb is also in dative-verbs.tsv. One verb per line, as there, with
 # an example. Drafted from dative-verbs.tsv for issue #53, to be checked by
@@ -13,11 +15,8 @@
 affidare	affidare i bambini alla nonna
 attribuire	attribuire la colpa a Marco
 concedere	concedere un permesso al dipendente
-consegnare	consegnare il pacco al vicino
 dare	dare il libro a Maria
 donare	donare un rene al fratello
-mostrare	mostrare le foto a un amico
-offrire	offrire un caffè a Luca
 porgere	porgere la mano a un ospite
 prestare	prestare la macchina a un collega
 regalare	regalare un libro alla mamma

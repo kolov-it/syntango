@@ -400,15 +400,24 @@ async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
 /// Issue #53: after dare and the other verbs of data/it/recipient-verbs.tsv,
 /// a + a noun phrase fills the recipient while nothing else fills it: never
 /// where or when. A dative clitic fills it, after which an a phrase can say
-/// where again. A name or a personal pronoun never makes a noun's a phrase
-/// (il libro a Maria is not a kind of book); a common noun does (pasta al
-/// pomodoro).
+/// where again. After an object the a phrase can also belong to the object
+/// (il libro a Maria, with the recipient left unsaid), as a noun's a phrase
+/// does (pasta al pomodoro).
 #[tokio::test]
 async fn an_a_phrase_fills_an_open_recipient() {
     let only_indirect = |a: &SentenceAnalysis, words: &[&str]| {
         assert_eq!(a.parses.len(), 1, "{:?}", a.roles);
         let expected: Vec<_> = words.iter().map(|w| (*w, Some(IndirectObject))).collect();
         agreed(a, &expected);
+    };
+    // The recipient, or part of the object before it: never where or when.
+    let recipient_or_object = |a: &SentenceAnalysis, words: &[&str]| {
+        assert_eq!(a.parses.len(), 2, "{:?}", a.roles);
+        for w in words {
+            let mut roles = token(a, w).roles.clone();
+            roles.sort_by_key(|r| format!("{r:?}"));
+            assert_eq!(roles, [Some(DirectObject), Some(IndirectObject)], "{w}");
+        }
     };
     let has = |a: &SentenceAnalysis, word: &str, role: Role| {
         let t = token(a, word);
@@ -420,7 +429,7 @@ async fn an_a_phrase_fills_an_open_recipient() {
     };
     // After the object and before it, in a compound tense.
     let a = set("Ho dato il libro a Maria.").await;
-    only_indirect(&a, &["a", "Maria"]);
+    recipient_or_object(&a, &["a", "Maria"]);
     agreed(&a, &[("libro", Some(DirectObject))]);
     let a = set("Ho dato a Maria il libro.").await;
     only_indirect(&a, &["a", "Maria"]);
@@ -440,7 +449,7 @@ async fn an_a_phrase_fills_an_open_recipient() {
         &[("alle", Some(Adverbial)), ("tre", Some(Adverbial))],
     );
     // A place is the recipient too: "to Paris", never "in Paris".
-    only_indirect(&set("Ho dato il libro a Parigi.").await, &["a", "Parigi"]);
+    recipient_or_object(&set("Ho dato il libro a Parigi.").await, &["a", "Parigi"]);
     // lo leaves the recipient open, gli fills it.
     only_indirect(&set("L'ho dato a Maria.").await, &["a", "Maria"]);
     has(
@@ -450,7 +459,7 @@ async fn an_a_phrase_fills_an_open_recipient() {
     );
     // Under a modal: the infinitive's recipient; a clitic that climbed to the
     // modal fills it, from before or after (dargli).
-    only_indirect(&set("Voglio dare il libro a Maria.").await, &["a", "Maria"]);
+    recipient_or_object(&set("Voglio dare il libro a Maria.").await, &["a", "Maria"]);
     let lit = |t| run("tests/fixtures/it-literature.json", t);
     has(
         &lit("Glielo voglio dare a Parigi.").await,
@@ -483,19 +492,15 @@ async fn an_a_phrase_fills_an_open_recipient() {
         "a",
         Adverbial,
     );
-    // scrivere also takes a place: both readings, but no noun phrase una
-    // lettera a Roma.
+    // scrivere also takes a place: where, to whom, or part of the object.
     let a = set("Ho scritto una lettera a Roma.").await;
-    differs(&a, "Roma", Adverbial, &[IndirectObject]);
-    assert!(
-        !token(&a, "Roma").roles.contains(&Some(DirectObject)),
-        "{:?}",
-        token(&a, "Roma").roles
-    );
+    differs(&a, "Roma", Adverbial, &[IndirectObject, DirectObject]);
     agreed(
         &set("Vado a Roma.").await,
         &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))],
     );
+    // A place can describe a noun (#53 keeps names in a noun's a phrase).
+    assert!(!lit("La vita a Parigi è bella.").await.parses.is_empty());
     // A common noun keeps its a phrase.
     let a = run(
         "tests/fixtures/it-handwritten.json",
@@ -554,6 +559,29 @@ async fn intransitive_verbs_take_no_direct_object() {
     agreed(&set("La vecchia saliva le scale con difficoltà.").await, &[("scale", Some(DirectObject))]);
     has(&set("Passa il sale.").await, "sale", DirectObject);
     has(&set("Vive una vita felice.").await, "vita", DirectObject);
+}
+
+/// Issue #55: every linking verb of data/it/linking-verbs.tsv takes a subject
+/// complement, a noun phrase or an adjective, in simple and compound tenses;
+/// none takes a direct object.
+#[tokio::test]
+async fn linking_verbs_take_a_subject_complement() {
+    for (text, complement) in [
+        ("Divenni una donna.", "donna"),
+        ("Divenne famoso.", "famoso"),
+        ("Pare un sogno.", "sogno"),
+        ("Appariva stanco.", "stanco"),
+        ("Risulta vero.", "vero"),
+        ("È divenuto ricco.", "ricco"),
+    ] {
+        let a = run("tests/fixtures/it-handwritten.json", text).await;
+        assert!(!a.parses.is_empty(), "{text}: no parse");
+        let t = token(&a, complement);
+        assert!(t.roles.contains(&Some(SubjectComplement)), "{text}: {complement} {:?}", t.roles);
+        for t in &a.roles {
+            assert!(!t.roles.contains(&Some(DirectObject)), "{text}: {} {:?}", t.token, t.roles);
+        }
+    }
 }
 
 /// The categories of the readings the parses use for `word`.

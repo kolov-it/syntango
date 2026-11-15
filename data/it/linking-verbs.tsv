@@ -1,0 +1,28 @@
+# Linking verbs other than essere: what follows them says what the subject
+# is, seems or becomes (sembra stanco, è diventata medico, pare un sogno), a
+# subject complement, never an object. The verbs here get `linking=yes`, the
+# rest `linking=no`, and the grammar's linking-verb rules (cop.verb,
+# cop.perfect, vp.copula-lo-nonfinite, vp.copula-infinitive-adjective,
+# vp.copula-nonfinite-noun…) take the verbs with `linking=yes`. essere keeps
+# rules of its own (cop.essere, cop.perfect-essere): its participle after it
+# is a compound tense, theirs is not.
+#
+# stare takes an adjective (sta zitto, stare zitti) but, as an infinitive or
+# gerund, no noun phrase and no predicate lo: those rules leave it out by
+# lemma.
+#
+# All of these are intransitive: data/it/intransitive-verbs.tsv lists them,
+# so a noun phrase after them is never a direct object (vp.object).
+#
+# One verb per line, as the infinitive. ridivenire is left out: the sentence
+# sets' lexicon answers have no form of it.
+apparire
+diventare
+divenire
+parere
+restare
+ridiventare
+rimanere
+risultare
+sembrare
+stare
