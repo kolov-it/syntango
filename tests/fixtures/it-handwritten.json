@@ -5348,6 +5348,36 @@
         "source": "kaikki",
         "surface": "risulta"
       }
+    ],
+    "pasta": [
+      {
+        "lemma": "pasta",
+        "partOfSpeech": "noun",
+        "grammar": {
+          "rawTags": [
+            "feminine",
+            "singular"
+          ],
+          "number": "singular",
+          "gender": "feminine",
+          "clitic": false
+        }
+      }
+    ],
+    "pomodoro": [
+      {
+        "lemma": "pomodoro",
+        "partOfSpeech": "noun",
+        "grammar": {
+          "rawTags": [
+            "masculine",
+            "singular"
+          ],
+          "number": "singular",
+          "gender": "masculine",
+          "clitic": false
+        }
+      }
     ]
   }
 }

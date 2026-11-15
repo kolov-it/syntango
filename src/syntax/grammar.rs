@@ -11,7 +11,9 @@
 //! A value is a constant (`nom`), a choice of constants (`acc|dat`) or a
 //! variable (`?p`) that must take the same value everywhere in the rule.
 //! `!=` negates: `prep!=di` refuses those constants, `person!=?o` the
-//! variable's value.
+//! variable's value. A feature named twice on the left side takes the last
+//! value that is known: `V[recipient=?r, recipient=?c]` is `?c` when a child
+//! gave it, `?r` otherwise.
 //!
 //! A child can carry the grammatical role of the phrase it stands for, after
 //! its features: `NP[case=nom]:subject`, `Adv[lemma=non]:adverbial`. The
