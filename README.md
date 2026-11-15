@@ -47,7 +47,7 @@ commit of master, so it can lag behind this repository.
 
 ![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
 
-**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 200 rules)
+**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 209 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
 possessives; clitic pronouns before and after the verb; compound tenses, the
@@ -157,8 +157,10 @@ dat=indirect-object, loc=adverbial`): *l'*, *lo* are direct objects, *gli*
 indirect. A word with attached clitics (*dammelo*) is the verb group. A
 *di* phrase that the verb takes (*parla **di me***) or a fixed *di* phrase
 (*esce **di notte***) is an adverbial. An *a* phrase after a verb that
-takes a dative (*ho dato il libro **a Maria***) is an indirect object or an
-adverbial, both returned. A sentence without a verb
+takes a dative (*ho scritto una lettera **a Roma***) is an indirect object or
+an adverbial, both returned; after *dare* and the other verbs with a
+recipient slot (*ho dato il libro **a Maria***) only an indirect object. A
+sentence without a verb
 (*La forza del destino!*) gives its words no role, and neither does a noun
 phrase after `;` or `:`, which renames or lists rather than filling a role.
 
@@ -359,9 +361,24 @@ the one a verb page needs: *which verb, or not a verb at all*.
   (`data/it/dative-verbs.tsv`: *dare*, *dire*, *mostrare*, *telefonare*,
   *piacere*; from Wiktionary, the labelled sentences, and a model-generated
   list checked by a second model): *Ho dato il libro a Maria*, *Ho detto la
-  verità al ragazzo*, *Il film piace a Marco*, and fronted, *A Maria piace il
-  film*. It keeps its adverbial reading as well, so both are returned; after
-  any other verb it is only an adverbial (*Vado a Roma*).
+  verità al ragazzo*, *Il film piace a Marco*, before the object, *Ho dato a
+  Maria il libro*, and fronted, *A Maria piace il film*. It keeps its
+  adverbial reading as well, so both are returned (*Ho scritto una lettera a
+  Roma*); after any other verb it is only an adverbial (*Vado a Roma*).
+- **A verb with a recipient slot** (`data/it/recipient-verbs.tsv`: *dare*,
+  *regalare*, *prestare*, *restituire*, *porgere*, *donare*; issue #53)
+  takes an *a* phrase after it as the recipient while nothing else fills
+  that slot: *Ho dato il libro a Parigi* is "to Paris", never "in Paris".
+  A time still says when (*Ho dato l'esame a giugno*, *alle tre*, *a
+  Natale*): a time is never who receives.
+  A dative or reflexive clitic fills it, after which an *a* phrase can say
+  where again (*Gli ho dato il libro a Parigi*), also one that climbed to a
+  modal (*Glielo voglio dare a Parigi*). The slot is the infinitive's under a
+  modal (*Voglio dare il libro a Maria*).
+- A **noun's *a* phrase** (*barca a vela*, *pasta al pomodoro*, *la vita a
+  Parigi*) never has a personal pronoun. A name is allowed, since the lexicon
+  does not tell a person's name from a place's, so *Ho dato il libro a Maria*
+  is also *il libro a Maria* as the object, with the recipient left unsaid.
 - A **verb that is only intransitive** takes no direct object
   (`data/it/intransitive-verbs.tsv`: *andare*, *venire*, *arrivare*,
   *nascere*, *restare*; from Wiktionary, the labelled and literature

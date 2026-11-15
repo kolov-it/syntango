@@ -80,7 +80,8 @@ fn every_parse(a: &SentenceAnalysis, expected: &[Expected]) {
 
 #[tokio::test]
 async fn italian_compound_tense_is_one_group_named_after_the_auxiliary() {
-    let a = run(Lang::It, "Ho dato il libro a Maria.").await;
+    // Two parses: a Roma is where, or to whom (#53 left dare one).
+    let a = run(Lang::It, "Ho scritto una lettera a Roma.").await;
     assert!(a.parses.len() > 1, "the test is about every parse");
     every_parse(
         &a,
@@ -89,7 +90,7 @@ async fn italian_compound_tense_is_one_group_named_after_the_auxiliary() {
             auxiliaries: vec![0],
             participle: Some(1),
             verb: 1,
-            lemma: "dare",
+            lemma: "scrivere",
             cell: Some("indicative.present_perfect.1s"),
             voice: Voice::Active,
             progressive: false,

@@ -28,6 +28,7 @@ const DRIFTED: &str = include_str!("../../../data/it/drifted-participles.txt");
 const STATE_PARTICIPLES: &str = include_str!("../../../data/it/state-participles.txt");
 const DI_VERBS: &str = include_str!("../../../data/it/di-verbs.tsv");
 const DATIVE_VERBS: &str = include_str!("../../../data/it/dative-verbs.tsv");
+const RECIPIENT_VERBS: &str = include_str!("../../../data/it/recipient-verbs.tsv");
 const INTRANSITIVE_VERBS: &str = include_str!("../../../data/it/intransitive-verbs.tsv");
 const LINKING_VERBS: &str = include_str!("../../../data/it/linking-verbs.tsv");
 const BARE_UTTERANCE: &str = include_str!("../../../data/it/bare-utterance-nouns.tsv");
@@ -56,6 +57,9 @@ pub struct Italian {
     di_verbs: HashSet<String>,
     /// Verbs that take an a + noun phrase indirect object (dare a Maria).
     dative_verbs: HashSet<String>,
+    /// Dative verbs whose recipient slot an a phrase after them fills (dare
+    /// il libro a Parigi is "to Paris"); a subset of `dative_verbs`.
+    recipient_verbs: HashSet<String>,
     /// Verbs that never take a direct object (andare, arrivare).
     intransitive_verbs: HashSet<String>,
     /// Linking verbs other than essere (sembrare, diventare).
@@ -97,6 +101,7 @@ impl Italian {
             state_participles: word_list(STATE_PARTICIPLES),
             di_verbs: first_column(DI_VERBS),
             dative_verbs: first_column(DATIVE_VERBS),
+            recipient_verbs: first_column(RECIPIENT_VERBS),
             intransitive_verbs: first_column(INTRANSITIVE_VERBS),
             linking_verbs: word_list(LINKING_VERBS),
             bare_utterance: lemma_pos_pairs(BARE_UTTERANCE),
@@ -192,6 +197,8 @@ impl Italian {
             host_feats.insert("takes_di".to_owned(), if takes { "yes" } else { "no" }.to_owned());
             let takes = self.dative_verbs.contains(&non_pronominal(&reading.lemma));
             host_feats.insert("takes_a".to_owned(), if takes { "yes" } else { "no" }.to_owned());
+            let recipient = self.recipient_verbs.contains(&non_pronominal(&reading.lemma));
+            host_feats.insert("recipient".to_owned(), if recipient { "open" } else { "none" }.to_owned());
             let intransitive = self.intransitive_verbs.contains(&non_pronominal(&reading.lemma));
             host_feats.insert("intransitive".to_owned(), if intransitive { "yes" } else { "no" }.to_owned());
             let linking = self.linking_verbs.contains(&non_pronominal(&reading.lemma));
@@ -405,7 +412,7 @@ fn lemma_pos_pairs(text: &str) -> HashSet<(String, String)> {
 }
 
 /// The infinitive without its pronouns, as `di-verbs.tsv`,
-/// `dative-verbs.tsv`, `intransitive-verbs.tsv` and `linking-verbs.tsv` list it: the
+/// `dative-verbs.tsv`, `recipient-verbs.tsv`, `intransitive-verbs.tsv` and `linking-verbs.tsv` list it: the
 /// lexicon gives pronominal verbs both ways (accorgersi, ricordare).
 fn non_pronominal(lemma: &str) -> String {
     for suffix in ["sene", "si", "ne"] {
@@ -431,11 +438,20 @@ mod tests {
         assert!(it.closed["la"].len() >= 2);
         assert!(it.di_verbs.contains("parlare") && !it.di_verbs.contains("portare"));
         assert!(it.dative_verbs.contains("dare") && !it.dative_verbs.contains("andare"));
+        assert!(it.recipient_verbs.contains("dare") && !it.recipient_verbs.contains("scrivere"));
         assert!(it.intransitive_verbs.contains("andare") && !it.intransitive_verbs.contains("correre"));
         assert!(it.linking_verbs.contains("divenire") && !it.linking_verbs.contains("essere"));
         // A noun phrase after a linking verb is never its object.
         assert!(it.linking_verbs.is_subset(&it.intransitive_verbs));
         assert!(it.bare_utterance.contains(&("grazie".to_owned(), "noun".to_owned())));
+    }
+
+    /// A recipient verb takes an a phrase as its indirect object at all.
+    #[test]
+    fn recipient_verbs_are_dative_verbs() {
+        let it = Italian::load().unwrap();
+        let missing: Vec<_> = it.recipient_verbs.difference(&it.dative_verbs).collect();
+        assert!(missing.is_empty(), "not in dative-verbs.tsv: {missing:?}");
     }
 
     #[test]
