@@ -3,6 +3,7 @@
 //! Holder API's format, plus noun gender on lemma forms (`ragazza`, `cane`),
 //! which the API does not return yet (doc/lexicon-api-needs.md, need 2).
 
+use std::collections::BTreeSet;
 use std::path::Path;
 
 use syntango::lang::it::Italian;
@@ -448,4 +449,129 @@ async fn di_phrases_keep_agreement_and_modifiers() {
     assert!(!run_literature("Mangio più di te.").await.parses.is_empty());
     assert!(!run_literature("Non notai nulla di sospetto.").await.parses.is_empty());
     assert!(run_literature("Non notai nulla di sospetta.").await.parses.is_empty());
+}
+
+/// Every "lemma cell" some parse gives the verb group holding `token` (`-`
+/// for a group without a cell).
+fn cells(a: &SentenceAnalysis, token: usize) -> BTreeSet<String> {
+    a.verb_groups
+        .iter()
+        .flatten()
+        .filter(|g| g.tokens.contains(&token))
+        .map(|g| format!("{} {}", g.lemma, g.cell.as_deref().unwrap_or("-")))
+        .collect()
+}
+
+fn set(items: &[&str]) -> BTreeSet<String> {
+    items.iter().map(|s| (*s).to_owned()).collect()
+}
+
+/// Issue #48: a present subjunctive in the 1st or 2nd person is not a
+/// sentence of its own, and an imperative has no subject before it.
+#[tokio::test]
+async fn a_main_clause_is_not_a_present_subjunctive() {
+    let a = run("Tu parli troppo.").await;
+    assert_eq!(cells(&a, 1), set(&["parlare indicative.present.2s"]));
+    let a = run("Noi parliamo italiano.").await;
+    assert_eq!(cells(&a, 1), set(&["parlare indicative.present.1p"]));
+    // Imperative without a subject, but not subjunctive.
+    let a = run("Parliamo!").await;
+    assert_eq!(
+        cells(&a, 0),
+        set(&[
+            "parlare imperative.present.1p",
+            "parlare indicative.present.1p"
+        ])
+    );
+}
+
+/// Issue #48: abbiamo + participle is the passato prossimo, never its
+/// subjunctive in a main clause and never a 1st person imperative ("let's
+/// have spoken"). abbiamo as the main verb stays: parlato is also a noun (il
+/// parlato), and avere + a bare noun is a sentence (abbiamo fame, hai torto).
+#[tokio::test]
+async fn a_main_clause_passato_prossimo_is_indicative() {
+    let a = run("Abbiamo parlato con Tom.").await;
+    assert_eq!(
+        cells(&a, 0),
+        set(&[
+            "avere imperative.present.1p",
+            "avere indicative.present.1p",
+            "parlare indicative.present_perfect.1p",
+        ])
+    );
+    let a = run("Abbiamo già mangiato.").await;
+    assert_eq!(
+        cells(&a, 0),
+        set(&["mangiare indicative.present_perfect.1p"])
+    );
+}
+
+/// Issue #48: the subjunctive still stands alone after che, as a wish
+/// (imperfect) and as the polite or wishing 3rd person, and anywhere in a
+/// subordinate clause.
+#[tokio::test]
+async fn the_subjunctive_where_a_main_clause_takes_it() {
+    let a = run("Che entri!").await;
+    assert!(
+        cells(&a, 1).contains("entrare subjunctive.present.2s"),
+        "{:?}",
+        cells(&a, 1)
+    );
+    let a = run("Che tu sia benedetto!").await;
+    assert!(
+        cells(&a, 2).contains("essere subjunctive.present.2s"),
+        "{:?}",
+        cells(&a, 2)
+    );
+    let a = run("Che sia vero?").await;
+    assert!(
+        cells(&a, 1).contains("essere subjunctive.present.3s"),
+        "{:?}",
+        cells(&a, 1)
+    );
+    let a = run("Parli pure.").await;
+    assert_eq!(
+        cells(&a, 0),
+        set(&[
+            "parlare imperative.present.3s",
+            "parlare indicative.present.2s",
+            "parlare subjunctive.present.3s",
+        ])
+    );
+    let a = run("Venga qui.").await;
+    assert_eq!(
+        cells(&a, 0),
+        set(&[
+            "venire imperative.present.3s",
+            "venire subjunctive.present.3s"
+        ])
+    );
+    let a = run("Entrino!").await;
+    assert!(cells(&a, 0).contains("entrare subjunctive.present.3p"));
+    let a = run("Viva gli sposi!").await;
+    assert!(cells(&a, 0).contains("vivere subjunctive.present.3s"));
+    let a = run("Magari parlasse.").await;
+    assert_eq!(cells(&a, 1), set(&["parlare subjunctive.imperfect.3s"]));
+    let a = run("Fosse vero!").await;
+    assert_eq!(cells(&a, 0), set(&["essere subjunctive.imperfect.3s"]));
+    let a = run("Voglio che tu parli.").await;
+    assert_eq!(
+        cells(&a, 3),
+        set(&[
+            "parlare indicative.present.2s",
+            "parlare subjunctive.present.2s"
+        ])
+    );
+}
+
+/// Issue #48: the polite 3rd person takes no subject pronoun but Lei or Loro;
+/// after lui the present subjunctive is only subordinate.
+#[tokio::test]
+async fn the_polite_subjunctive_and_the_subject_pronoun() {
+    let a = run("Lei parli pure.").await;
+    assert_eq!(cells(&a, 1), set(&["parlare subjunctive.present.3s"]));
+    assert!(run("Lui parli pure.").await.parses.is_empty());
+    let a = run("Voglio che lui parli.").await;
+    assert_eq!(cells(&a, 3), set(&["parlare subjunctive.present.3s"]));
 }
