@@ -10,8 +10,8 @@
 # (data/it/dative-verbs.tsv).
 # recipient open/filled/none: the recipient slot of dare, regalare, mostrare
 # and the other verbs of data/it/recipient-verbs.tsv. `open` on the verb;
-# a dative clitic (gli, le, mi, glie-) or a reflexive one fills it (Clitics
-# carry `recipient=filled`), and so does an a phrase taken as the indirect
+# a dative clitic (gli, le, mi, glie-) or a reflexive one fills it
+# (data/it/closed.txt marks them `recipient=filled`), and so does an a phrase taken as the indirect
 # object. While it is open, a + a noun phrase after the verb is the
 # recipient, never where or when (vp.a-phrase): ho dato il libro a Parigi is
 # "to Paris", gli ho dato il libro a Parigi "in Paris". `none`: any other
@@ -208,32 +208,23 @@ rule v.proclitic-perfect-essere: V[aux=essere, lemma=?l, clitic_case=?k, finite=
 rule v.reflexive-perfect: V[aux=essere, lemma=?l, clitic_case=?k, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=?cr, clitic_recipient=?cr, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?r, aux_number=?n, aux_form=?auxf] -> Clitics[recipient=?cr, attached=no, reflexive=yes, case=?k, refl=?r, obj=?o] Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, person=?r, person!=?o, tense=?auxt, form=?auxf] Verb[lemma=?l, form=pastpart, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "A reflexive verb takes essere in compound tenses, whatever its own auxiliary (mi sono alzato, si è svolta)."
 
-rule clitics.reflexive: Clitics[reflexive=yes, attached=?a, refl=?p, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=no, case=?k, case=refl, person=?p]:case
+rule clitics.reflexive: Clitics[reflexive=yes, attached=?a, refl=?p, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=no, case=?k, case=refl, person=?p]:case
   "A reflexive clitic: the action falls back on the subject (ricordati, mi lavo)."
 
-rule clitics.local: Clitics[reflexive=no, attached=?a, obj=?p, case=?k] -> Pron[attached=?a, clitic=yes, combining=no, case=?k, case=acc, person=1|2, person=?p]:case
-  "A 1st or 2nd person clitic pronoun as the direct object (mi, ti, ci, vi)."
+rule clitics.local: Clitics[reflexive=no, attached=?a, obj=?p, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=no, case=?k, case=acc|dat, person=1|2, person=?p]:case
+  "A 1st or 2nd person clitic pronoun (mi, ti, ci, vi)."
 
-rule clitics.local-indirect: Clitics[reflexive=no, attached=?a, obj=?p, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=no, case=?k, case=dat, person=1|2, person=?p]:case
-  "A 1st or 2nd person clitic pronoun as the indirect object (mi dai il libro); it fills the verb's recipient."
+rule clitics.other: Clitics[reflexive=no, attached=?a, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=no, case=?k, case=acc|dat|gen|loc, person=3]:case
+  "A clitic pronoun: lo, la, li, le, gli, ne, ci."
 
-rule clitics.other: Clitics[reflexive=no, attached=?a, case=?k] -> Pron[attached=?a, clitic=yes, combining=no, case=?k, case=acc|gen|loc, person=3]:case
-  "A clitic pronoun: lo, la, li, le, ne, ci."
-
-rule clitics.other-indirect: Clitics[reflexive=no, attached=?a, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=no, case=?k, case=dat, person=3]:case
-  "gli or le as the indirect object (gli ho dato il libro); it fills the verb's recipient."
-
-rule clitics.two-reflexive: Clitics[reflexive=yes, attached=?a, refl=?p, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=yes, case=refl, person=?p]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
+rule clitics.two-reflexive: Clitics[reflexive=yes, attached=?a, refl=?p, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=yes, case=refl, person=?p]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
   "A reflexive clitic before lo/la/li/le/ne turns into me, te, se, ce, ve (andarsene, me lo ricordo)."
 
-rule clitics.two-local: Clitics[reflexive=no, attached=?a, obj=?p, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=yes, case=dat, person=1|2, person=?p]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
+rule clitics.two-local: Clitics[reflexive=no, attached=?a, obj=?p, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=yes, case=dat, person=1|2, person=?p]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
   "Two clitics: the indirect one comes first and turns into me, te, ce or ve (dammelo, te lo do)."
 
-rule clitics.two-other: Clitics[reflexive=no, attached=?a, case=?k] -> Pron[attached=?a, clitic=yes, combining=yes, case=loc, person=3]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
-  "Two clitics: ci of place before lo/la/li/le/ne becomes ce (ce n'è, ce lo metto)."
-
-rule clitics.two-indirect: Clitics[reflexive=no, attached=?a, case=?k, recipient=filled] -> Pron[attached=?a, clitic=yes, combining=yes, case=dat, person=3]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
-  "Two clitics: gli/le before lo/la/li/le/ne fuse into glie- (glielo); the indirect one fills the verb's recipient."
+rule clitics.two-other: Clitics[reflexive=no, attached=?a, case=?k, recipient=?rf] -> Pron[attached=?a, recipient=?rf, clitic=yes, combining=yes, case=dat|loc, person=3]:case Pron[clitic=yes, case=?k, case=acc|gen]:case
+  "Two clitics: gli/le before lo/la/li/le/ne fuse into glie- (glielo), ci becomes ce (ce n'è)."
 
 # ----------------------------------------------------------- verb phrases
 
@@ -282,8 +273,8 @@ rule vp.di-complement: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?
 rule vp.a-indirect-object: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes, recipient=filled] -> VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes] PP[prep=a, infinitive=no]:indirect-object
   "A verb that takes an indirect object: a + whom it is given, told, shown or done to, or who it pleases (ho dato il libro a Maria, ho detto la verità al ragazzo, telefono a Maria, il film piace a Marco). A dative pronoun can stand for it (le ho dato il libro). The verbs are listed in data/it/dative-verbs.tsv; the a phrase can still say where or when, so both readings are returned."
 
-rule vp.indirect-object-object: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes, recipient=filled] -> V[aux=avere, lemma!=essere, intransitive!=yes, clitic_case=refl|gen|loc, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes]:verb PP[prep=a, infinitive=no]:indirect-object NP[case=obl]:direct-object
-  "The indirect object can come before the direct object (ho dato a Maria il libro, ho detto al ragazzo la verità). Not after a dative pronoun, which already is the indirect object."
+rule vp.indirect-object-object: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes, recipient=filled] -> V[aux=avere, lemma!=essere, intransitive!=yes, clitic_case=refl|gen|loc, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=yes]:verb PP[prep=a, infinitive=no, bare!=yes]:indirect-object NP[case=obl, name!=yes, bare!=yes]:direct-object
+  "The indirect object can come before the direct object (ho dato a Maria il libro, ho detto al ragazzo la verità). Not after a dative pronoun, which already is the indirect object. Not with a bare noun on either side (portammo a casa Tom: a casa is where), nor with a name as the object: a name after a name is one name (Harry Potter)."
 
 rule vp.di-infinitive: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] PP[prep=di, infinitive=yes]:adverbial
   "di + infinitive after the verb and its complements (ho detto a Tom di venire)."
@@ -371,7 +362,7 @@ rule nom.possessive-after: Nom[number=?n, gender=?g, onset=?o, utterance=?u, par
 rule np.predeterminer: NP[pronoun=no, person=3, number=?n, gender=?g] -> Predet[number=?n, gender=?g] NP[number=?n, gender=?g]
   "tutto before the article agrees with the noun (tutti i giorni, tutta la notte)."
 
-rule np.bare: NP[pronoun=no, case=obl, person=3, number=?n, gender=?g, participle_essere=?e] -> Nom[number=?n, gender=?g, participle_essere=?e]
+rule np.bare: NP[pronoun=no, bare=yes, case=obl, person=3, number=?n, gender=?g, participle_essere=?e] -> Nom[number=?n, gender=?g, participle_essere=?e]
   "A noun without an article, as an object or after a preposition (ho fame, mangio mele, prendo spunto); not as a subject."
 
 rule np.coordination: NP[pronoun=no, number=pl] -> NP Conj[type=coord, lemma=e|o|ma|né|oppure|ossia|ovvero|nonché] NP
@@ -407,7 +398,7 @@ rule np.pronoun-of: NP[pronoun=no, person=3, number=?n, gender=?g, case=?c] -> P
 rule np.indefinite-adjective: NP[pronoun=no, person=3, number=sg, case=?c] -> Pron[clitic=no, lemma=qualcosa|niente|nulla|qualcuno|nessuno, case=?c] Prep[lemma=di] AP[number=sg, gender=m]
   "qualcosa, niente, nulla + di + an adjective (qualcosa di nuovo, nulla di sospetto)."
 
-rule pp.bare: PP[prep=?x, infinitive=no] -> Prep[lemma=?x] Nom
+rule pp.bare: PP[prep=?x, infinitive=no, bare=yes] -> Prep[lemma=?x] Nom
   "A preposition before a noun without an article (a casa, in macchina, con piacere)."
 
 rule pp.infinitive: PP[prep=?x, infinitive=yes] -> Prep[lemma=?x] VP[form=inf]

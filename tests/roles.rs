@@ -412,7 +412,11 @@ async fn an_a_phrase_fills_an_open_recipient() {
     };
     let has = |a: &SentenceAnalysis, word: &str, role: Role| {
         let t = token(a, word);
-        assert!(t.roles.contains(&Some(role)), "{word}: {role} missing from {:?}", t.roles);
+        assert!(
+            t.roles.contains(&Some(role)),
+            "{word}: {role} missing from {:?}",
+            t.roles
+        );
     };
     // After the object and before it, in a compound tense.
     let a = set("Ho dato il libro a Maria.").await;
@@ -425,24 +429,55 @@ async fn an_a_phrase_fills_an_open_recipient() {
     only_indirect(&set("Ho dato il libro a Parigi.").await, &["a", "Parigi"]);
     // lo leaves the recipient open, gli fills it.
     only_indirect(&set("L'ho dato a Maria.").await, &["a", "Maria"]);
-    has(&set("Gli ho dato il libro a Parigi.").await, "Parigi", Adverbial);
+    has(
+        &set("Gli ho dato il libro a Parigi.").await,
+        "Parigi",
+        Adverbial,
+    );
     // Under a modal: the infinitive's recipient; a clitic that climbed to the
     // modal fills it, from before or after (dargli).
     only_indirect(&set("Voglio dare il libro a Maria.").await, &["a", "Maria"]);
     let lit = |t| run("tests/fixtures/it-literature.json", t);
-    has(&lit("Glielo voglio dare a Parigi.").await, "Parigi", Adverbial);
-    has(&lit("Gli voglio dare il libro a Parigi.").await, "Parigi", Adverbial);
-    has(&lit("Voglio dargli il libro a Parigi.").await, "Parigi", Adverbial);
+    has(
+        &lit("Glielo voglio dare a Parigi.").await,
+        "Parigi",
+        Adverbial,
+    );
+    has(
+        &lit("Gli voglio dare il libro a Parigi.").await,
+        "Parigi",
+        Adverbial,
+    );
+    has(
+        &lit("Voglio dargli il libro a Parigi.").await,
+        "Parigi",
+        Adverbial,
+    );
     // a + an infinitive still says what for.
-    has(&set("Ho dato la macchina a riparare.").await, "a", Adverbial);
+    has(
+        &set("Ho dato la macchina a riparare.").await,
+        "a",
+        Adverbial,
+    );
     // scrivere also takes a place: both readings, but no noun phrase una
     // lettera a Roma.
     let a = set("Ho scritto una lettera a Roma.").await;
     differs(&a, "Roma", Adverbial, &[IndirectObject]);
-    assert!(!token(&a, "Roma").roles.contains(&Some(DirectObject)), "{:?}", token(&a, "Roma").roles);
-    agreed(&set("Vado a Roma.").await, &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))]);
+    assert!(
+        !token(&a, "Roma").roles.contains(&Some(DirectObject)),
+        "{:?}",
+        token(&a, "Roma").roles
+    );
+    agreed(
+        &set("Vado a Roma.").await,
+        &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))],
+    );
     // A common noun keeps its a phrase.
-    let a = run("tests/fixtures/it-handwritten.json", "Ho mangiato la pasta al pomodoro.").await;
+    let a = run(
+        "tests/fixtures/it-handwritten.json",
+        "Ho mangiato la pasta al pomodoro.",
+    )
+    .await;
     has(&a, "pomodoro", DirectObject);
 }
 

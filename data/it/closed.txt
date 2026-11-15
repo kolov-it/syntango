@@ -9,6 +9,8 @@
 # case nom (subject) / obl (stressed, after a verb or preposition) /
 # acc (direct clitic) / dat (indirect clitic) / refl / gen (ne) / loc (ci, vi),
 # clitic yes/no, combining yes (me, te, se, ce, ve, glie before lo/la/li/le/ne).
+# recipient filled: a dative or reflexive clitic fills the recipient of dare
+# and the other verbs of recipient-verbs.tsv (grammar.gram).
 
 # --- definite article
 # `next` is the sound the following word starts with: c = an ordinary
@@ -116,49 +118,49 @@ loro = loro:Pron{case=obl,person=3,number=pl,clitic=no}
 
 # --- clitic pronouns
 mi = mi:Pron{case=acc,person=1,number=sg,clitic=yes}
-mi = mi:Pron{case=dat,person=1,number=sg,clitic=yes}
-mi = mi:Pron{case=refl,person=1,number=sg,clitic=yes}
+mi = mi:Pron{case=dat,person=1,number=sg,clitic=yes,recipient=filled}
+mi = mi:Pron{case=refl,person=1,number=sg,clitic=yes,recipient=filled}
 ti = ti:Pron{case=acc,person=2,number=sg,clitic=yes}
-ti = ti:Pron{case=dat,person=2,number=sg,clitic=yes}
-ti = ti:Pron{case=refl,person=2,number=sg,clitic=yes}
+ti = ti:Pron{case=dat,person=2,number=sg,clitic=yes,recipient=filled}
+ti = ti:Pron{case=refl,person=2,number=sg,clitic=yes,recipient=filled}
 ci = ci:Pron{case=acc,person=1,number=pl,clitic=yes}
-ci = ci:Pron{case=dat,person=1,number=pl,clitic=yes}
-ci = ci:Pron{case=refl,person=1,number=pl,clitic=yes}
+ci = ci:Pron{case=dat,person=1,number=pl,clitic=yes,recipient=filled}
+ci = ci:Pron{case=refl,person=1,number=pl,clitic=yes,recipient=filled}
 ci = ci:Pron{case=loc,clitic=yes}
 vi = vi:Pron{case=acc,person=2,number=pl,clitic=yes}
-vi = vi:Pron{case=dat,person=2,number=pl,clitic=yes}
-vi = vi:Pron{case=refl,person=2,number=pl,clitic=yes}
+vi = vi:Pron{case=dat,person=2,number=pl,clitic=yes,recipient=filled}
+vi = vi:Pron{case=refl,person=2,number=pl,clitic=yes,recipient=filled}
 vi = vi:Pron{case=loc,clitic=yes}
-si = si:Pron{case=refl,person=3,clitic=yes}
+si = si:Pron{case=refl,person=3,clitic=yes,recipient=filled}
 lo = lo:Pron{case=acc,person=3,number=sg,gender=m,clitic=yes}
 la = lo:Pron{case=acc,person=3,number=sg,gender=f,clitic=yes}
 l' = lo:Pron{case=acc,person=3,number=sg,clitic=yes}
 li = lo:Pron{case=acc,person=3,number=pl,gender=m,clitic=yes}
 le = lo:Pron{case=acc,person=3,number=pl,gender=f,clitic=yes}
-le = gli:Pron{case=dat,person=3,number=sg,gender=f,clitic=yes}
-gli = gli:Pron{case=dat,person=3,clitic=yes}
+le = gli:Pron{case=dat,person=3,number=sg,gender=f,clitic=yes,recipient=filled}
+gli = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled}
 ne = ne:Pron{case=gen,clitic=yes}
 
 # --- clitics in their combining form, before lo/la/li/le/ne
-me = mi:Pron{case=dat,person=1,number=sg,clitic=yes,combining=yes}
-me = mi:Pron{case=refl,person=1,number=sg,clitic=yes,combining=yes}
-te = ti:Pron{case=dat,person=2,number=sg,clitic=yes,combining=yes}
-te = ti:Pron{case=refl,person=2,number=sg,clitic=yes,combining=yes}
-se = si:Pron{case=refl,person=3,clitic=yes,combining=yes}
-ce = ci:Pron{case=dat,person=1,number=pl,clitic=yes,combining=yes}
-ce = ci:Pron{case=refl,person=1,number=pl,clitic=yes,combining=yes}
+me = mi:Pron{case=dat,person=1,number=sg,clitic=yes,recipient=filled,combining=yes}
+me = mi:Pron{case=refl,person=1,number=sg,clitic=yes,recipient=filled,combining=yes}
+te = ti:Pron{case=dat,person=2,number=sg,clitic=yes,recipient=filled,combining=yes}
+te = ti:Pron{case=refl,person=2,number=sg,clitic=yes,recipient=filled,combining=yes}
+se = si:Pron{case=refl,person=3,clitic=yes,recipient=filled,combining=yes}
+ce = ci:Pron{case=dat,person=1,number=pl,clitic=yes,recipient=filled,combining=yes}
+ce = ci:Pron{case=refl,person=1,number=pl,clitic=yes,recipient=filled,combining=yes}
 ce = ci:Pron{case=loc,clitic=yes,combining=yes}
-ve = vi:Pron{case=dat,person=2,number=pl,clitic=yes,combining=yes}
-ve = vi:Pron{case=refl,person=2,number=pl,clitic=yes,combining=yes}
-glie = gli:Pron{case=dat,person=3,clitic=yes,combining=yes}
+ve = vi:Pron{case=dat,person=2,number=pl,clitic=yes,recipient=filled,combining=yes}
+ve = vi:Pron{case=refl,person=2,number=pl,clitic=yes,recipient=filled,combining=yes}
+glie = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes}
 
 # --- glie- and the clitic after it, written as one word before the verb
-glielo = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=m,clitic=yes}
-gliela = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=f,clitic=yes}
-gliel' = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=sg,clitic=yes}
-glieli = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=m,clitic=yes}
-gliele = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=f,clitic=yes}
-gliene = gli:Pron{case=dat,person=3,clitic=yes,combining=yes} + ne:Pron{case=gen,clitic=yes}
+glielo = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=m,clitic=yes}
+gliela = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + lo:Pron{case=acc,person=3,number=sg,gender=f,clitic=yes}
+gliel' = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + lo:Pron{case=acc,person=3,number=sg,clitic=yes}
+glieli = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=m,clitic=yes}
+gliele = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + lo:Pron{case=acc,person=3,number=pl,gender=f,clitic=yes}
+gliene = gli:Pron{case=dat,person=3,clitic=yes,recipient=filled,combining=yes} + ne:Pron{case=gen,clitic=yes}
 
 # --- conjunctions
 e = e:Conj{type=coord}
