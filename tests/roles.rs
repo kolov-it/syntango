@@ -446,6 +446,29 @@ async fn intransitive_verbs_take_no_direct_object() {
     has(&set("Vive una vita felice.").await, "vita", DirectObject);
 }
 
+/// Issue #55: every linking verb of data/it/linking-verbs.tsv takes a subject
+/// complement, a noun phrase or an adjective, in simple and compound tenses;
+/// none takes a direct object.
+#[tokio::test]
+async fn linking_verbs_take_a_subject_complement() {
+    for (text, complement) in [
+        ("Divenni una donna.", "donna"),
+        ("Divenne famoso.", "famoso"),
+        ("Pare un sogno.", "sogno"),
+        ("Appariva stanco.", "stanco"),
+        ("Risulta vero.", "vero"),
+        ("È divenuto ricco.", "ricco"),
+    ] {
+        let a = run("tests/fixtures/it-handwritten.json", text).await;
+        assert!(!a.parses.is_empty(), "{text}: no parse");
+        let t = token(&a, complement);
+        assert!(t.roles.contains(&Some(SubjectComplement)), "{text}: {complement} {:?}", t.roles);
+        for t in &a.roles {
+            assert!(!t.roles.contains(&Some(DirectObject)), "{text}: {} {:?}", t.token, t.roles);
+        }
+    }
+}
+
 /// The categories of the readings the parses use for `word`.
 fn categories(a: &SentenceAnalysis, word: &str) -> Vec<String> {
     let choice = a.chosen.iter().find(|c| c.token == word).unwrap_or_else(|| panic!("no token {word}"));
