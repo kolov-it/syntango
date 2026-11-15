@@ -303,6 +303,50 @@ async fn italian_passive_of_a_simple_tense() {
     );
 }
 
+/// Issue #49: the passato prossimo of an essere verb is decided: the
+/// participle after essere is neither an adjective nor the bare noun spelled
+/// like it (venuto, successo; a bare plural noun can be a predicate, so
+/// sono tornate stays ambiguous with the noun tornate). sono keeps the lexicon's suonare reading (out
+/// of scope), with venuto as its object: the only other reading left.
+#[tokio::test]
+async fn essere_verb_passato_prossimo_is_decided() {
+    for (infinitive, text, cell) in [
+        ("venire", "È venuto ieri.", "indicative.present_perfect.3s"),
+        ("succedere", "È successo.", "indicative.present_perfect.3s"),
+        (
+            "fallire",
+            "Il nostro progetto è fallito.",
+            "indicative.present_perfect.3s",
+        ),
+    ] {
+        let e = one("it", infinitive, Some("indicative.present_perfect"), text).await;
+        assert_eq!(
+            (e.cells.as_slice(), e.status),
+            ([cell.to_owned()].as_slice(), Status::Decided),
+            "{text}"
+        );
+    }
+    let e = one(
+        "it",
+        "venire",
+        Some("indicative.present_perfect"),
+        "Sono venuto ieri.",
+    )
+    .await;
+    // Sono venuto stays the passato prossimo: no essere + venuto reading.
+    assert_eq!(e.cells, ["indicative.present_perfect.1s"]);
+    assert_eq!(e.other_readings, ["Noun venuto"]);
+    // morto also names a state: è morto stays ambiguous.
+    let e = one(
+        "it",
+        "morire",
+        Some("indicative.present_perfect"),
+        "È morto.",
+    )
+    .await;
+    assert_eq!(e.status, Status::Ambiguous);
+}
+
 #[tokio::test]
 async fn spanish_perfect_infinitive_with_an_enclitic() {
     let e = one(
