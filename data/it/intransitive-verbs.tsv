@@ -1,0 +1,287 @@
+# Verbs that never take a direct object: verbs of motion and change of state
+# (andare, arrivare, nascere), of being and seeming (restare, sembrare) and
+# other intransitive-only verbs (agire, russare). A noun phrase after one of
+# them is a time, a measure or a subject placed after the verb (siamo andati
+# ieri sera, è arrivato il treno), never its object, so the grammar does not
+# build a direct object after them (vp.object). Clitic objects that climb to
+# them from an infinitive (lo vado a prendere) are not affected, nor are
+# their pronominal uses (andarsene, me ne vado).
+#
+# A verb with any common transitive use stays out, whatever its main sense:
+# correre (correre una gara), salire and scendere (salire le scale), passare
+# (passare il sale), vivere (vivere una vita), piangere (piangere lacrime),
+# crescere (crescere i figli), giungere (giungere le mani), fuggire (fuggire
+# il pericolo), mancare (mancare il bersaglio), tacere (tacere la verità).
+# So do verbs that take a bare measure (costare, durare, valere, distare,
+# camminare tre chilometri, dimagrire cinque chili) and verbs whose only
+# object is a cognate one (dormire sonni tranquilli, morire una bella morte,
+# ridere): those noun phrases are grammatical, and the grammar has no other
+# reading for them yet.
+#
+# One verb per line as the infinitive without -si/-ne (andarsene -> andare),
+# then where the evidence comes from, then for model-proposed verbs an
+# example phrase:
+#   wiktionary          every sense of the verb in English Wiktionary
+#                       (Kaikki.org extract of 2026-10-07, Italian verbs) is
+#                       tagged intransitive and none transitive, the verb
+#                       occurs in the sentence sets' lexicon answers, and it
+#                       has no transitive use the tags miss (indicare,
+#                       esclamare, badare le pecore, abbaiare ordini were
+#                       dropped)
+#   tatoeba             a verb of motion or state that occurs in
+#                       homograph-set.jsonl, intransitive only though some
+#                       Wiktionary sense is untagged
+#   literature          the same in literature/sentences.jsonl
+#   llm:generated+proofread
+#                       proposed by a language model (Claude Opus), with the
+#                       example phrase in the third column, and accepted by a
+#                       second, independent model (Claude Sonnet) that saw only
+#                       the list and rejected 24 of 67 proposals
+#                       (2026-11-15)
+abbondare	wiktionary
+abusare	wiktionary
+accadere	wiktionary
+accondiscendere	wiktionary
+acconsentire	llm:generated+proofread	acconsentì alle nozze
+accorrere	wiktionary
+affluire	wiktionary
+agire	wiktionary
+agonizzare	wiktionary
+albeggiare	llm:generated+proofread	d'estate albeggia presto
+alitare	wiktionary
+alludere	wiktionary
+ammiccare	wiktionary
+andare	wiktionary
+annuire	wiktionary
+ansare	wiktionary
+apparire	wiktionary
+appartenere	wiktionary
+approdare	llm:generated+proofread	la nave approdò a Genova
+approfittare	wiktionary
+arrivare	tatoeba,literature
+arrossire	wiktionary
+avvenire	wiktionary
+balenare	wiktionary
+barare	wiktionary
+barcollare	wiktionary
+basire	wiktionary
+bastare	llm:generated+proofread	il pane basta per tutti
+battibeccare	wiktionary
+bighellonare	llm:generated+proofread	bighellonano tutto il giorno
+bussare	wiktionary
+cadere	wiktionary
+capitare	wiktionary
+cappottare	wiktionary
+cascare	wiktionary
+chiacchierare	wiktionary
+cianciare	wiktionary
+circolare	wiktionary
+civettare	wiktionary
+colloquiare	wiktionary
+comparire	wiktionary
+concorrere	wiktionary
+confabulare	wiktionary
+confliggere	wiktionary
+consistere	wiktionary
+conversare	wiktionary
+curiosare	wiktionary
+decedere	llm:generated+proofread	il paziente è deceduto
+delinquere	wiktionary
+delirare	wiktionary
+desinare	wiktionary
+difettare	wiktionary
+digiunare	wiktionary
+dimorare	llm:generated+proofread	dimorava in una villa
+dipendere	wiktionary
+discordare	wiktionary
+disparire	wiktionary
+dispiacere	wiktionary
+dissentire	llm:generated+proofread	dissento da te
+divampare	wiktionary
+divenire	wiktionary
+diventare	wiktionary
+divergere	wiktionary
+divorziare	wiktionary
+dolere	wiktionary
+duellare	wiktionary
+eccellere	wiktionary
+emigrare	llm:generated+proofread	i nonni emigrarono in America
+entrare	wiktionary
+equivalere	wiktionary
+equivocare	wiktionary
+esistere	wiktionary
+faticare	wiktionary
+fiatare	wiktionary
+franare	wiktionary
+fremere	wiktionary
+frizzare	wiktionary
+funzionare	wiktionary
+galleggiare	wiktionary
+galoppare	wiktionary
+germogliare	wiktionary
+gesticolare	wiktionary
+ghignare	wiktionary
+giacere	wiktionary
+giganteggiare	wiktionary
+gioire	llm:generated+proofread	gioirono della vittoria
+girandolare	wiktionary
+gironzolare	llm:generated+proofread	gironzolava per il mercato
+gongolare	wiktionary
+gozzovigliare	wiktionary
+grandeggiare	wiktionary
+guazzare	wiktionary
+imbrunire	llm:generated+proofread	d'inverno imbrunisce alle cinque
+immigrare	llm:generated+proofread	molti immigrano in Italia ogni anno
+impazzire	wiktionary
+imperare	wiktionary
+inciampare	llm:generated+proofread	inciampò sul gradino
+inneggiare	wiktionary
+insistere	wiktionary
+interagire	wiktionary
+intervenire	wiktionary
+languire	wiktionary
+levitare	wiktionary
+litigare	llm:generated+proofread	litiga sempre con il fratello
+lottare	wiktionary
+luccicare	llm:generated+proofread	le stelle luccicano
+malignare	wiktionary
+marcire	llm:generated+proofread	la frutta marcisce
+militare	wiktionary
+mugghiare	wiktionary
+nascere	wiktionary
+naufragare	llm:generated+proofread	la nave naufragò vicino alla costa
+nitrire	wiktionary
+nuocere	wiktionary
+occorrere	llm:generated+proofread	occorre pazienza
+ondeggiare	wiktionary
+oscillare	llm:generated+proofread	il pendolo oscilla
+ostare	wiktionary
+ovviare	wiktionary
+oziare	wiktionary
+pagaiare	wiktionary
+palpitare	wiktionary
+parere	wiktionary
+partire	tatoeba,literature
+pattinare	llm:generated+proofread	pattinano sul ghiaccio
+pazientare	wiktionary
+peccare	wiktionary
+pellegrinare	wiktionary
+penare	wiktionary
+pendere	wiktionary
+perire	llm:generated+proofread	perirono nel naufragio
+permanere	llm:generated+proofread	il pericolo permane
+pernottare	llm:generated+proofread	abbiamo pernottato in albergo
+persistere	wiktionary
+pervenire	wiktionary
+piacere	wiktionary
+planare	llm:generated+proofread	l'aliante plana sulla valle
+pranzare	wiktionary
+predominare	wiktionary
+prescindere	wiktionary
+prevalere	wiktionary
+primeggiare	llm:generated+proofread	primeggia in matematica
+procedere	wiktionary
+profittare	wiktionary
+progredire	wiktionary
+prorompere	wiktionary
+prosperare	llm:generated+proofread	l'azienda prospera
+prudere	wiktionary
+pulsare	wiktionary
+puzzare	wiktionary
+questionare	wiktionary
+rabbrividire	wiktionary
+ragionare	wiktionary
+ragliare	wiktionary
+reagire	llm:generated+proofread	reagì con calma
+regnare	wiktionary
+resistere	wiktionary
+restare	wiktionary
+riapparire	wiktionary
+ricadere	wiktionary
+ricascare	wiktionary
+ricomparire	wiktionary
+ridiventare	wiktionary
+rientrare	wiktionary
+rimanere	wiktionary
+rinascere	wiktionary
+rincasare	llm:generated+proofread	rincasò tardi
+riparlare	wiktionary
+risiedere	llm:generated+proofread	risiede a Milano
+risorgere	wiktionary
+risplendere	wiktionary
+ritornare	tatoeba,literature
+riuscire	wiktionary
+ronzare	wiktionary
+russare	wiktionary
+ruzzare	wiktionary
+salivare	wiktionary
+saltellare	wiktionary
+salterellare	wiktionary
+sbucare	llm:generated+proofread	un gatto sbucò dal vicolo
+scadere	wiktionary
+scampanellare	wiktionary
+scapitare	wiktionary
+scappare	wiktionary
+scarseggiare	llm:generated+proofread	l'acqua scarseggia
+scherzare	wiktionary
+schiamazzare	wiktionary
+sciamare	wiktionary
+scintillare	llm:generated+proofread	il mare scintilla
+scivolare	wiktionary
+scodinzolare	wiktionary
+scomparire	wiktionary
+sdrucciolare	wiktionary
+sedere	tatoeba,literature
+sembrare	wiktionary
+serpeggiare	wiktionary
+sfaccendare	wiktionary
+sfavillare	wiktionary
+sfiorire	wiktionary
+sfrecciare	llm:generated+proofread	le auto sfrecciano sull'autostrada
+sgattaiolare	llm:generated+proofread	sgattaiolò fuori dalla stanza
+sghignazzare	wiktionary
+smaniare	wiktionary
+sobbalzare	wiktionary
+sogghignare	wiktionary
+soggiornare	llm:generated+proofread	abbiamo soggiornato a Roma
+sonnecchiare	llm:generated+proofread	il nonno sonnecchia in poltrona
+sopraggiungere	literature
+sopravvenire	llm:generated+proofread	sopravvenne una difficoltà
+sopravvivere	wiktionary
+sorgere	wiktionary
+sostare	llm:generated+proofread	è vietato sostare qui
+sparire	wiktionary
+sparlare	wiktionary
+spasimare	wiktionary
+spettare	llm:generated+proofread	la decisione spetta a te
+splendere	llm:generated+proofread	il sole splende
+squillare	wiktionary
+stare	wiktionary
+starnutire	wiktionary
+strepitare	wiktionary
+succedere	wiktionary
+sussultare	llm:generated+proofread	sussultò al rumore
+svanire	wiktionary
+svenire	wiktionary
+tacchettare	wiktionary
+titubare	wiktionary
+tornare	tatoeba,literature
+tramontare	wiktionary
+trasalire	llm:generated+proofread	trasalì nel sentirlo
+trasparire	wiktionary
+tremare	wiktionary
+trepidare	wiktionary
+trillare	wiktionary
+trionfare	wiktionary
+tripudiare	wiktionary
+troneggiare	wiktionary
+trottare	wiktionary
+ululare	wiktionary
+uscire	tatoeba,literature
+vagabondare	wiktionary
+vagare	wiktionary
+venire	wiktionary
+videogiocare	wiktionary
+volare	wiktionary
+zampettare	wiktionary
+zoppicare	wiktionary

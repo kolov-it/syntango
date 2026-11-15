@@ -327,6 +327,16 @@ the one a verb page needs: *which verb, or not a verb at all*.
   verità al ragazzo*, *Il film piace a Marco*, and fronted, *A Maria piace il
   film*. It keeps its adverbial reading as well, so both are returned; after
   any other verb it is only an adverbial (*Vado a Roma*).
+- A **verb that is only intransitive** takes no direct object
+  (`data/it/intransitive-verbs.tsv`: *andare*, *venire*, *arrivare*,
+  *nascere*, *restare*; from Wiktionary, the labelled and literature
+  sentences, and a model-generated list checked by a second model): in
+  *Siamo andati ieri sera al cinema* the evening is when, not what, and in
+  *Arrivò il treno* the train is the subject. Nor can *lo/la/li/le* be its
+  object (*Lo vado* has no parse), but they can climb to it from an
+  infinitive (*Lo vado a prendere*). Verbs with any common transitive use
+  keep the object: *correre un rischio*, *salire le scale*, *passare il sale*,
+  *vivere una vita*.
 - A **partitive subject after the verb** is plural (*sono arrivati dei
   ragazzi*) or follows *c'è* (*c'è del pane*); *del destino* is not "some
   destiny".

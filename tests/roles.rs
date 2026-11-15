@@ -394,6 +394,42 @@ async fn a_phrase_after_a_dative_verb_is_an_indirect_object() {
     agreed(&set("Vado a Roma.").await, &[("a", Some(Adverbial)), ("Roma", Some(Adverbial))]);
 }
 
+/// Issue #40: a verb that is only intransitive (data/it/intransitive-verbs.tsv)
+/// takes no direct object, neither a noun phrase nor lo/la/li/le; verbs with a
+/// transitive use keep theirs.
+#[tokio::test]
+async fn intransitive_verbs_take_no_direct_object() {
+    let no_object = |a: &SentenceAnalysis| {
+        assert!(!a.parses.is_empty(), "no parse");
+        for t in &a.roles {
+            assert!(!t.roles.contains(&Some(DirectObject)), "{}: {:?}", t.token, t.roles);
+        }
+    };
+    let has = |a: &SentenceAnalysis, word: &str, role: Role| {
+        let t = token(a, word);
+        assert!(t.roles.contains(&Some(role)), "{word}: {role} missing from {:?}", t.roles);
+    };
+    let a = set("Siamo andati ieri sera al cinema.").await;
+    no_object(&a);
+    agreed(&a, &[("sera", Some(Adverbial)), ("cinema", Some(Adverbial))]);
+    no_object(&set("Tornerà domani sera.").await);
+    // A noun phrase after the verb is its subject.
+    agreed(&set("Arrivò il treno.").await, &[("treno", Some(Subject))]);
+    // Pronominal uses and ci of place keep working.
+    no_object(&set("Me ne vado.").await);
+    no_object(&set("Se ne sono andati.").await);
+    no_object(&set("Ci vado domani.").await);
+    // lo cannot be the object of andare itself, but it can climb to it from
+    // the infinitive whose object it is.
+    assert!(set("Lo vado.").await.parses.is_empty());
+    agreed(&set("Lo vado a prendere.").await, &[("Lo", Some(DirectObject)), ("prendere", Some(Verb))]);
+    // Verbs with a transitive use keep their direct object.
+    agreed(&set("Tom corse un rischio.").await, &[("rischio", Some(DirectObject))]);
+    agreed(&set("La vecchia saliva le scale con difficoltà.").await, &[("scale", Some(DirectObject))]);
+    has(&set("Passa il sale.").await, "sale", DirectObject);
+    has(&set("Vive una vita felice.").await, "vita", DirectObject);
+}
+
 /// The categories of the readings the parses use for `word`.
 fn categories(a: &SentenceAnalysis, word: &str) -> Vec<String> {
     let choice = a.chosen.iter().find(|c| c.token == word).unwrap_or_else(|| panic!("no token {word}"));
