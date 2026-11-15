@@ -49,8 +49,8 @@ sentences without a verb (*La forza del destino!*, a noun phrase after `;` or
 
 On the [Tatoeba homograph set](#measuring-it-the-tatoeba-homograph-set)
 (5,000 sentences built around ambiguous verb forms) it decides the ambiguous
-word in **71%** of the sentences, and **99.2%** of those decisions agree with
-the labels (3,347 of 3,373).
+word in **71%** of the sentences, and **99.3%** of those decisions agree with
+the labels (3,362 of 3,385).
 
 ## Goal: anyone can run every example
 
@@ -296,7 +296,12 @@ the one a verb page needs: *which verb, or not a verb at all*.
   adjective use, unless a passive marker is there (*venire*, *è stato*,
   *da* + agent, *essere* in the passato remoto or future). Reflexives take
   *essere* with any verb (*mi sono alzato*). The auxiliary comes from the
-  lexicon (`grammar.auxiliaries`).
+  lexicon (`grammar.auxiliaries`). Nor is a bare noun spelled like such a
+  participle a subject complement there: *sono venuto*, *è successo* are
+  compound tenses, not "I am newcomer", "it is success" (with an article the
+  noun stays: *è stato un successo*). A participle that also names a state
+  keeps both readings: *è morto* is "he died" and "he is dead"
+  (`data/it/state-participles.txt`).
 - **Adjectives whose meaning drifted** from the verb stay adjectives:
   `data/it/drifted-participles.txt` (*esatto* is "exact", not *esigere*'s
   participle).
@@ -624,7 +629,8 @@ src/
     fixture.rs        recorded answers, for tests and offline runs
   bin/syntango/     the command line: parse, record, eval, tenses, examples  [feature cli]
 data/it/            grammar.gram, closed.txt (function words),
-                    drifted-participles.txt, lexicon-patches/, the Tatoeba set
+                    drifted-participles.txt, state-participles.txt,
+                    lexicon-patches/, the Tatoeba set
 data/es/            the same for Spanish
 tools/              it_homographs.py: builds the Tatoeba set (--lang es for
                     Spanish); verified_examples.py: decided sentences that

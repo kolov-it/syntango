@@ -23,6 +23,7 @@ use tokenize::is_punct;
 const CLOSED: &str = include_str!("../../../data/it/closed.txt");
 const GRAMMAR: &str = include_str!("../../../data/it/grammar.gram");
 const DRIFTED: &str = include_str!("../../../data/it/drifted-participles.txt");
+const STATE_PARTICIPLES: &str = include_str!("../../../data/it/state-participles.txt");
 const DI_VERBS: &str = include_str!("../../../data/it/di-verbs.tsv");
 const DATIVE_VERBS: &str = include_str!("../../../data/it/dative-verbs.tsv");
 const INTRANSITIVE_VERBS: &str = include_str!("../../../data/it/intransitive-verbs.tsv");
@@ -45,6 +46,9 @@ pub struct Italian {
     closed: FunctionWords,
     /// Participle adjectives whose meaning drifted from the verb (esatto).
     drifted: HashSet<String>,
+    /// Participles of essere verbs that also name a state after essere
+    /// (è morto: he died, or he is dead).
+    state_participles: HashSet<String>,
     /// Verbs that take a di + noun phrase complement (parlare di).
     di_verbs: HashSet<String>,
     /// Verbs that take an a + noun phrase indirect object (dare a Maria).
@@ -85,6 +89,7 @@ impl Italian {
         Ok(Self {
             closed: closed::parse(CLOSED)?,
             drifted: word_list(DRIFTED),
+            state_participles: word_list(STATE_PARTICIPLES),
             di_verbs: first_column(DI_VERBS),
             dative_verbs: first_column(DATIVE_VERBS),
             intransitive_verbs: first_column(INTRANSITIVE_VERBS),
@@ -139,6 +144,7 @@ impl Italian {
                 readings.extend(self.morphemes(&lower, token, &reading));
             }
             merge_participle_adjectives(&mut readings, &self.drifted);
+            mark_essere_participles(&mut readings, &self.state_participles);
             // Words from the lexicon carry the sound they start with, for the
             // article before them to check (il cane, lo zio, l'amico).
             for reading in &mut readings {
@@ -275,6 +281,34 @@ fn merge_participle_adjectives(readings: &mut Vec<Vec<Morpheme>>, drifted: &Hash
             m.feats.insert("participle".to_owned(), of.unwrap_or_else(|| "no".to_owned()));
         } else if is_drifted && m.cat == "Verb" && m.feats.get("form").map(String::as_str) == Some("pastpart") {
             m.feats.insert("drifted".to_owned(), "yes".to_owned());
+        }
+    }
+}
+
+/// After essere, the past participle of a verb that takes essere is the
+/// compound tense (sono venuto, è successo), not a subject complement. Marked
+/// `participle_essere=yes`, which the copula rules refuse, on
+/// - the participle, when its verb takes essere (`takes_essere`), unless it
+///   also names a state (`state`: è morto, he died or he is dead);
+///   `ap.participle` passes it on, so elsewhere the participle is still used
+///   like an adjective (il treno arrivato);
+/// - a noun spelled like such a participle (il venuto, lo stato, il
+///   successo), which `np.bare` passes on: a bare noun right after essere is
+///   not that word (sono venuto is not "I am newcomer"), with an article it
+///   is (è il nuovo venuto, è stato un successo).
+fn mark_essere_participles(readings: &mut [Vec<Morpheme>], state: &HashSet<String>) {
+    let is_past = |m: &Morpheme| m.cat == "Verb" && m.feats.get("form").map(String::as_str) == Some("pastpart");
+    let takes_essere = |m: &Morpheme| m.feats.get("takes_essere").map(String::as_str) == Some("yes");
+    let essere = readings.iter().any(|r| matches!(r.as_slice(), [m] if is_past(m) && takes_essere(m)));
+    let surface = readings.iter().find_map(|r| r.first()).map(|m| m.surface.to_lowercase()).unwrap_or_default();
+    let is_state = masculine_singular(&surface).is_some_and(|ms| state.contains(&ms));
+    for r in readings.iter_mut() {
+        let [m] = r.as_mut_slice() else { continue };
+        if is_past(m) && m.feats.contains_key("takes_essere") {
+            let value = if takes_essere(m) && !is_state { "yes" } else { "no" };
+            m.feats.insert("participle_essere".to_owned(), value.to_owned());
+        } else if essere && m.cat == "Noun" {
+            m.feats.insert("participle_essere".to_owned(), "yes".to_owned());
         }
     }
 }

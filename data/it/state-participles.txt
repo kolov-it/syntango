@@ -1,0 +1,14 @@
+# Past participles of essere verbs that also name a state after essere.
+# After essere, the participle of a verb that takes essere is the compound
+# tense (sono venuto, è successo), not an adjective: vp.copula refuses it.
+# These are both: "è morto" is "he died" and "he is dead". Their participle
+# keeps the adjective use after essere too; it is still the verb's
+# participle.
+#
+# The lexicon's adjective entries cannot tell these apart: venuto, arrivato,
+# caduto, partito and nato have one as well, and after essere are only the
+# compound tense (nato as an adjective, "a born leader", goes with a noun:
+# un leader nato, not è nato).
+#
+# One participle per line, masculine singular.
+morto

@@ -12,7 +12,7 @@ use syntango::patch::PatchedLexicon;
 use syntango::syntax::parser::Tree;
 use syntango::verbs::verb_use;
 use syntango::wordholder::{self, FixtureLexicon};
-use syntango::{SentenceAnalysis, VerbGroup, Voice, analyze};
+use syntango::{Role, SentenceAnalysis, VerbGroup, Voice, analyze};
 
 async fn run(lang: Lang, text: &str) -> SentenceAnalysis {
     let fixture = FixtureLexicon::load(Path::new(&format!(
@@ -212,6 +212,147 @@ async fn italian_progressive_is_the_auxiliary_and_the_gerund() {
             voice: Voice::Active,
             progressive: true,
         },
+    );
+}
+
+/// Each kept parse's groups as "lemma cell tokens", one string per parse.
+fn group_lists(a: &SentenceAnalysis) -> BTreeSet<String> {
+    a.verb_groups
+        .iter()
+        .map(|groups| {
+            groups
+                .iter()
+                .map(|g| {
+                    format!(
+                        "{} {} {:?}",
+                        g.lemma,
+                        g.cell.as_deref().unwrap_or("-"),
+                        g.tokens
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("; ")
+        })
+        .collect()
+}
+
+/// Issue #49: after essere, the participle of a verb that takes essere is the
+/// compound tense, neither an adjective nor a bare noun spelled like it
+/// (venuto, stato, successo). `suonare` is the lexicon's reading of sono
+/// (out of scope here): it stays a parse of its own.
+#[tokio::test]
+async fn essere_participle_after_essere_is_the_compound_tense() {
+    let cases: [(&str, &[&str]); 6] = [
+        (
+            "Sono venuto ieri.",
+            &[
+                "venire indicative.present_perfect.1s [0, 1]",
+                "suonare indicative.present.1s [0]",
+            ],
+        ),
+        (
+            "Sono venuti.",
+            &[
+                "venire indicative.present_perfect.3p [0, 1]",
+                "suonare indicative.present.1s [0]",
+            ],
+        ),
+        (
+            "Sono stato a Roma.",
+            &[
+                "essere indicative.present_perfect.1s [0, 1]",
+                "stare indicative.present_perfect.1s [0, 1]",
+                "suonare indicative.present.1s [0]",
+            ],
+        ),
+        (
+            "Siamo arrivati.",
+            &[
+                "arrivare - [0, 1]",
+                "arrivare indicative.present_perfect.1p [0, 1]",
+                "arrivare subjunctive.perfect.1p [0, 1]",
+            ],
+        ),
+        (
+            "È successo.",
+            &["succedere indicative.present_perfect.3s [0, 1]"],
+        ),
+        (
+            "Sono nato e cresciuto in campagna.",
+            &[
+                "nascere indicative.present_perfect.1s [0, 1]; crescere indicative.present_perfect.1s [0, 3]",
+            ],
+        ),
+    ];
+    for (text, expected) in cases {
+        let a = run(Lang::It, text).await;
+        let expected: BTreeSet<String> = expected.iter().map(|s| (*s).to_owned()).collect();
+        assert_eq!(group_lists(&a), expected, "{text}");
+    }
+}
+
+/// Issue #49: morto also names a state (data/it/state-participles.txt), so
+/// è morto is both "he died" and "he is dead"; the passive of a verb that
+/// takes avere and its state reading stay.
+#[tokio::test]
+async fn state_participle_and_passive_after_essere_stay() {
+    let a = run(Lang::It, "È morto.").await;
+    let expected: BTreeSet<String> = [
+        "morire indicative.present_perfect.3s [0, 1]",
+        "essere indicative.present.3s [0]",
+    ]
+    .map(str::to_owned)
+    .into();
+    assert_eq!(group_lists(&a), expected);
+
+    let a = run(Lang::It, "Tom è amato da tutti.").await;
+    let lists = group_lists(&a);
+    assert!(
+        lists.contains("amare indicative.present.3s [1, 2]"),
+        "{lists:?}"
+    );
+    assert!(
+        lists.contains("essere indicative.present.3s [1]"),
+        "{lists:?}"
+    );
+}
+
+/// Issue #49: an adjective after essere agrees with it in number: sono
+/// stanco is 1s only, sono stanchi 3p only. A noun phrase need not (siamo
+/// una famiglia, sono io, è loro), and with an article a noun spelled like a
+/// participle is that noun (è stato un successo).
+#[tokio::test]
+async fn subject_complement_agreement_after_essere() {
+    let cases: [(&str, &[&str]); 4] = [
+        ("Sono stanco.", &["essere indicative.present.1s [0]"]),
+        ("Sono stanchi.", &["essere indicative.present.3p [0]"]),
+        (
+            "Siamo una famiglia.",
+            &[
+                "essere imperative.present.1p [0]",
+                "essere indicative.present.1p [0]",
+                "essere subjunctive.present.1p [0]",
+            ],
+        ),
+        ("È loro.", &["essere indicative.present.3s [0]"]),
+    ];
+    for (text, expected) in cases {
+        let a = run(Lang::It, text).await;
+        let expected: BTreeSet<String> = expected.iter().map(|s| (*s).to_owned()).collect();
+        assert_eq!(group_lists(&a), expected, "{text}");
+    }
+    let a = run(Lang::It, "Sono io.").await;
+    assert!(
+        group_lists(&a).contains("essere indicative.present.3p [0]"),
+        "{:?}",
+        group_lists(&a)
+    );
+    let a = run(Lang::It, "È stato un successo.").await;
+    let successo = a.roles.iter().find(|r| r.token == "successo").unwrap();
+    assert!(
+        successo.roles.contains(&Some(Role::SubjectComplement)),
+        "{:?}",
+        successo.roles
     );
 }
 
