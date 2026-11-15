@@ -103,6 +103,53 @@ async fn italian_simple_verb_is_a_one_token_group() {
     every_parse(&a, &[simple(2, "amare", "indicative.present.3s")]);
 }
 
+/// Issue #48: in caso + a clause is subordinate, so its present subjunctive
+/// in the 2nd person stays.
+#[tokio::test]
+async fn italian_in_caso_takes_the_subjunctive() {
+    let a = run(
+        Lang::It,
+        "In caso tu venga licenziato, cosa faresti per prima cosa?",
+    )
+    .await;
+    every_parse(
+        &a,
+        &[
+            Expected {
+                tokens: vec![3, 4],
+                auxiliaries: vec![3],
+                participle: Some(4),
+                verb: 4,
+                lemma: "licenziare",
+                cell: Some("subjunctive.present.2s"),
+                voice: Voice::Passive,
+                progressive: false,
+            },
+            simple(7, "fare", "conditional.present.2s"),
+        ],
+    );
+}
+
+/// Issue #48: a main clause passato prossimo is neither a subjunctive nor a
+/// 1st person imperative ("let's have arrived").
+#[tokio::test]
+async fn italian_main_clause_passato_prossimo_is_indicative() {
+    let a = run(Lang::It, "Siamo arrivati.").await;
+    every_parse(
+        &a,
+        &[Expected {
+            tokens: vec![0, 1],
+            auxiliaries: vec![0],
+            participle: Some(1),
+            verb: 1,
+            lemma: "arrivare",
+            cell: Some("indicative.present_perfect.1p"),
+            voice: Voice::Active,
+            progressive: false,
+        }],
+    );
+}
+
 #[tokio::test]
 async fn italian_compound_passive_has_both_auxiliaries() {
     let a = run(Lang::It, "Il libro è stato letto.").await;
@@ -267,11 +314,7 @@ async fn essere_participle_after_essere_is_the_compound_tense() {
         ),
         (
             "Siamo arrivati.",
-            &[
-                "arrivare - [0, 1]",
-                "arrivare indicative.present_perfect.1p [0, 1]",
-                "arrivare subjunctive.perfect.1p [0, 1]",
-            ],
+            &["arrivare indicative.present_perfect.1p [0, 1]"],
         ),
         (
             "È successo.",
@@ -331,7 +374,6 @@ async fn subject_complement_agreement_after_essere() {
             &[
                 "essere imperative.present.1p [0]",
                 "essere indicative.present.1p [0]",
-                "essere subjunctive.present.1p [0]",
             ],
         ),
         ("È loro.", &["essere indicative.present.3s [0]"]),

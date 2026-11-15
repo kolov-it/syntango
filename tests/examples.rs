@@ -220,16 +220,42 @@ async fn italian_auxiliary_mood_ambiguity_is_reported() {
         "it",
         "mangiare",
         Some("indicative.present_perfect"),
-        "Abbiamo già mangiato.",
+        "Penso che abbiamo già mangiato.",
     )
     .await;
-    assert_eq!(marked(&e), "[Abbiamo] già [mangiato].");
+    assert_eq!(marked(&e), "Penso che [abbiamo] già [mangiato].");
     assert_eq!(e.status, Status::Ambiguous);
-    let e = one("it", "mangiare", None, "Abbiamo già mangiato.").await;
+    let e = one("it", "mangiare", None, "Penso che abbiamo già mangiato.").await;
     assert_eq!(
         e.cells,
         ["indicative.present_perfect.1p", "subjunctive.perfect.1p"]
     );
+}
+
+/// Issue #48: a main clause has no present subjunctive in the 1st or 2nd
+/// person and no imperative after a subject, so these are decided.
+#[tokio::test]
+async fn italian_main_clause_is_indicative() {
+    for (verb, text, cell) in [
+        (
+            "mangiare",
+            "Abbiamo già mangiato.",
+            "indicative.present_perfect.1p",
+        ),
+        ("parlare", "Tu parli troppo.", "indicative.present.2s"),
+        ("parlare", "Noi parliamo italiano.", "indicative.present.1p"),
+    ] {
+        let e = one("it", verb, None, text).await;
+        assert_eq!(
+            (e.status, e.cells.as_slice()),
+            (Status::Decided, [cell.to_owned()].as_slice()),
+            "{text}"
+        );
+    }
+    // In a subordinate clause the subjunctive stays.
+    let e = one("it", "parlare", None, "Voglio che tu parli.").await;
+    assert_eq!(e.status, Status::Ambiguous);
+    assert_eq!(e.cells, ["indicative.present.2s", "subjunctive.present.2s"]);
 }
 
 #[tokio::test]
