@@ -6,6 +6,7 @@
 use std::path::Path;
 
 use syntango::lang::{es::Spanish, fr::French, it::Italian};
+use syntango::syntax::parser::Tree;
 use syntango::wordholder::FixtureLexicon;
 use syntango::{Role, SentenceAnalysis, TokenRoles, analyze};
 
@@ -443,9 +444,6 @@ async fn essere_takes_no_direct_object() {
 
 #[tokio::test]
 async fn es_subject_verb_object() {
-    // La niña ama al perro: perro is not a person, and vp.object-personal
-    // wants the object's person to differ from the verb's, so al perro is
-    // only an adverbial for now; an inanimate object shows the plain shape.
     agreed(
         &es_set("La niña lee un libro.").await,
         &[
@@ -464,6 +462,43 @@ async fn es_personal_a_is_a_direct_object_or_an_adverbial() {
     agreed(&a, &[("Veo", Some(Verb))]);
     differs(&a, "a", DirectObject, &[Adverbial]);
     differs(&a, "María", DirectObject, &[Adverbial]);
+}
+
+/// A 3rd person verb takes a 3rd person a-object: personal a is not kept out
+/// when object and verb share the 3rd person (#41). *ve* is also a 2nd person
+/// imperative, so the check is on a parse whose verb is 3rd person singular.
+#[tokio::test]
+async fn es_personal_a_after_a_third_person_verb() {
+    for (text, object) in [("Juan ve a María.", ["a", "María"]), ("La niña ama al perro.", ["al", "perro"])] {
+        let a = es_set(text).await;
+        let found = a.parses.iter().zip(&a.verb_groups).any(|(tree, groups)| {
+            groups.iter().any(|g| g.cell.as_deref() == Some("indicative.present.3s"))
+                && object.iter().all(|word| leaf_role(&a, tree, word) == Some(DirectObject))
+        });
+        assert!(found, "{text}: no 3s parse with a direct object: {:?}", a.roles);
+        for word in object {
+            assert!(token(&a, word).roles.contains(&Some(Adverbial)), "{text} {word}: {:?}", a.roles);
+        }
+    }
+    // The subject itself as the object takes a reflexive: no personal a here.
+    let a = es_set("Veo a mí.").await;
+    assert!(!token(&a, "mí").roles.contains(&Some(DirectObject)), "{:?}", a.roles);
+    // al + infinitive is a time adverbial, not a personal object.
+    let a = es_set("Ella se rio al ver su sombrero.").await;
+    assert!(!token(&a, "al").roles.contains(&Some(DirectObject)), "{:?}", a.roles);
+}
+
+/// The role `word` has in `tree`: that of the innermost phrase with a role
+/// holding it, as [`TokenRoles`] counts it.
+fn leaf_role(a: &SentenceAnalysis, tree: &Tree, word: &str) -> Option<Role> {
+    fn walk(tree: &Tree, index: usize, outer: Option<Role>) -> Option<Option<Role>> {
+        match tree {
+            Tree::Leaf { token, role, .. } => (*token == index).then(|| role.or(outer)),
+            Tree::Node { role, children, .. } => children.iter().find_map(|c| walk(c, index, role.or(outer))),
+        }
+    }
+    let index = a.tokens.iter().position(|t| t == word).unwrap();
+    walk(tree, index, None).flatten()
 }
 
 #[tokio::test]
