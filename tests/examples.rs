@@ -756,3 +756,180 @@ fn every_tatoeba_pool_sentence_aligns() {
         assert!(n > 10_000, "{code}: {n}");
     }
 }
+
+/// Issue #56: a passato remoto form spelled like a participle or a noun is
+/// not decided as the passato remoto when the sentence reads it as the
+/// participle or the noun. it-participles.json is it-set.json's answers for
+/// these sentences, plus readings wordy's lexicon has and the set lacks
+/// (sorpresi as sorprendere, incluse as includere's passato remoto).
+#[tokio::test]
+async fn participle_and_noun_spellings_are_not_decided_as_the_passato_remoto() {
+    let past_historic = Some("indicative.past_historic");
+    for (verb, text) in [
+        // venire passive with an adjective that says what the subject is made.
+        (
+            "rendere",
+            "Quando i risultati verranno resi pubblici, ti farò sapere.",
+        ),
+        // tutti between essere and the adjective use of the participle.
+        ("sorprendere", "Perché erano tutti sorpresi?"),
+        // ad esempio + a noun phrase after the clause.
+        ("rodere", "Mi piacciono i fiori, ad esempio le rose."),
+        ("rodere", "Mi piacciono i fiori, per esempio le rose."),
+        // an absolute participle after a comma, and as a headline.
+        ("includere", "Tutti possono unirsi, incluse le ragazze."),
+        ("escludere", "Esclusi i carabinieri."),
+    ] {
+        let e = one("it-participles", verb, past_historic, text).await;
+        assert_eq!(e.status, Status::Ambiguous, "{text}: {e:?}");
+    }
+    // The readings the issue asks for exist.
+    let e = one(
+        "it-participles",
+        "rendere",
+        None,
+        "Quando i risultati verranno resi pubblici, ti farò sapere.",
+    )
+    .await;
+    assert_eq!(
+        marked(&e),
+        "Quando i risultati [verranno] [resi] pubblici, ti farò sapere."
+    );
+    assert_eq!(
+        e.cells,
+        ["indicative.future.3p", "indicative.past_historic.1s"]
+    );
+    assert_eq!(e.voice, Voice::Passive);
+    let e = one(
+        "it-participles",
+        "sorprendere",
+        None,
+        "Perché erano tutti sorpresi?",
+    )
+    .await;
+    assert_eq!(
+        e.other_readings,
+        ["Adj sorpresi (the participle used as an adjective)"]
+    );
+    let e = one(
+        "it-participles",
+        "rodere",
+        None,
+        "Mi piacciono i fiori, ad esempio le rose.",
+    )
+    .await;
+    assert_eq!(e.other_readings, ["Noun rosa", "Noun rose"]);
+    let e = one(
+        "it-participles",
+        "includere",
+        None,
+        "Tutti possono unirsi, incluse le ragazze.",
+    )
+    .await;
+    assert_eq!(
+        e.other_readings,
+        ["Verb includere non_finite.past_participle"]
+    );
+    let e = one(
+        "it-participles",
+        "escludere",
+        None,
+        "Esclusi i carabinieri.",
+    )
+    .await;
+    assert_eq!(
+        e.other_readings,
+        ["Verb escludere non_finite.past_participle"]
+    );
+    // Between commas after a noun phrase, the participle is the only reading;
+    // so is the noun inside such an example.
+    for (verb, text) in [
+        ("includere", "Tutti, incluse le ragazze, possono unirsi."),
+        (
+            "rodere",
+            "Alcune rose, ad esempio le rose rosse, sono belle.",
+        ),
+    ] {
+        let (found, _) = run_in("it-participles", verb, past_historic, &[text], all()).await;
+        assert!(found.is_empty(), "{text}: {found:?}");
+    }
+}
+
+/// Issue #56: a passive keeps the adjective its active verb puts on the
+/// object (rendere pubblici i risultati), in every tense, with venire or
+/// essere.
+#[tokio::test]
+async fn passive_with_a_predicative_adjective() {
+    for (text, marked_text, cell) in [
+        (
+            "I risultati vengono resi pubblici.",
+            "I risultati [vengono] [resi] pubblici.",
+            "indicative.present.3p",
+        ),
+        (
+            "I risultati furono resi pubblici.",
+            "I risultati [furono] [resi] pubblici.",
+            "indicative.past_historic.3p",
+        ),
+        (
+            "I risultati sono stati resi pubblici.",
+            "I risultati [sono] [stati] [resi] pubblici.",
+            "indicative.present_perfect.3p",
+        ),
+    ] {
+        let e = one("it-participles", "rendere", None, text).await;
+        assert_eq!(marked(&e), marked_text);
+        assert_eq!(
+            (e.cells.as_slice(), e.voice),
+            ([cell.to_owned()].as_slice(), Voice::Passive),
+            "{text}"
+        );
+    }
+    let e = one(
+        "it-participles",
+        "rendere",
+        None,
+        "I risultati vengono resi pubblici.",
+    )
+    .await;
+    assert_eq!(e.status, Status::Decided);
+}
+
+/// Issue #56: tutti / tutte between the auxiliary and the participle.
+#[tokio::test]
+async fn floating_quantifier_inside_the_verb_group() {
+    let e = one(
+        "it-participles",
+        "mangiare",
+        None,
+        "Abbiamo tutti mangiato.",
+    )
+    .await;
+    assert_eq!(
+        (e.status, marked(&e).as_str()),
+        (Status::Decided, "[Abbiamo] tutti [mangiato].")
+    );
+    assert_eq!(e.cells, ["indicative.present_perfect.1p"]);
+    let e = one("it-participles", "partire", None, "Sono tutti partiti.").await;
+    assert_eq!(marked(&e), "[Sono] tutti [partiti].");
+    assert_eq!(e.cells, ["indicative.present_perfect.3p"]);
+    let e = one("it-participles", "prendere", None, "Furono tutti presi.").await;
+    assert_eq!(marked(&e), "[Furono] tutti [presi].");
+    assert_eq!(
+        (e.cells.as_slice(), e.voice),
+        (
+            ["indicative.past_historic.3p".to_owned()].as_slice(),
+            Voice::Passive
+        )
+    );
+    // After erano, chiuse agrees with tutte: an adjective use, never "she closed".
+    let (found, _) = run_in(
+        "it-participles",
+        "chiudere",
+        Some("indicative.past_historic"),
+        &["Le porte erano tutte chiuse."],
+        all(),
+    )
+    .await;
+    assert!(found.is_empty(), "{found:?}");
+}

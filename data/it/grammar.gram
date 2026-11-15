@@ -112,8 +112,8 @@ rule partnp.everything: PartNP[number=sg] -> Prep[lemma=di] Pron[lemma=tutto, nu
 rule partnp.relative: PartNP[number=?n, gender=?g] -> PartNP[number=?n, gender=?g] Rel
   "A clause with che or cui describes the partitive's noun (dei ragazzi che giocano)."
 
-rule np.numeral: NP[pronoun=no, person=3, number=pl, gender=?g] -> Num Nom[number=pl, gender=?g]
-  "A number before a plural noun."
+rule np.numeral: NP[pronoun=no, person=3, number=pl, gender=?g] -> Num[number!=sg] Nom[number=pl, gender=?g]
+  "A number before a plural noun; not una (una foto is one photo, not 'one photos')."
 
 rule nom.noun: Nom[number=?n, gender=?g, onset=?o, utterance=?u, participle_essere=?e] -> Noun[number=?n, gender=?g, onset=?o, utterance=?u, participle_essere=?e]
   "A noun."
@@ -180,6 +180,48 @@ rule v.passive-event: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, ind
 
 rule v.passive-perfect: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[lemma=essere, form=pastpart, number=?n, gender=?g] Verb[lemma=?l, form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "The passive in a compound tense: è stato + participle (è stato bloccato, sono state vendute)."
+
+# A passive whose verb says what its object becomes or is considered keeps
+# that adjective, now said of the subject (rendere pubblici i risultati → i
+# risultati verranno resi pubblici). The active is vp.object-predicative.
+
+rule vp.predicative-passive: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=essere|venire, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf]:verb Verb[lemma=rendere|fare|considerare|ritenere|giudicare|dichiarare|trovare|lasciare|tenere|definire, form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc]:verb AP[number=?n, gender=?g]:subject-complement
+  "essere or venire + rendere, fare, considerare… + an adjective: the passive, the adjective says what the subject is made or held to be (i risultati verranno resi pubblici, fu dichiarato colpevole, viene considerata pericolosa)."
+
+rule vp.predicative-passive-perfect: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf]:verb Verb[lemma=essere, form=pastpart, number=?n, gender=?g]:verb Verb[lemma=rendere|fare|considerare|ritenere|giudicare|dichiarare|trovare|lasciare|tenere|definire, form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc]:verb AP[number=?n, gender=?g]:subject-complement
+  "The same in a compound tense (è stato reso pubblico, sono state dichiarate illegali)."
+
+# tutti / tutte between the auxiliary or essere and the participle or
+# adjective stand for the whole plural subject (erano tutti sorpresi, sono
+# tutti partiti, abbiamo tutti mangiato). After the participle,
+# vp.floating-quantifier.
+
+rule fq.tutti: FQ[number=pl, gender=?g] -> Predet[lemma=tutto, number=pl, gender=?g]:subject
+  "tutti, tutte for the whole plural subject."
+
+rule fq.both: FQ[number=pl, gender=?g] -> Pron[lemma=entrambi|ambedue, clitic=no, number=pl, gender=?g]:subject
+  "entrambi, ambedue: both of them."
+
+rule v.perfect-avere-quantifier: V[aux=avere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=avere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] FQ[number=?n] Verb[lemma=?l, form=pastpart, takes_avere=yes, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+  "tutti between avere and the participle (abbiamo tutti mangiato, hanno tutti votato)."
+
+rule v.perfect-essere-quantifier: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] FQ[number=?n, gender=?g] Verb[lemma=?l, form=pastpart, takes_essere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+  "tutti between essere and the participle of an essere verb; all three agree (sono tutti partiti, erano tutte uscite)."
+
+rule v.reflexive-perfect-quantifier: V[aux=essere, lemma=?l, clitic_case=?k, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=?cr, clitic_recipient=?cr, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?r, aux_number=?n, aux_form=?auxf] -> Clitics[recipient=?cr, attached=no, reflexive=yes, case=?k, refl=?r, obj=?o] Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, person=?r, person!=?o, tense=?auxt, form=?auxf] FQ[number=?n, gender=?g] Verb[lemma=?l, form=pastpart, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+  "tutti in a reflexive compound tense (si sono tutti alzati, ci siamo tutte sedute)."
+
+rule v.passive-venire-quantifier: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=venire, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] FQ[number=?n, gender=?g] Verb[lemma=?l, form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+  "tutti in the passive with venire (vennero tutti arrestati)."
+
+rule v.passive-event-quantifier: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf, voice=passive] -> Verb[auxiliary!=no, lemma=essere, finite=yes, tense=pret|fut, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] FQ[number=?n, gender=?g] Verb[lemma=?l, form=pastpart, takes_avere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+  "tutti in the passive with essere in the passato remoto or the future (furono tutti uccisi, saranno tutte premiate)."
+
+rule vp.copula-quantifier: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, participle_compound=?c]:verb FQ[number=?n, gender=?g] AP[participle_essere=?c, number=?n, gender=?g]:subject-complement
+  "tutti between the linking verb and the adjective, which agrees with both (erano tutti sorpresi, sembrano tutte stanche); as in vp.copula, an essere verb's participle after essere is a compound tense instead (v.perfect-essere-quantifier)."
+
+rule vp.copula-noun-quantifier: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, noun_participle=?b]:verb FQ[number=?n, gender=?g] NP[case=nom|obl, number=?n, participle_essere=?b]:subject-complement
+  "tutti between the linking verb and a noun phrase (sono tutti studenti, erano tutti amici miei)."
 
 rule v.perfect-infinitive: V[finite=no, form=inf, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?auxm, aux_tense=?auxt, aux_person=?auxp, aux_number=?auxn, aux_form=?auxf] -> Verb[lemma=avere|essere, form=inf, mood=?auxm, tense=?auxt, person=?auxp, number=?auxn, form=?auxf] Verb[form=pastpart, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "The perfect infinitive: avere or essere + past participle (di aver commesso, dopo essere arrivato)."
@@ -599,6 +641,45 @@ rule clause.participle-first: S[indep=?i] -> PartP Punct S[indep=?i]
 
 rule clause.absolute-participle: S[indep=?i] -> Verb[form=pastpart, drifted=no, number=?n, gender=?g]:verb NP[case=nom, number=?n, gender=?g]:subject Punct S[indep=?i]
   "An absolute participle with its own noun phrase, agreeing with it in gender and number (Finito il lavoro, siamo usciti; Giunta la sera, tornammo a casa)."
+
+rule absp.participle: AbsP -> Verb[form=pastpart, drifted=no, number=?n, gender=?g]:verb NP[case=nom, number=?n, gender=?g]:subject
+  "An absolute participle with its own noun phrase, as in clause.absolute-participle (incluse le ragazze, esclusi i carabinieri)."
+
+rule text.absolute-participle: Text -> AbsP
+  "An absolute participle is a sentence on its own, as a headline (Esclusi i carabinieri. Concessi gli arresti domiciliari.)."
+
+# After a comma, a phrase set off from the clause: an absolute participle
+# (Tutti possono unirsi, incluse le ragazze), a participle phrase (Arrivarono,
+# accompagnati dalla madre) or an example or a restatement of what came before
+# (Mi piacciono i fiori, ad esempio le rose). Inside the sentence it follows a
+# noun phrase between two commas (Tutti, incluse le ragazze, possono unirsi).
+
+rule aside.absolute-participle: Aside -> AbsP
+  "An absolute participle (incluse le ragazze)."
+
+rule aside.participle-phrase: Aside -> PartP
+  "A participle phrase (accompagnati dalla madre)."
+
+rule aside.example: Aside -> ExIntro NP
+  "ad esempio, per esempio, cioè, soprattutto… + a noun phrase: an example of what came before, or the same said again (ad esempio le rose)."
+
+rule exintro.esempio: ExIntro -> Prep[lemma=a|per] Noun[lemma=esempio, number=sg]
+  "ad esempio, per esempio."
+
+rule exintro.particolare: ExIntro -> Prep[lemma=in] Adj[lemma=particolare, number=sg]
+  "in particolare."
+
+rule exintro.adverb: ExIntro -> Adv[lemma=cioè|soprattutto|specialmente|specie|particolarmente|principalmente|perfino|persino|anche|ossia|ovvero]
+  "cioè, soprattutto, specialmente, perfino…"
+
+rule exintro.conjunction: ExIntro -> Conj[lemma=cioè|ossia|ovvero]
+  "cioè, ossia, ovvero, where the dictionary calls them conjunctions."
+
+rule clause.aside-after: S[indep=?i] -> S[indep=?i] Punct[lemma!=.|?|!|;|:] Aside
+  "A comma, then an absolute participle, a participle phrase or an example after the clause (Tutti possono unirsi, incluse le ragazze; Mi piacciono i fiori, ad esempio le rose)."
+
+rule np.aside: NP[pronoun=?pr, person=?p, number=?n, gender=?g, case=?c] -> NP[pronoun=?pr, person=?p, number=?n, gender=?g, case=?c] Punct[lemma!=.|?|!|;|:] Aside Punct[lemma!=.|?|!|;|:]
+  "The same between two commas after a noun phrase (Tutti, incluse le ragazze, possono unirsi; Alcuni fiori, ad esempio le rose, hanno le spine)."
 
 rule pp.dopo-participle: PP[prep=dopo, infinitive=no] -> Prep[lemma=dopo] Verb[form=pastpart, drifted=no]
   "dopo + past participle: after doing it (dopo mangiato)."
