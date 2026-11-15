@@ -20,3 +20,6 @@ dir    +  dire    verb  form=infinitive    # not returned
 
 # Multi-word lemmas offered for a single word
 detta  -  a_detta_di  prep    # "a detta di" (according to) is a phrase, not a reading of the word detta
+
+# Infinitives that are not verbs
+amo    -  amo     verb                     # returned as an infinitive with lemma "amo"; amo is amare's 1st person (and the noun, a fish hook)

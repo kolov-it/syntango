@@ -519,8 +519,39 @@ rule whp.determiner: WhP -> QDet[number=?n, gender=?g] Nom[number=?n, gender=?g]
 rule whp.che-cosa: WhP -> QDet[lemma=che] QPron[lemma=cosa]
   "che cosa = what."
 
+# A question word + an infinitive, with its objects and phrases, asks what
+# to do: on its own (Come trovare le risorse? Dove andare?) or inside the
+# sentence (non so come fare, non so quale prendere).
+
+rule infq.adverb: InfQ -> QAdv VP[form=inf]
+  "dove, quando, come or perché + infinitive (come trovare le risorse, dove andare, perché partire)."
+
+rule infq.question-word: InfQ -> Wh VP[form=inf]
+  "chi, cosa, che cosa, quale + infinitive: the question word is its object (che cosa dire, chi chiamare, quale prendere)."
+
+rule infq.preposition: InfQ -> Prep Wh VP[form=inf]
+  "A preposition + question word + infinitive (a chi chiedere, con cosa pagare)."
+
+rule text.infinitive-question: Text -> InfQ
+  "A question with an infinitive is a sentence (Come trovare le risorse? Che cosa dire?)."
+
+rule vp.indirect-question-infinitive: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta] -> V[lemma=sapere|chiedere|domandare|dire|spiegare|insegnare|mostrare|indicare|capire|decidere|scegliere|pensare|immaginare|ignorare|imparare|vedere|suggerire|consigliare|stabilire|scoprire, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta]:verb InfQ
+  "The same after a verb of knowing, asking, telling or deciding (non so come fare, non so quale prendere, dimmi dove andare, hai deciso dove andare); sperare or volere take no question (spero che possa venire)."
+
 rule ap.coordination: AP[participle_di=no, participle_essere=?e, number=?n, gender=?g] -> AP[participle_essere=?e, number=?n, gender=?g] Conj[type=coord] AP[number=?n, gender=?g]
   "Two adjectives joined by e or o (intelligente e pratico, sani e salvi). Right after essere, an essere verb's participle first makes it a compound tense (sono nato e cresciuto)."
+
+rule ap.negated-contrast: AP[participle_di=no, participle_essere=?e, number=?n, gender=?g] -> AP[participle_essere=?e, number=?n, gender=?g] NotLink AP[participle_essere=?e, number=?n, gender=?g]
+  "An adjective or participle, then non and another that the first replaces; the verb is not said again (devono essere amate, non comprese; è stanco ma non malato)."
+
+rule notlink.comma: NotLink -> Punct[lemma!=.|?|!|;|:] Adv[lemma=non]
+  ", non"
+
+rule notlink.conjunction: NotLink -> Conj[lemma=ma|e] Adv[lemma=non]
+  "ma non, e non"
+
+rule notlink.comma-conjunction: NotLink -> Punct[lemma!=.|?|!|;|:] Conj[lemma=ma|e] Adv[lemma=non]
+  ", ma non / , e non"
 
 rule np.list: NP[pronoun=no, number=pl] -> NP Punct NPList
   "A list of noun phrases separated by commas, the last joined by e or o (cibo, feste e balli)."
@@ -648,8 +679,29 @@ rule clause.absolute-participle: S[indep=?i] -> Verb[form=pastpart, drifted=no, 
 rule absp.participle: AbsP -> Verb[form=pastpart, drifted=no, number=?n, gender=?g]:verb NP[case=nom, number=?n, gender=?g]:subject
   "An absolute participle with its own noun phrase, as in clause.absolute-participle (incluse le ragazze, esclusi i carabinieri)."
 
+rule absp.bare-plural: AbsP -> Verb[form=pastpart, drifted=no, number=pl, gender=?g]:verb Nom[number=pl, gender=?g]:subject
+  "In a headline the noun phrase can be a bare plural (concluse trattative con Almaviva, arrestati ladri)."
+
 rule text.absolute-participle: Text -> AbsP
   "An absolute participle is a sentence on its own, as a headline (Esclusi i carabinieri. Concessi gli arresti domiciliari.)."
+
+# A headline names its topic, then a colon and what happened, in a
+# participle: Noemalife: concluse trattative con Almaviva.
+
+rule topic.fragment: Topic -> Frag
+  "A noun phrase or another sentence without a verb (Noemalife, Il Comune di Roma)."
+
+rule topic.bare-noun: Topic -> Nom
+  "A noun without an article, as a headline's topic (Sanità, Calcio, Risorse)."
+
+rule frag.colon-absolute-participle: Frag -> Topic Punct[lemma=:] AbsP
+  "After a headline's topic and a colon, an absolute participle (Noemalife: concluse trattative con Almaviva; Milano: chiuse le scuole; Sanità: chiusi due ospedali)."
+
+rule frag.colon-participle-phrase: Frag -> Topic Punct[lemma=:] PartP
+  "After a headline's topic and a colon, a participle phrase (Risorse: divise tra Comune e Regione)."
+
+rule frag.adverb-participle-phrase: Frag -> Adv[neg=no]:adverbial PartP
+  "An adverb and a participle phrase, without a verb, say how something was done (Equamente divise tra Comune e Regione). Without the adverb a participle phrase is no sentence of its own: Volta a sinistra all'incrocio is a command."
 
 # After a comma, a phrase set off from the clause: an absolute participle
 # (Tutti possono unirsi, incluse le ragazze), a participle phrase (Arrivarono,

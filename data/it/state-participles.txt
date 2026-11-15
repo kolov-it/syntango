@@ -12,3 +12,9 @@
 #
 # One participle per line, masculine singular.
 morto
+dispiaciuto
+arrabbiato
+seduto
+interessato
+stupito
+meravigliato
