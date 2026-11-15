@@ -655,6 +655,17 @@ async fn es_a_phrase_after_a_dative_verb_is_an_indirect_object() {
     let a = es_set("A Marco le gusta el libro.").await;
     has(&a, "Marco", IndirectObject);
     has(&a, "libro", Subject);
+    // A climbed clitic leaves the indirect object to the infinitive that
+    // takes it, not to the modal (poder, querer, tener que take none).
+    for s in [
+        "Lo puedo dar a María.",
+        "Se lo quiero dar a María.",
+        "Lo tengo que dar a María.",
+        "Lo quiero poder dar a María.",
+    ] {
+        has(&es_set(s).await, "María", IndirectObject);
+    }
+    has(&es_set("Le voy a escribir a Juan.").await, "Juan", IndirectObject);
     // ir does not take one: a Madrid is where.
     agreed(
         &es_set("Voy a Madrid.").await,
