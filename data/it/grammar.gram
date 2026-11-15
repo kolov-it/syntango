@@ -100,8 +100,8 @@ rule partnp.everything: PartNP[number=sg] -> Prep[lemma=di] Pron[lemma=tutto, nu
 rule partnp.relative: PartNP[number=?n, gender=?g] -> PartNP[number=?n, gender=?g] Rel
   "A clause with che or cui describes the partitive's noun (dei ragazzi che giocano)."
 
-rule np.numeral: NP[pronoun=no, person=3, number=pl, gender=?g] -> Num Nom[number=pl, gender=?g]
-  "A number before a plural noun."
+rule np.numeral: NP[pronoun=no, person=3, number=pl, gender=?g] -> Num[number!=sg] Nom[number=pl, gender=?g]
+  "A number before a plural noun; not una (una foto is one photo, not 'one photos')."
 
 rule nom.noun: Nom[number=?n, gender=?g, onset=?o, utterance=?u, participle_essere=?e] -> Noun[number=?n, gender=?g, onset=?o, utterance=?u, participle_essere=?e]
   "A noun."
@@ -607,9 +607,6 @@ rule absp.participle: AbsP -> Verb[form=pastpart, drifted=no, number=?n, gender=
 
 rule text.absolute-participle: Text -> AbsP
   "An absolute participle is a sentence on its own, as a headline (Esclusi i carabinieri. Concessi gli arresti domiciliari.)."
-
-rule text.participle-phrase: Text -> PartP
-  "So is a participle phrase (Difesi dalla città di Atri.)."
 
 # After a comma, a phrase set off from the clause: an absolute participle
 # (Tutti possono unirsi, incluse le ragazze), a participle phrase (Arrivarono,
