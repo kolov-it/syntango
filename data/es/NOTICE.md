@@ -11,6 +11,7 @@ and keep their sources' licences.
 | `homograph-labels.tsv` | the correct reading of each sentence's ambiguous word, labelled for syntango (who labelled is in the file) | Apache-2.0 |
 | `verified-examples.tsv` | the sentences of `homograph-set.jsonl` where syntango and the label agree on the page verb (ids and cells only, no sentence text) | Apache-2.0 |
 | `verbs.json` | Spanish conjugation tables from [Wiktionary](https://en.wiktionary.org/) via [Kaikki.org](https://kaikki.org/), as published in the Word Holder dictionary, version v19 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `dative-verbs.tsv` | verbs that take an *a* + noun phrase indirect object, from sense notes and usage examples of Spanish verbs in [Wiktionary](https://en.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) (extract of 2026-10-07), plus verbs the Tatoeba sentences show with one, plus verbs proposed by a language model and accepted by a second one (marked `llm:generated+proofread`) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `homographs.tsv`, `form-other-verbs.tsv`, `ambiguous-forms.tsv` | derived from the same Wiktionary data (and, for `homographs.tsv` and `ambiguous-forms.tsv`, spaCy's tags over Tatoeba and Leipzig corpus word counts) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `page-example-forms.tsv` | which verb forms already show an example sentence on wordholder.com verb pages | Apache-2.0 |
 

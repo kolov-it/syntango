@@ -21,6 +21,7 @@ use tokenize::is_punct;
 const CLOSED: &str = include_str!("../../../data/es/closed.txt");
 const GRAMMAR: &str = include_str!("../../../data/es/grammar.gram");
 const DRIFTED: &str = include_str!("../../../data/es/drifted-participles.txt");
+const DATIVE_VERBS: &str = include_str!("../../../data/es/dative-verbs.tsv");
 
 /// Categories the function-word list owns: the lexicon's readings in these
 /// categories are replaced by the list's, its other readings are kept.
@@ -45,6 +46,8 @@ pub struct Spanish {
     closed: FunctionWords,
     /// Participle adjectives whose meaning drifted from the verb (divertido).
     drifted: HashSet<String>,
+    /// Verbs that take an a + noun phrase indirect object (dar a María).
+    dative_verbs: HashSet<String>,
     grammar: Grammar,
 }
 
@@ -89,7 +92,12 @@ impl Language for Spanish {
 
 impl Spanish {
     pub fn load() -> Result<Self, DataError> {
-        Ok(Self { closed: closed::parse(CLOSED)?, drifted: word_list(DRIFTED), grammar: Grammar::parse(GRAMMAR)? })
+        Ok(Self {
+            closed: closed::parse(CLOSED)?,
+            drifted: word_list(DRIFTED),
+            dative_verbs: first_column(DATIVE_VERBS),
+            grammar: Grammar::parse(GRAMMAR)?,
+        })
     }
 
     fn build_lattice(&self, tokens: &[String], by_form: &HashMap<&str, &Analysis>) -> Lattice {
@@ -163,6 +171,8 @@ impl Spanish {
                         // ir never takes a direct object: fue médico is ser.
                         let obj = if m.lemma == "ir" { "no" } else { "yes" };
                         m.feats.insert("obj".to_owned(), obj.to_owned());
+                        let takes_a = if self.dative_verbs.contains(&m.lemma) { "yes" } else { "no" };
+                        m.feats.insert("takes_a".to_owned(), takes_a.to_owned());
                         if m.lemma == "haber" {
                             // ha only forms compound tenses, hay only says
                             // there is: exist and perf (auxiliary of a
@@ -390,6 +400,11 @@ fn word_list(text: &str) -> HashSet<String> {
     text.lines().map(str::trim).filter(|l| !l.is_empty() && !l.starts_with('#')).map(str::to_owned).collect()
 }
 
+/// The first column of a tab-separated list, comment lines skipped.
+fn first_column(text: &str) -> HashSet<String> {
+    word_list(text).into_iter().filter_map(|l| l.split('\t').next().map(str::to_owned)).collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -399,6 +414,7 @@ mod tests {
         let es = Spanish::load().unwrap();
         assert_eq!(es.closed["del"][0].len(), 2);
         assert!(es.closed["se"].len() >= 2);
+        assert!(es.dative_verbs.contains("dar") && !es.dative_verbs.contains("ir"));
     }
 
     #[test]
