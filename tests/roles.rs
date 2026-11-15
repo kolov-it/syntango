@@ -666,6 +666,24 @@ async fn es_a_phrase_after_a_dative_verb_is_an_indirect_object() {
         has(&es_set(s).await, "María", IndirectObject);
     }
     has(&es_set("Le voy a escribir a Juan.").await, "Juan", IndirectObject);
+    // Before an infinitive, the indirect object is the infinitive's, also
+    // fronted; a verb that takes one itself (gustar) keeps it.
+    has(&es_set("Le puedo dar el libro a María.").await, "María", IndirectObject);
+    has(&es_set("A María le puedo dar el libro.").await, "María", IndirectObject);
+    has(&es_set("A Juan le gusta correr.").await, "Juan", IndirectObject);
+    // tener que is not tener: a Madrid is where ir goes.
+    agreed(&es_set("Tengo que ir a Madrid.").await, &[("Madrid", Some(Adverbial))]);
+    // junto read as an adverb keeps its a phrase, even after cantar, which
+    // takes an indirect object.
+    for s in ["Canta junto a María.", "Le canta una canción junto a María."] {
+        let a = es_set(s).await;
+        assert!(!a.parses.is_empty(), "{s}: no parse");
+        assert!(
+            !token(&a, "María").roles.contains(&Some(IndirectObject)),
+            "{s}: {:?}",
+            token(&a, "María").roles
+        );
+    }
     // ir does not take one: a Madrid is where.
     agreed(
         &es_set("Voy a Madrid.").await,
