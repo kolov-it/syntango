@@ -36,6 +36,17 @@ the noun *work* or the verb *I work*; only the noun fits).
 
 Italian first, then [Spanish](#spanish) and [French](#french); the design is multilingual from the start.
 
+**Live demo:** [wordholder.com/lab/syntax](https://wordholder.com/lab/syntax)
+runs syntango on Word Holder's lexicon for Italian, Spanish and French. Type a
+sentence and it shows every interpretation the parser keeps: the first in full,
+with each word's [role](#grammatical-roles) above it and its category, lemma
+and form below it, and a compound tense, passive or progressive as one verb
+(*Ho dato* → *dare*, present perfect, 1st person singular); the others in
+compact form, faded where they read the same as the first. It runs a pinned
+commit of master, so it can lag behind this repository.
+
+![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
+
 **Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 154 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
