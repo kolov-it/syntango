@@ -47,11 +47,12 @@ commit of master, so it can lag behind this repository.
 
 ![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
 
-**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 246 rules)
+**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 254 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
 possessives; clitic pronouns before and after the verb; compound tenses, the
-passive (also with an adjective: *verranno resi pubblici*) and *stare* +
+passive (also with an adjective: *verranno resi pubblici*, an adverb: *sarà
+ben ricevuto*, or a clitic: *gli era stato suggerito*) and *stare* +
 gerund; *tutti* between the auxiliary and the participle (*erano tutti
 sorpresi*); participles used like adjectives, participle phrases and
 participle clauses (*Arrivato a casa, …*; *dopo mangiato*), absolute
