@@ -1067,3 +1067,93 @@ async fn negated_second_participle_and_state_participles() {
         assert_eq!(e.other_readings, [adjective], "{text}");
     }
 }
+
+/// Issue #17: the passive with an adverb before the participle, a clitic
+/// before essere, and a subject after the verb. The copula + adjective
+/// reading stays beside it.
+#[tokio::test]
+async fn passive_with_an_adverb_a_proclitic_or_a_postverbal_subject() {
+    for (verb, tense, text, marked_text, cell) in [
+        (
+            "ricevere",
+            "indicative.future",
+            "Lui sarà ben ricevuto.",
+            "Lui [sarà] ben [ricevuto].",
+            "indicative.future.3s",
+        ),
+        (
+            "suggerire",
+            "indicative.pluperfect",
+            "Gli era stato suggerito.",
+            "Gli [era] [stato] [suggerito].",
+            "indicative.pluperfect.3s",
+        ),
+        (
+            "suggerire",
+            "indicative.pluperfect",
+            "Questo gli era stato suggerito.",
+            "Questo gli [era] [stato] [suggerito].",
+            "indicative.pluperfect.3s",
+        ),
+        (
+            "indicare",
+            "indicative.pluperfect",
+            "Ci erano state indicate le file.",
+            "Ci [erano] [state] [indicate] le file.",
+            "indicative.pluperfect.3p",
+        ),
+        (
+            "ricevere",
+            "indicative.future",
+            "Venga, venga quel tanghero, che sarà ben ricevuto.",
+            "Venga, venga quel tanghero, che [sarà] ben [ricevuto].",
+            "indicative.future.3s",
+        ),
+        (
+            "indicare",
+            "indicative.pluperfect",
+            "Ci erano state indicate prima le file dei banchi dove doveva passare ciascuno.",
+            "Ci [erano] [state] [indicate] prima le file dei banchi dove doveva passare ciascuno.",
+            "indicative.pluperfect.3p",
+        ),
+        (
+            "suggerire",
+            "indicative.pluperfect",
+            "Girò per quelle viottole, per arrivare alla coda dell'uditorio, come gli era stato suggerito.",
+            "Girò per quelle viottole, per arrivare alla coda dell'uditorio, come gli [era] [stato] [suggerito].",
+            "indicative.pluperfect.3s",
+        ),
+        (
+            "dire",
+            "indicative.present_perfect",
+            "Mi è già stato detto.",
+            "Mi [è] già [stato] [detto].",
+            "indicative.present_perfect.3s",
+        ),
+        (
+            "dire",
+            "indicative.past_historic",
+            "Gli fu detto.",
+            "Gli [fu] [detto].",
+            "indicative.past_historic.3s",
+        ),
+    ] {
+        let e = one("it-literature", verb, Some(tense), text).await;
+        assert_eq!(marked(&e), marked_text);
+        assert_eq!(
+            (e.cells.as_slice(), e.voice),
+            ([cell.to_owned()].as_slice(), Voice::Passive),
+            "{text}"
+        );
+    }
+    // A passive's subject was its object: lo before essere is no passive.
+    let (found, _) = run_in(
+        "it-literature",
+        "dire",
+        Some("indicative.present_perfect"),
+        &["Lo è stato detto."],
+        all(),
+    )
+    .await;
+    assert!(found.is_empty(), "{found:?}");
+}
