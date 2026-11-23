@@ -350,6 +350,10 @@ sicché = sicché:Adv
 sicché = sicché:Conj{type=coord}
 nondimeno = nondimeno:Adv
 nondimeno = nondimeno:Conj{type=coord}
+# anzi: rather, in fact (Credo di sì: anzi ne sono sicura); the lexicon gives
+# it only as a conjunction
+anzi = anzi:Adv
+anzi = anzi:Conj{type=coord}
 
 # --- more prepositions; most are adverbs too (ci vediamo dopo)
 dopo = dopo:Prep

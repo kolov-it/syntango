@@ -598,6 +598,8 @@ async fn a_connector_is_no_subordinator() {
         // Subordinators the lexicon gives untyped are listed.
         ("it-set", "Siccome faceva freddo abbiamo acceso un fuoco.", "Siccome", "Conj siccome"),
         ("it-set", "Nonostante fossero poveri, hanno cresciuto sette figli.", "Nonostante", "Conj nonostante"),
+        // anzi, which the lexicon gives only as a conjunction, is listed.
+        ("it-literature", "Credo di sì: anzi ne sono sicura.", "anzi", "Adv anzi"),
     ] {
         let lexicon = FixtureLexicon::load(Path::new(&format!("tests/fixtures/{fixture}.json"))).unwrap();
         let a = analyze(&lexicon, &Italian::load().unwrap(), sentence).await.unwrap();
