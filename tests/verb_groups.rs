@@ -731,3 +731,158 @@ async fn every_verb_is_in_one_group_over_the_homograph_sets() {
         assert!(parses > 2_000, "{}: only {parses} parses", lang.code());
     }
 }
+
+/// Issue #62: Word Holder's verb pages keep a sentence only when some parse
+/// has a verb group for the page's verb. These sentences from the bere,
+/// parlare and rispondere pages had no parse; one short sentence per rule
+/// that fixed them follows. it-verb-pages.json is the API's answers for
+/// their words.
+#[tokio::test]
+async fn verb_page_sentences_have_a_group_for_their_verb() {
+    let fixture = FixtureLexicon::load(Path::new("tests/fixtures/it-verb-pages.json")).unwrap();
+    let lexicon = PatchedLexicon::new(Box::new(fixture), wordholder::patches().unwrap());
+    let language = lang::load(Lang::It).unwrap();
+    for (text, verb, lemma, cell) in [
+        // A comma before e or ma between two clauses.
+        (
+            "Per un po' sono stata veramente dipendente dalla Coca-Cola, e la bevevo ogni giorno.",
+            12,
+            "bere",
+            "indicative.imperfect.1s",
+        ),
+        (
+            "Mio padre beveva birra, e ora beve vino.",
+            7,
+            "bere",
+            "indicative.present.3s",
+        ),
+        (
+            "Puoi urlare, ma non risponderò.",
+            5,
+            "rispondere",
+            "indicative.future.1s",
+        ),
+        (
+            "Tom continuava a provare a chiamare Mary, però lei non rispondeva mai al telefono.",
+            11,
+            "rispondere",
+            "indicative.imperfect.3s",
+        ),
+        // A plural adjective in -i agrees with a feminine noun (sensoriali,
+        // strumentali); two infinitives share the verb.
+        (
+            "Per giovedì sto preparando prove sensoriali che possano divertire e insegnare qualcosa sui vini che berremo.",
+            15,
+            "bere",
+            "indicative.future.1p",
+        ),
+        (
+            "Rispondiamo alle polemiche strumentali.",
+            0,
+            "rispondere",
+            "indicative.present.1p",
+        ),
+        // tanto quanto.
+        (
+            "Probabilmente non berrò tanto quanto Tom.",
+            2,
+            "bere",
+            "indicative.future.1s",
+        ),
+        // A name first, before e and another name.
+        (
+            "Sami e Layla bevevano insieme.",
+            3,
+            "bere",
+            "indicative.imperfect.3p",
+        ),
+        // The article + altro.
+        (
+            "Quando parli con gli altri, lo fai con le braccia incrociate.",
+            1,
+            "parlare",
+            "indicative.present.2s",
+        ),
+        // An adverb between the subject and the verb.
+        (
+            "Io e Tom di solito ci parliamo in francese.",
+            6,
+            "parlare",
+            "indicative.present.1p",
+        ),
+        // Two names in a row.
+        (
+            "Quante lingue si parlano in Nuova Guinea?",
+            3,
+            "parlare",
+            "indicative.present.3p",
+        ),
+        // ecco + a noun phrase.
+        (
+            "Ecco la città di cui ti parlavo.",
+            6,
+            "parlare",
+            "indicative.imperfect.1s",
+        ),
+        // l'altro giorno.
+        (
+            "Questo è il libro di cui parlavi l'altro giorno?",
+            6,
+            "parlare",
+            "indicative.imperfect.2s",
+        ),
+        // A preposition before sì or no.
+        (
+            "Non parlo la sua lingua, risponda alle domande soltanto con \"sì\" o \"no\".",
+            6,
+            "rispondere",
+            "imperative.present.3s",
+        ),
+        (
+            "Risponda con sì o no.",
+            0,
+            "rispondere",
+            "imperative.present.3s",
+        ),
+        // sentirsi + a participle that describes the subject.
+        (
+            "Mi sento chiamato in causa da questo post, quindi rispondo subito.",
+            10,
+            "rispondere",
+            "indicative.present.1s",
+        ),
+        (
+            "Mi sento chiamato in causa.",
+            1,
+            "sentire",
+            "indicative.present.1s",
+        ),
+        // non solo … ma.
+        (
+            "In tal modo, non solo rispondiamo alle esigenze dei clienti ma le anticipiamo.",
+            6,
+            "rispondere",
+            "indicative.present.1p",
+        ),
+        // Two phrases with the same preposition.
+        (
+            "Non rispondeva ai messaggi e alle chiamate.",
+            1,
+            "rispondere",
+            "indicative.imperfect.3s",
+        ),
+    ] {
+        let a = analyze(&lexicon, language.as_ref(), text).await.unwrap();
+        let cells: BTreeSet<&str> = a
+            .verb_groups
+            .iter()
+            .flatten()
+            .filter(|g| g.verb == verb && g.lemma == lemma)
+            .filter_map(|g| g.cell.as_deref())
+            .collect();
+        assert!(
+            cells.contains(cell),
+            "{text}: {lemma} {cell} not in {cells:?}"
+        );
+    }
+}
