@@ -160,7 +160,7 @@ rule v.perfect-avere-adverb: V[aux=avere, lemma=?l, finite=yes, form=fin, mood=?
 rule v.perfect-essere-adverb: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Adv[neg=no]:adverbial Verb[lemma=?l, form=pastpart, takes_essere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "An adverb between essere and the participle (è già partita)."
 
-rule v.proclitic: V[lemma=?l, clitic_case=?k, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=?cr, clitic_recipient=?cr, intransitive=?it] -> Clitics[recipient=?cr, attached=no, case=?k, refl=?r, obj=?o] Verb[lemma=?l, form=fin, mood=ind|sub|cnd, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, person=?r, person!=?o, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
+rule v.proclitic: V[lemma=?l, clitic_case=?k, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=?cr, clitic_recipient=?cr, intransitive=?it] -> Clitics[recipient=?cr, attached=no, case=?k, refl=?r, obj=?o] Verb[lemma=?l, form=fin, mood=ind|sub|cnd, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, person=?r, person!=?o, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "Clitic pronouns go before a conjugated verb (me lo dà)."
 
 rule v.enclitic-nonfinite: V[clitic_case=?k, finite=no, form=?fm, takes_di=?d, takes_a=?ta, recipient=?rc, recipient=?cr, clitic_recipient=?cr, intransitive=?it] -> Verb[finite=no, form=?fm, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it] Clitics[recipient=?cr, attached=yes, case=?k]
@@ -319,6 +319,15 @@ rule vp.preposition-infinitive: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pro
 
 rule vp.che-clause: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> V[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc]:verb Conj[lemma=che] S
   "The verb introduces a clause with che (disse che…)."
+
+rule vp.bare-subjunctive-clause: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> V[lemma=credere|pensare|sperare|temere|immaginare|supporre|ritenere|dubitare|sembrare|parere, finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc]:verb SubjClause
+  "A verb of thinking, hoping or fearing can leave che out before a subjunctive (Credo sia ridotto al verde, Spero sia così, Mi pare fosse lui). An indicative never follows without che."
+
+rule subjclause.null-subject: SubjClause -> VP[finite=yes, mood=sub]
+  "The subjunctive clause without its subject (Credo sia vero)."
+
+rule subjclause.subject: SubjClause -> NP[case=nom, person=?p, number=?n, gender=?g]:subject VP[finite=yes, mood=sub, person=?p, number=?n, gender=?g]
+  "The subjunctive clause with its subject first (Credo Tom sia partito)."
 
 rule vp.copula: VP[finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, participle_compound=?c]:verb AP[participle_essere=?c, number=?n, gender=?g]:subject-complement
   "With essere or another linking verb (data/it/linking-verbs.tsv), the adjective agrees with the subject in gender and number (la casa è bella). After essere, a participle here is a state (le luci sono accese) only for verbs that take avere; for an essere verb it is a compound tense (sono salite), unless the participle also names a state (è morto: data/it/state-participles.txt). The other linking verbs have no compound tense, so any participle is a state after them (sembra nato e cresciuto qui)."
@@ -856,6 +865,15 @@ rule asmuch.tanto-quanto: AsMuch -> Adv[lemma=tanto] QDet[lemma=quanto] NP
 
 rule pp.coordination: PP[prep=?x, infinitive=no] -> PP[prep=?x, infinitive=no] Conj[type=coord] PP[prep=?x, infinitive=no]
   "Two phrases with the same preposition joined by e or o (non rispondeva ai messaggi e alle chiamate)."
+
+rule np.correlative: NP[pronoun=no, number=pl] -> Conj[lemma=sia] NP Conj[lemma=sia|che] NP
+  "sia … sia, sia … che: both … and (Sia Tom sia Mary parlano francese, sia io che lui). sia is a conjunction only here, in ap.correlative and in pp.correlative; anywhere else it is essere (Credo sia vero)."
+
+rule ap.correlative: AP[participle_di=no, number=?n, gender=?g] -> Conj[lemma=sia] AP[number=?n, gender=?g] Conj[lemma=sia|che] AP[number=?n, gender=?g]
+  "sia … sia, sia … che between two adjectives (sia bello che utile)."
+
+rule pp.correlative: PP[prep=?x, infinitive=no] -> Conj[lemma=sia] PP[prep=?x, infinitive=no] Conj[lemma=sia|che] PP[prep=?x, infinitive=no]
+  "sia … sia, sia … che between two phrases with the same preposition (sia di giorno che di notte)."
 
 rule vp.infinitive-coordination: VP[finite=no, form=inf, recipient=?r] -> VP[form=inf, recipient=?r] Conj[type=coord] VP[form=inf]
   "Two infinitives joined by e or o share the verb before them (prove che possano divertire e insegnare qualcosa)."

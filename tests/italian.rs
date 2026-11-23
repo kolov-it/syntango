@@ -610,3 +610,72 @@ async fn a_connector_is_no_subordinator() {
         assert!(readings.iter().all(|r| r.starts_with("Verb") == verb), "{sentence}: {readings:?}");
     }
 }
+
+/// Issue #67: the conjunctions #66 left untyped each have a reading of their
+/// own again, so sentences with them parse.
+#[tokio::test]
+async fn conjunctions_left_untyped_have_a_reading() {
+    let lexicon = FixtureLexicon::load(Path::new("tests/fixtures/it-recorded.json")).unwrap();
+    let italian = Italian::load().unwrap();
+    for (sentence, token, reading) in [
+        ("Non si erano neppure voltati per vedere dove fosse andato a finire il caporale.", "neppure", "Adv neppure"),
+        ("Scommetto che non sa neppure contro chi abbiamo combattuto.", "neppure", "Adv neppure"),
+        ("Non lo so neppure.", "neppure", "Adv neppure"),
+        ("Oh, non facciamo storie, chè qua la cosa è seria!", "ché", "Conj perché"),
+        ("Vieni, ché è tardi.", "ché", "Conj perché"),
+        // The book's sentence sets off osservava ella with dashes, which the
+        // grammar does not read yet; with o it fails the same way.
+        ("A te od a tuo figlio non è la stessa cosa?", "od", "Conj o"),
+        ("Serve ad indicare i veri colpevoli, a torto od a ragione, non importa.", "od", "Conj o"),
+        ("Pertanto si affievolì, divenne debole e stanca.", "Pertanto", "Adv pertanto"),
+        ("Ho pertanto bisogno di parlarle ad ogni costo.", "pertanto", "Adv pertanto"),
+        ("Pertanto resto a casa.", "Pertanto", "Adv pertanto"),
+        ("Una parte dell'equipaggio fu eziandio licenziata a scendere a terra.", "eziandio", "Adv eziandio"),
+        ("Lo dico eziandio a te.", "eziandio", "Adv eziandio"),
+        ("Si sega il collo alla boccia acciò l'apertura sia grande.", "acciò", "Conj acciò"),
+        ("Parlo acciò tu capisca.", "acciò", "Conj acciò"),
+        ("Sì, sì, non lo lascio andar via sinchè non ritorni.", "sinché", "Conj sinché"),
+        ("Resto qui sinché non ritorni.", "sinché", "Conj sinché"),
+        ("Non vi allontanate da noi bruscamente talchè egli non possa spiegarsi il vostro contegno.", "talché", "Conj talché"),
+        ("Parla piano talché nessuno lo sente.", "talché", "Conj talché"),
+        ("Resto a casa perocché piove.", "perocché", "Conj perocché"),
+        ("Resto a casa imperocché piove.", "imperocché", "Conj imperocché"),
+        ("Dopoché è partito, ho pianto.", "Dopoché", "Conj dopoché"),
+        ("Nulladimeno resto a casa.", "Nulladimeno", "Adv nulladimeno"),
+        ("Mangia eppoi dorme.", "eppoi", "Conj eppoi"),
+        ("Eppur si muove.", "Eppur", "Adv eppure"),
+        // sia is a conjunction only in sia … sia, sia … che.
+        ("Sia Tom sia Mary parlano francese.", "Mary", "ProperNoun Mary"),
+        ("Sia io che lui siamo stanchi.", "lui", "Pron lui"),
+    ] {
+        let a = analyze(&lexicon, &italian, sentence).await.unwrap();
+        assert!(a.unknown.is_empty(), "{sentence}: unknown {:?}", a.unknown);
+        assert!(!a.parses.is_empty(), "{sentence}: no parse");
+        let readings = readings_of(&a, token);
+        assert!(readings.contains(&reading.to_owned()), "{sentence}: {readings:?}");
+    }
+    for sentence in ["Sia Tom sia Mary parlano francese.", "Sia io che lui siamo stanchi."] {
+        let a = analyze(&lexicon, &italian, sentence).await.unwrap();
+        assert_eq!(readings_of(&a, "Sia"), ["Conj sia"], "{sentence}");
+    }
+}
+
+/// Issue #67: a lone sia is essere, never the conjunction of sia … sia; after
+/// a verb of thinking or hoping che can be left out before it.
+#[tokio::test]
+async fn a_lone_sia_is_essere() {
+    let lexicon = FixtureLexicon::load(Path::new("tests/fixtures/it-recorded.json")).unwrap();
+    let italian = Italian::load().unwrap();
+    for (sentence, token) in [
+        ("Credo sia ridotto al verde.", 1),
+        ("Speriamo che sia viva.", 2),
+        ("Penso sia vero.", 1),
+        ("Spero sia così.", 1),
+    ] {
+        let a = analyze(&lexicon, &italian, sentence).await.unwrap();
+        assert!(!a.parses.is_empty(), "{sentence}: no parse");
+        let readings = readings_of(&a, "sia");
+        assert!(readings.iter().all(|r| r == "Verb essere"), "{sentence}: {readings:?}");
+        assert!(cells(&a, token).contains("essere subjunctive.present.3s"), "{sentence}: {:?}", cells(&a, token));
+    }
+}

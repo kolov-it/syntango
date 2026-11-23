@@ -319,6 +319,14 @@ allorché = allorché:Conj{type=sub}
 acciocché = acciocché:Conj{type=sub}
 ogniqualvolta = ogniqualvolta:Conj{type=sub}
 ché = perché:Conj{type=sub}
+# older and literary ones, which the lexicon gives untyped (chè, sinchè and
+# talchè are spelled with é by the tokenizer)
+perocché = perocché:Conj{type=sub}
+imperocché = imperocché:Conj{type=sub}
+acciò = acciò:Conj{type=sub}
+sinché = sinché:Conj{type=sub}
+talché = talché:Conj{type=sub}
+dopoché = dopoché:Conj{type=sub}
 # nonostante la pioggia, nonostante piova
 nonostante = nonostante:Prep
 nonostante = nonostante:Conj{type=sub}
@@ -338,6 +346,9 @@ oppure = oppure:Conj{type=coord}
 ossia = ossia:Conj{type=coord}
 ovvero = ovvero:Conj{type=coord}
 nonché = nonché:Conj{type=coord}
+# sia … sia, sia … che (both … and): neither kind, only np/ap/pp.correlative
+# take it, so a lone sia is essere (Credo sia ridotto al verde)
+sia = sia:Conj{type=correlative}
 bensì = bensì:Conj{type=coord}
 # connectors of consequence: Piove, quindi resto a casa; Quindi resto a casa
 quindi = quindi:Adv
@@ -350,6 +361,19 @@ sicché = sicché:Adv
 sicché = sicché:Conj{type=coord}
 nondimeno = nondimeno:Adv
 nondimeno = nondimeno:Conj{type=coord}
+pertanto = pertanto:Adv
+pertanto = pertanto:Conj{type=coord}
+nulladimeno = nulladimeno:Adv
+nulladimeno = nulladimeno:Conj{type=coord}
+# eppoi (e poi): Mangia eppoi dorme; Eppoi, chi lo sa? eppur: Eppur si muove
+eppoi = eppoi:Adv
+eppoi = eppoi:Conj{type=coord}
+eppur = eppure:Adv
+eppur = eppure:Conj{type=coord}
+# adverbs the lexicon gives only as conjunctions: not even (Non lo so
+# neppure), also (Lo dico eziandio a te)
+neppure = neppure:Adv
+eziandio = eziandio:Adv
 # anzi: rather, in fact (Credo di sì: anzi ne sono sicura); the lexicon gives
 # it only as a conjunction
 anzi = anzi:Adv
