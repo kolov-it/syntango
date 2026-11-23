@@ -575,3 +575,36 @@ async fn the_polite_subjunctive_and_the_subject_pronoun() {
     let a = run("Voglio che lui parli.").await;
     assert_eq!(cells(&a, 3), set(&["parlare subjunctive.present.3s"]));
 }
+
+/// Issue #14: Eppure, Però and Tuttavia are connectors, never subordinators,
+/// so the rest of the sentence is one clause and its last word is no verb. A
+/// lexicon conjunction the list does not type is neither coordinator nor
+/// subordinator.
+#[tokio::test]
+async fn a_connector_is_no_subordinator() {
+    for (fixture, sentence, token, reading) in [
+        ("it-literature", "Eppure qui non c'è anima viva.", "viva", "Adj vivo"),
+        ("it-set", "Eppure non c'era anima viva.", "viva", "Adj vivo"),
+        ("it-set", "Eppure lui mangia la pesca.", "pesca", "Noun pesca"),
+        ("it-set", "Però lui mangia la pesca.", "pesca", "Noun pesca"),
+        ("it-set", "Tuttavia lui mangia la pesca.", "pesca", "Noun pesca"),
+        ("it-recorded", "Eppure tu apri la porta.", "porta", "Noun porta"),
+        ("it-set", "Qui non c'è anima viva.", "viva", "Adj vivo"),
+        ("it-set", "Lui mangia la pesca.", "pesca", "Noun pesca"),
+        ("it-recorded", "Tu apri la porta.", "porta", "Noun porta"),
+        // Untyped lexicon conjunctions (c', supposto) split no clause.
+        ("it-set", "C'è una pagina che manca.", "manca", "Verb mancare"),
+        ("it-set", "Ha supposto che io fossi un dottore.", "supposto", "Verb supporre"),
+        // Subordinators the lexicon gives untyped are listed.
+        ("it-set", "Siccome faceva freddo abbiamo acceso un fuoco.", "Siccome", "Conj siccome"),
+        ("it-set", "Nonostante fossero poveri, hanno cresciuto sette figli.", "Nonostante", "Conj nonostante"),
+    ] {
+        let lexicon = FixtureLexicon::load(Path::new(&format!("tests/fixtures/{fixture}.json"))).unwrap();
+        let a = analyze(&lexicon, &Italian::load().unwrap(), sentence).await.unwrap();
+        assert!(a.unknown.is_empty(), "{sentence}: unknown {:?}", a.unknown);
+        let readings = readings_of(&a, token);
+        assert!(readings.contains(&reading.to_owned()), "{sentence}: {readings:?}");
+        let verb = reading.starts_with("Verb");
+        assert!(readings.iter().all(|r| r.starts_with("Verb") == verb), "{sentence}: {readings:?}");
+    }
+}

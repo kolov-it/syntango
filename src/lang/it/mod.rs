@@ -223,6 +223,13 @@ impl Italian {
             let listed = self.bare_utterance.contains(&(reading.lemma.clone(), pos.to_owned()));
             host_feats.insert("utterance".to_owned(), if listed { "yes" } else { "no" }.to_owned());
         }
+        // The lexicon does not say whether a conjunction coordinates or
+        // subordinates, and one without a type would match both (Eppure lui
+        // mangia la pesca split into two clauses). Only the list's
+        // conjunctions do either.
+        if reading.pos == PartOfSpeech::Conjunction {
+            host_feats.insert("type".to_owned(), "untyped".to_owned());
+        }
         let lemma = reading.lemma.clone();
         let host = |s: &str, feats: FeatMap| Morpheme {
             surface: s.to_owned(),

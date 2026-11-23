@@ -172,6 +172,17 @@ se = se:Conj{type=sub}
 perché = perché:Conj{type=sub}
 quando = quando:Conj{type=sub}
 
+# --- connectors: an adverb that links the sentence to what came before
+# (Eppure non c'era anima viva), or a coordinator between two clauses or
+# adjectives (povero però onesto). Never a subordinator: Eppure lui mangia la
+# pesca is one clause.
+eppure = eppure:Adv
+eppure = eppure:Conj{type=coord}
+però = però:Adv
+però = però:Conj{type=coord}
+tuttavia = tuttavia:Adv
+tuttavia = tuttavia:Conj{type=coord}
+
 # --- negation
 non = non:Adv{neg=yes}
 
@@ -297,6 +308,48 @@ finché = finché:Conj{type=sub}
 benché = benché:Conj{type=sub}
 sebbene = sebbene:Conj{type=sub}
 affinché = affinché:Conj{type=sub}
+poiché = poiché:Conj{type=sub}
+giacché = giacché:Conj{type=sub}
+siccome = siccome:Conj{type=sub}
+purché = purché:Conj{type=sub}
+qualora = qualora:Conj{type=sub}
+anziché = anziché:Conj{type=sub}
+dacché = dacché:Conj{type=sub}
+allorché = allorché:Conj{type=sub}
+acciocché = acciocché:Conj{type=sub}
+ogniqualvolta = ogniqualvolta:Conj{type=sub}
+ché = perché:Conj{type=sub}
+# nonostante la pioggia, nonostante piova
+nonostante = nonostante:Prep
+nonostante = nonostante:Conj{type=sub}
+# malgrado la pioggia, mio malgrado, malgrado piova
+malgrado = malgrado:Prep
+malgrado = malgrado:Adv
+malgrado = malgrado:Conj{type=sub}
+# comunque vada; comunque, ...
+comunque = comunque:Adv
+comunque = comunque:Conj{type=sub}
+
+# --- more coordinating conjunctions. The lexicon gives conjunctions no type,
+# and a conjunction not listed here is neither (src/lang/it/mod.rs).
+od = o:Conj{type=coord}
+né = né:Conj{type=coord}
+oppure = oppure:Conj{type=coord}
+ossia = ossia:Conj{type=coord}
+ovvero = ovvero:Conj{type=coord}
+nonché = nonché:Conj{type=coord}
+bensì = bensì:Conj{type=coord}
+# connectors of consequence: Piove, quindi resto a casa; Quindi resto a casa
+quindi = quindi:Adv
+quindi = quindi:Conj{type=coord}
+dunque = dunque:Adv
+dunque = dunque:Conj{type=coord}
+perciò = perciò:Adv
+perciò = perciò:Conj{type=coord}
+sicché = sicché:Adv
+sicché = sicché:Conj{type=coord}
+nondimeno = nondimeno:Adv
+nondimeno = nondimeno:Conj{type=coord}
 
 # --- more prepositions; most are adverbs too (ci vediamo dopo)
 dopo = dopo:Prep
