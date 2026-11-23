@@ -101,6 +101,71 @@
         "surface": "ama"
       }
     ],
+    "apri": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "aprire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "apri"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "aprire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "apri"
+      }
+    ],
     "arrivata": [
       {
         "confidence": "high",
@@ -406,6 +471,16 @@
         "partOfSpeech": "verb",
         "source": "kaikki",
         "surface": "disse"
+      }
+    ],
+    "eppure": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "eppure",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "eppure"
       }
     ],
     "fatto": [
@@ -772,6 +847,118 @@
         "surface": "non"
       }
     ],
+    "porta": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "porta",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "porta"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine participle singular",
+          "tags": [
+            "feminine",
+            "participle",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "participle",
+            "singular"
+          ],
+          "tense": "past"
+        },
+        "lemma": "porgere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "porta"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "portare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "porta"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "portare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "porta"
+      }
+    ],
     "ragazza": [
       {
         "confidence": "high",
@@ -888,6 +1075,38 @@
         "partOfSpeech": "verb",
         "source": "kaikki",
         "surface": "trovare"
+      }
+    ],
+    "tu": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "number": "singular",
+          "rawTags": [
+            "singular"
+          ]
+        },
+        "lemma": "tu",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "tu"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "number": "singular",
+          "rawTags": [
+            "singular"
+          ]
+        },
+        "lemma": "Tu",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "tu"
       }
     ],
     "un": [

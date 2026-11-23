@@ -723,7 +723,9 @@ sentence → tokenizer → lexicon → morpheme lattice → Earley parser + feat
 - **Lexicon** (`morph::Lexicon`): every reading of a word form; it never chooses.
 - **Function words** (`data/it/closed.txt`): articles, prepositions and their
   contracted forms (*del* = *di* + *il*), pronouns, conjunctions. Kept here, not
-  in the lexicon.
+  in the lexicon. A conjunction coordinates or subordinates only when listed
+  here with its type; the lexicon's conjunctions carry none, so one not listed
+  is neither (*Eppure lui mangia la pesca* is one clause, *eppure* a connector).
 - **Clitics**: when the lexicon says a verb form carries clitics, they are split
   off (*dammelo* = *da* + *me* + *lo*); the grammar decides where clitics may stand
   and checks their person against the verb.
