@@ -151,7 +151,7 @@ impl Italian {
                 if listed {
                     continue;
                 }
-                let reading = present_participle_features(reading.clone(), &lower);
+                let reading = two_gender_features(reading.clone(), &lower);
                 readings.extend(self.morphemes(&lower, token, &reading));
             }
             merge_participle_adjectives(&mut readings, &self.drifted);
@@ -166,10 +166,13 @@ impl Italian {
                 }
             }
             // A capitalised word the lexicon does not know as a name is one
-            // anywhere but at the start; one it knows already has the name
-            // reading, with its gender.
+            // anywhere but at the start, or at the start when e and another
+            // capitalised word follow (Sami e Layla); one it knows already
+            // has the name reading, with its gender.
             let capitalised = token.chars().next().is_some_and(char::is_uppercase);
-            if capitalised && !known_name && (i > 0 || readings.is_empty()) {
+            let before_and_name = matches!(tokens.get(i + 1).map(String::as_str), Some("e" | "ed"))
+                && tokens.get(i + 2).is_some_and(|t| t.chars().next().is_some_and(char::is_uppercase));
+            if capitalised && !known_name && (i > 0 || readings.is_empty() || before_and_name) {
                 let mut feats = FeatMap::new();
                 feats.insert("onset".to_owned(), onset(&lower).to_owned());
                 readings.push(vec![Morpheme { surface: token.clone(), lemma: token.clone(), cat: "ProperNoun".to_owned(), feats }]);
@@ -222,6 +225,13 @@ impl Italian {
         if let Some(pos) = pos {
             let listed = self.bare_utterance.contains(&(reading.lemma.clone(), pos.to_owned()));
             host_feats.insert("utterance".to_owned(), if listed { "yes" } else { "no" }.to_owned());
+        }
+        // The lexicon does not say whether a conjunction coordinates or
+        // subordinates, and one without a type would match both (Eppure lui
+        // mangia la pesca split into two clauses). Only the list's
+        // conjunctions do either.
+        if reading.pos == PartOfSpeech::Conjunction {
+            host_feats.insert("type".to_owned(), "untyped".to_owned());
         }
         let lemma = reading.lemma.clone();
         let host = |s: &str, feats: FeatMap| Morpheme {
@@ -355,29 +365,29 @@ fn mark_essere_participles(readings: &mut [Vec<Morpheme>], state: &HashSet<Strin
     }
 }
 
-/// Present participles and the adjectives made from them (tremante,
-/// sorridente) have one form for both genders, -nte in the singular and -nti
-/// in the plural. The lexicon leaves that out in two ways, corrected here:
+/// Adjectives in -e (tremante, strumentale) and present participles
+/// (fuggente) have one form for both genders, -e in the singular and -i in
+/// the plural. The lexicon leaves that out in two ways, corrected here:
 /// - a present participle comes without a number (fuggente), so it would
 ///   agree with a plural noun; the ending gives it;
-/// - the plural of such an adjective can come back masculine only (tremanti:
-///   masculine plural), so it would refuse a feminine noun (le foglie
-///   tremanti); its gender is left unknown.
-fn present_participle_features(mut reading: Reading, form: &str) -> Reading {
-    let number = if form.ends_with("nte") {
-        Number::Singular
-    } else if form.ends_with("nti") {
-        Number::Plural
-    } else {
-        return reading;
-    };
+/// - the plural of such an adjective can come back with one gender only
+///   (tremanti, strumentali: masculine plural), so it would refuse a noun of
+///   the other (le foglie tremanti, le polemiche strumentali); its gender is
+///   left unknown. Not for -tore and -sore (lavoratori, difensori): their
+///   feminine is -trice.
+fn two_gender_features(mut reading: Reading, form: &str) -> Reading {
     match reading.pos {
         PartOfSpeech::Verb if reading.features.form_kind == Some(FormKind::PresentParticiple) => {
-            reading.features.number.get_or_insert(number);
+            if form.ends_with("nte") {
+                reading.features.number.get_or_insert(Number::Singular);
+            } else if form.ends_with("nti") {
+                reading.features.number.get_or_insert(Number::Plural);
+            }
         }
         PartOfSpeech::Adjective
-            if number == Number::Plural
-                && reading.lemma.strip_suffix('e') == form.strip_suffix('i') =>
+            if reading.lemma.strip_suffix('e').is_some_and(|stem| Some(stem) == form.strip_suffix('i'))
+                && !reading.lemma.ends_with("tore")
+                && !reading.lemma.ends_with("sore") =>
         {
             reading.features.gender = None;
         }

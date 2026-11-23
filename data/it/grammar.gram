@@ -89,6 +89,9 @@ rule clause.null-subject: S[indep=?i] -> VP[finite=yes, indep=?i]
 rule clause.coordination: S[indep=?i] -> S[indep=?i] Conj[type=coord] S[indep=?i]
   "Two clauses joined by e, ma or o."
 
+rule clause.comma-coordination: S[indep=?i] -> S[indep=?i] Punct[lemma!=.|?|!|;|:] Conj[type=coord] S[indep=?i]
+  "Two clauses joined by a comma and e, ma or o (Puoi urlare, ma non risponderò)."
+
 # ---------------------------------------------------------- noun phrases
 
 rule np.name: NP[pronoun=no, name=yes, person=3, number=sg, gender=?g] -> ProperNoun[gender=?g]
@@ -818,3 +821,65 @@ rule vp.object-predicative: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_in
 
 rule v.perfect-coordinated: V[aux=essere, lemma=?l, finite=yes, form=fin, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it, aux_mood=?m, indep=?ind, pron_indep=?pind, aux_tense=?auxt, aux_person=?p, aux_number=?n, aux_form=?auxf] -> Verb[auxiliary!=no, lemma=essere, finite=yes, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, tense=?auxt, form=?auxf] Verb[form=pastpart, takes_essere=yes, number=?n, gender=?g] Conj[type=coord] Verb[lemma=?l, form=pastpart, takes_essere=yes, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc, intransitive=?it]
   "One auxiliary for two participles (sono nato e cresciuto)."
+
+# ------------------------------------- verb-page sentences (issue #62)
+
+rule np.the-other: NP[pronoun=no, person=3, number=?n, gender=?g] -> Det[definite=yes, number=?n, gender=?g] Pron[lemma=altro, clitic=no, number=?n, gender=?g]
+  "The article + altro is a noun phrase: the other one, the others (parla con gli altri)."
+
+rule np.two-names: NP[pronoun=no, name=yes, person=3, number=sg] -> ProperNoun ProperNoun
+  "Two names in a row are one name: a first name and a surname, or a place (Erica Bulian, Nuova Guinea)."
+
+rule frag.ecco: Frag -> Intj[lemma=ecco] NP[case=nom]
+  "ecco + a noun phrase points at it: here is, there is (Ecco la città di cui ti parlavo)."
+
+rule time.the-other: TimeNP -> Det[definite=yes, number=sg] Det[lemma=altro] Noun[number=sg, lemma=giorno|notte|mattina|sera|pomeriggio|settimana|mese|anno|volta|estate|inverno|primavera|autunno]
+  "l'altro giorno, l'altra sera: a recent day or evening, without a preposition."
+
+rule preadv.adverb: PreAdv -> Adv[neg=no]
+  "An adverb between the subject and the verb (Tom spesso parla, io invece resto)."
+
+rule preadv.di: PreAdv -> DiAdv
+  "A di phrase that says how often or how between the subject and the verb (io di solito parlo)."
+
+rule clause.subject-adverb: S[indep=?i] -> NP[case=nom, pronoun!=lui|egli|ella|esso|essa|essi|esse, person=?p, number=?n, gender=?g]:subject PreAdv:adverbial VP[finite=yes, mood!=imp, indep=?i, person=?p, number=?n, gender=?g]
+  "An adverb can stand between the subject and the verb (Io e Tom di solito ci parliamo in francese)."
+
+rule clause.pronoun-subject-adverb: S[indep=?i] -> NP[case=nom, pronoun=lui|egli|ella|esso|essa|essi|esse, person=?p, number=?n, gender=?g]:subject PreAdv:adverbial VP[finite=yes, mood!=imp, indep=?i, pron_indep=?i, person=?p, number=?n, gender=?g]
+  "An adverb between lui (egli, esso) and the verb, as in clause.pronoun-subject."
+
+rule vp.as-much-as: VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] -> VP[finite=?f, form=?fm, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, gender=?g, takes_di=?d, takes_a=?ta, recipient=?rc] AsMuch:adverbial
+  "tanto quanto + a noun phrase after the verb compares how much (non berrò tanto quanto Tom)."
+
+rule asmuch.tanto-quanto: AsMuch -> Adv[lemma=tanto] QDet[lemma=quanto] NP
+  "tanto quanto: as much as."
+
+rule pp.coordination: PP[prep=?x, infinitive=no] -> PP[prep=?x, infinitive=no] Conj[type=coord] PP[prep=?x, infinitive=no]
+  "Two phrases with the same preposition joined by e or o (non rispondeva ai messaggi e alle chiamate)."
+
+rule vp.infinitive-coordination: VP[finite=no, form=inf, recipient=?r] -> VP[form=inf, recipient=?r] Conj[type=coord] VP[form=inf]
+  "Two infinitives joined by e or o share the verb before them (prove che possano divertire e insegnare qualcosa)."
+
+rule cop.reflexive: Cop[mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc, noun_participle=no, participle_compound=no] -> Clitics[reflexive=yes, attached=no, refl=?p] Verb[lemma=sentire|ritenere|considerare|credere|mostrare|dimostrare|rivelare|dichiarare|giudicare, finite=yes, mood=ind|sub|cnd, mood=?m, indep=?ind, pron_indep=?pind, person=?p, number=?n, takes_di=?d, takes_a=?ta, recipient=?rc]
+  "sentirsi, ritenersi, considerarsi and a few more say how the subject feels or what it holds itself to be: what follows describes the subject (mi sento stanco, mi sento chiamato in causa, si dichiara colpevole)."
+
+rule yesno.word: YesNo -> Intj[lemma=sì|no]
+  "sì or no as a word (rispondere con un sì)."
+
+rule yesno.coordination: YesNo -> YesNo Conj[type=coord] YesNo
+  "sì o no."
+
+rule pp.yes-no: PP[prep=?x, infinitive=no] -> Prep[lemma=?x] YesNo
+  "A preposition before sì or no (risponda soltanto con sì o no)."
+
+rule notonly.non-solo: NotOnly -> Adv[lemma=non] Adv[lemma=solo|soltanto]
+  "non solo: not only."
+
+rule but.ma: But -> Conj[lemma=ma]
+  "ma: but."
+
+rule but.comma-ma: But -> Punct[lemma!=.|?|!|;|:] Conj[lemma=ma]
+  "A comma, then ma."
+
+rule clause.not-only: S[indep=?i] -> NotOnly:adverbial S[indep=?i] But S[indep=?i]
+  "non solo …, ma (anche) …: not only this but also that (non solo rispondiamo alle esigenze dei clienti ma le anticipiamo)."
