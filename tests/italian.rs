@@ -658,6 +658,16 @@ async fn conjunctions_left_untyped_have_a_reading() {
         let a = analyze(&lexicon, &italian, sentence).await.unwrap();
         assert_eq!(readings_of(&a, "Sia"), ["Conj sia"], "{sentence}");
     }
+    // Correlated participles of essere verbs keep participle_essere, so they
+    // are no adjectives after a copula essere (Codex review on #68).
+    let set = FixtureLexicon::load(Path::new("tests/fixtures/it-set.json")).unwrap();
+    let a = analyze(&set, &italian, "Sono sia andato che tornato.").await.unwrap();
+    assert!(
+        a.chosen.iter().filter(|c| c.token == "andato").all(|c| c.uses.iter().flatten().all(|u| u != "ap.participle")),
+        "{:?}",
+        a.chosen
+    );
+    assert!(!analyze(&set, &italian, "È sia bello che utile.").await.unwrap().parses.is_empty());
 }
 
 /// Issue #67: a lone sia is essere, never the conjunction of sia … sia; after

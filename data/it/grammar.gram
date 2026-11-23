@@ -869,7 +869,7 @@ rule pp.coordination: PP[prep=?x, infinitive=no] -> PP[prep=?x, infinitive=no] C
 rule np.correlative: NP[pronoun=no, number=pl] -> Conj[lemma=sia] NP Conj[lemma=sia|che] NP
   "sia … sia, sia … che: both … and (Sia Tom sia Mary parlano francese, sia io che lui). sia is a conjunction only here, in ap.correlative and in pp.correlative; anywhere else it is essere (Credo sia vero)."
 
-rule ap.correlative: AP[participle_di=no, number=?n, gender=?g] -> Conj[lemma=sia] AP[number=?n, gender=?g] Conj[lemma=sia|che] AP[number=?n, gender=?g]
+rule ap.correlative: AP[participle_di=no, participle_essere=?e, number=?n, gender=?g] -> Conj[lemma=sia] AP[participle_essere=?e, number=?n, gender=?g] Conj[lemma=sia|che] AP[participle_essere=?e, number=?n, gender=?g]
   "sia … sia, sia … che between two adjectives (sia bello che utile)."
 
 rule pp.correlative: PP[prep=?x, infinitive=no] -> Conj[lemma=sia] PP[prep=?x, infinitive=no] Conj[lemma=sia|che] PP[prep=?x, infinitive=no]
