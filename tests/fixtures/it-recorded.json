@@ -44,6 +44,296 @@
         "surface": "a"
       }
     ],
+    "abbiamo": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person imperative plural",
+          "tags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "lemma": "avere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "abbiamo"
+      }
+    ],
+    "acciò": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "acciò",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "acciò"
+      }
+    ],
+    "ad": [],
+    "affievolì": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "historic past singular third-person",
+          "tags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ],
+          "tense": "preterite"
+        },
+        "lemma": "affievolire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "affievolì"
+      }
+    ],
+    "al": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "al",
+        "partOfSpeech": "contraction",
+        "source": "kaikki",
+        "surface": "al"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine",
+            "singular"
+          ]
+        },
+        "lemma": "al",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "al"
+      }
+    ],
+    "alla": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "alla",
+        "partOfSpeech": "contraction",
+        "source": "kaikki",
+        "surface": "alla"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "alla",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "alla"
+      }
+    ],
+    "allontanate": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative plural present second-person",
+          "tags": [
+            "indicative",
+            "plural",
+            "present",
+            "second-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "plural",
+            "present",
+            "second-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "allontanare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "allontanate"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative plural second-person",
+          "tags": [
+            "imperative",
+            "plural",
+            "second-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "plural",
+            "second-person"
+          ]
+        },
+        "lemma": "allontanare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "allontanate"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine participle plural",
+          "tags": [
+            "feminine",
+            "participle",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "participle",
+            "plural"
+          ],
+          "tense": "past"
+        },
+        "lemma": "allontanare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "allontanate"
+      }
+    ],
     "ama": [
       {
         "confidence": "high",
@@ -99,6 +389,70 @@
         "partOfSpeech": "verb",
         "source": "kaikki",
         "surface": "ama"
+      }
+    ],
+    "andar": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "andar",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "andar"
+      }
+    ],
+    "andato": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "andare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "andato"
+      }
+    ],
+    "apertura": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "apertura",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "apertura"
       }
     ],
     "apri": [
@@ -258,6 +612,175 @@
         "surface": "arrivato"
       }
     ],
+    "bisogno": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "bisogno",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "bisogno"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present first-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "first-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.1s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "bisognare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "bisogno"
+      }
+    ],
+    "boccia": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "boccia",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "boccia"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Boccia",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "boccia"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Boccia",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "boccia"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present third-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "third-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.3s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "bocciare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "boccia"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "imperative.present.2s"
+          ]
+        },
+        "lemma": "bocciare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "boccia"
+      }
+    ],
+    "bruscamente": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "bruscamente",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "bruscamente"
+      }
+    ],
     "cane": [
       {
         "confidence": "high",
@@ -334,6 +857,203 @@
         "surface": "cane"
       }
     ],
+    "capisca": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "capire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "capisca"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "capire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "capisca"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "capire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "capisca"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "capire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "capisca"
+      }
+    ],
+    "caporale": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "caporale",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "caporale"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "caporale",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "caporale"
+      }
+    ],
+    "casa": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "casa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "casa"
+      }
+    ],
     "che": [
       {
         "confidence": "high",
@@ -361,6 +1081,664 @@
         "partOfSpeech": "det",
         "source": "kaikki",
         "surface": "che"
+      }
+    ],
+    "chi": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "chi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "chi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "chi",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "chi"
+      }
+    ],
+    "ché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "ché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "ché"
+      }
+    ],
+    "collo": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "collo",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "collo"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "collo",
+        "partOfSpeech": "contraction",
+        "source": "kaikki",
+        "surface": "collo"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present first-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "first-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.1s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "collare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "collo"
+      }
+    ],
+    "colpevoli": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "plural",
+          "tags": [
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "number": "plural",
+          "rawTags": [
+            "plural"
+          ]
+        },
+        "lemma": "colpevole",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "colpevoli"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "feminine masculine plural",
+          "tags": [
+            "feminine",
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "colpevole",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "colpevoli"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "feminine masculine plural",
+          "tags": [
+            "feminine",
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "colpevole",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "colpevoli"
+      }
+    ],
+    "combattuto": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "combattere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "combattuto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "combattuto",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "combattuto"
+      }
+    ],
+    "contegno": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "contegno",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "contegno"
+      }
+    ],
+    "contro": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "contro",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "contro"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "contro",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "contro"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "contro",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "contro"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "contro",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "contro"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "contro",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "contro"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "contrare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "contro"
+      }
+    ],
+    "cosa": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "cosa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "cosa"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "lemma": "cosa",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "cosa"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "Cosa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "cosa"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present third-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "third-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.3s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "cosare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "cosa"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "imperative.present.2s"
+          ]
+        },
+        "lemma": "cosare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "cosa"
+      }
+    ],
+    "costo": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "costo",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "costo"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "costare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "costo"
+      }
+    ],
+    "così": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "così",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "così"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "rawTags": [
+            "invariable"
+          ]
+        },
+        "lemma": "così",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "così"
+      }
+    ],
+    "credo": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "credo",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "credo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "credere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "credo"
+      }
+    ],
+    "da": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "lemma": "da",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "da"
       }
     ],
     "dammelo": [
@@ -392,6 +1770,76 @@
         "surface": "dammelo"
       }
     ],
+    "debole": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "debole",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "debole"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "debole",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "debole"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "debole",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "debole"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "debole",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "debole"
+      }
+    ],
     "del": [
       {
         "confidence": "high",
@@ -399,6 +1847,16 @@
         "partOfSpeech": "contraction",
         "source": "kaikki",
         "surface": "del"
+      }
+    ],
+    "dell'": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "dell'",
+        "partOfSpeech": "contraction",
+        "source": "kaikki",
+        "surface": "dell'"
       }
     ],
     "di": [
@@ -442,6 +1900,41 @@
         "surface": "di"
       }
     ],
+    "dico": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "dire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "dico"
+      }
+    ],
     "disse": [
       {
         "confidence": "high",
@@ -473,6 +1966,225 @@
         "surface": "disse"
       }
     ],
+    "divenne": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "historic past singular third-person",
+          "tags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ],
+          "tense": "preterite"
+        },
+        "lemma": "divenire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "divenne"
+      }
+    ],
+    "dopoché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "dopoché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "dopoché"
+      }
+    ],
+    "dorme": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "dormire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "dorme"
+      }
+    ],
+    "dove": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "dove",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "dove"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "dove",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "dove"
+      }
+    ],
+    "e": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "invariable"
+          ]
+        },
+        "lemma": "e",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "e"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "invariable"
+          ]
+        },
+        "lemma": "e",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "e"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "e",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "e"
+      }
+    ],
+    "egli": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "egli",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "egli"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "Egli",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "egli"
+      }
+    ],
+    "ella": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "ella",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "ella"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "Ella",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "ella"
+      }
+    ],
+    "eppoi": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "eppoi",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "eppoi"
+      }
+    ],
+    "eppur": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "eppur",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "eppur"
+      }
+    ],
     "eppure": [
       {
         "confidence": "high",
@@ -481,6 +2193,239 @@
         "partOfSpeech": "conj",
         "source": "kaikki",
         "surface": "eppure"
+      }
+    ],
+    "equipaggio": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "equipaggio",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "equipaggio"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "equipaggiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "equipaggio"
+      }
+    ],
+    "erano": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperfect indicative plural third-person",
+          "tags": [
+            "imperfect",
+            "indicative",
+            "plural",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "indicative",
+            "plural",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "erano"
+      }
+    ],
+    "esco": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "uscire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "esco"
+      }
+    ],
+    "eziandio": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "eziandio",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "eziandio"
+      }
+    ],
+    "facciamo": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "fare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "facciamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "fare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "facciamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person imperative plural",
+          "tags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "lemma": "fare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "facciamo"
       }
     ],
     "fatto": [
@@ -569,6 +2514,422 @@
         "surface": "fece"
       }
     ],
+    "figlio": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "figlio",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "figlio"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "figliare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "figlio"
+      }
+    ],
+    "finire": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "finire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "finire"
+      }
+    ],
+    "fosse": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperfect singular subjunctive third-person",
+          "tags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "fosse"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "fossa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "fosse"
+      }
+    ],
+    "francese": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "francese",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "francese"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "francese",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "francese"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "francese",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "francese"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "francese",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "francese"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Francese",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "francese"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Francese",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "francese"
+      }
+    ],
+    "fu": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "rawTags": [
+            "invariable"
+          ]
+        },
+        "lemma": "fu",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "fu"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "historic past singular third-person",
+          "tags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "historic",
+            "past",
+            "singular",
+            "third-person"
+          ],
+          "tense": "preterite"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "fu"
+      }
+    ],
+    "giorno": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "giorno",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "giorno"
+      }
+    ],
+    "grande": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "grande",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "grande",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "lemma": "grande",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "lemma": "grande",
+        "partOfSpeech": "intj",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "grande",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "grande",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Grande",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "grande"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Grande",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "grande"
+      }
+    ],
     "ho": [
       {
         "confidence": "high",
@@ -598,6 +2959,42 @@
         "partOfSpeech": "verb",
         "source": "kaikki",
         "surface": "ho"
+      }
+    ],
+    "i": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "I",
+        "partOfSpeech": "character",
+        "source": "kaikki",
+        "surface": "i"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "I",
+        "partOfSpeech": "character",
+        "source": "kaikki",
+        "surface": "i"
       }
     ],
     "il": [
@@ -632,6 +3029,166 @@
         "partOfSpeech": "pron",
         "source": "kaikki",
         "surface": "il"
+      }
+    ],
+    "imperocché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "imperocché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "imperocché"
+      }
+    ],
+    "importa": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "importare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "importa"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "importare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "importa"
+      }
+    ],
+    "indicare": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "indicare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "indicare"
+      }
+    ],
+    "io": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "io",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "io"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "io",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "io"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "io",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "io"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "Io",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "io"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "Io",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "io"
       }
     ],
     "l'": [
@@ -776,6 +3333,106 @@
         "surface": "la"
       }
     ],
+    "lascio": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "lasciare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "lascio"
+      }
+    ],
+    "lavora": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "lavorare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "lavora"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "lavorare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "lavora"
+      }
+    ],
     "lavoro": [
       {
         "confidence": "high",
@@ -822,6 +3479,159 @@
         "surface": "lavoro"
       }
     ],
+    "licenziata": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine participle singular",
+          "tags": [
+            "feminine",
+            "participle",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "participle",
+            "singular"
+          ],
+          "tense": "past"
+        },
+        "lemma": "licenziare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "licenziata"
+      }
+    ],
+    "lo": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine",
+            "singular"
+          ]
+        },
+        "lemma": "lo",
+        "partOfSpeech": "article",
+        "source": "kaikki",
+        "surface": "lo"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine",
+            "singular"
+          ]
+        },
+        "lemma": "lo",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "lo"
+      }
+    ],
+    "lui": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "lui",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "lui"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "Lui",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "lui"
+      }
+    ],
+    "mangia": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "mangiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "mangia"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "mangiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "mangia"
+      }
+    ],
+    "mary": [],
     "me": [
       {
         "confidence": "high",
@@ -838,6 +3648,316 @@
         "surface": "me"
       }
     ],
+    "muove": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "muovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "muove"
+      }
+    ],
+    "neppure": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "neppure",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "neppure"
+      }
+    ],
+    "nessuno": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "nessuno",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "nessuno"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine",
+            "singular"
+          ]
+        },
+        "lemma": "nessuno",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "nessuno"
+      }
+    ],
+    "nevichi": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "present singular subjunctive third-person",
+          "tags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "nevicare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "nevichi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "nevicare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "nevichi"
+      }
+    ],
+    "noi": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "number": "plural",
+          "rawTags": [
+            "plural"
+          ]
+        },
+        "lemma": "noi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "noi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.2s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "noiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "noi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present first-person singular",
+          "tags": [
+            "subjunctive",
+            "present",
+            "first-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.1s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "noiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "noi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present second-person singular",
+          "tags": [
+            "subjunctive",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.2s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "noiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "noi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present third-person singular",
+          "tags": [
+            "subjunctive",
+            "present",
+            "third-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.3s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "noiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "noi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative third-person singular",
+          "tags": [
+            "imperative",
+            "third-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "conjugation-table",
+            "imperative.present.3s"
+          ]
+        },
+        "lemma": "noiare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "noi"
+      }
+    ],
     "non": [
       {
         "confidence": "high",
@@ -845,6 +3965,902 @@
         "partOfSpeech": "adv",
         "source": "kaikki",
         "surface": "non"
+      }
+    ],
+    "notte": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "notte",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "notte"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "notte",
+        "partOfSpeech": "intj",
+        "source": "kaikki",
+        "surface": "notte"
+      }
+    ],
+    "nulladimeno": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "nulladimeno",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "nulladimeno"
+      }
+    ],
+    "od": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "od",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "od"
+      }
+    ],
+    "ogni": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "rawTags": [
+            "invariable"
+          ]
+        },
+        "lemma": "ogni",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "ogni"
+      }
+    ],
+    "oh": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "oh",
+        "partOfSpeech": "intj",
+        "source": "kaikki",
+        "surface": "oh"
+      }
+    ],
+    "osservava": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperfect indicative singular third-person",
+          "tags": [
+            "imperfect",
+            "indicative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperfect",
+            "indicative",
+            "singular",
+            "third-person"
+          ],
+          "tense": "imperfect"
+        },
+        "lemma": "osservare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "osservava"
+      }
+    ],
+    "parla": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parla"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parla"
+      }
+    ],
+    "parlano": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative plural present third-person",
+          "tags": [
+            "indicative",
+            "plural",
+            "present",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "plural",
+            "present",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parlano"
+      }
+    ],
+    "parlarle": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "compound of parlare",
+          "tags": [
+            "compound",
+            "of",
+            "parlare"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": true,
+          "formKind": "infinitive",
+          "rawTags": [
+            "compound-of"
+          ]
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parlarle"
+      }
+    ],
+    "parlo": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "parlare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parlo"
+      }
+    ],
+    "parte": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "parte",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "parte"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "parto",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "parte"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "partire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "parte"
+      }
+    ],
+    "partito": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "partito",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "partito"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "partito",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "partito"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "partire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "partito"
+      }
+    ],
+    "penso": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "pensare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "penso"
+      }
+    ],
+    "per": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "per",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "per"
+      }
+    ],
+    "perocché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "perocché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "perocché"
+      }
+    ],
+    "pertanto": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "pertanto",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "pertanto"
+      }
+    ],
+    "piano": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "piano",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "piano",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "piano",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "pianare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative plural present third-person",
+          "tags": [
+            "indicative",
+            "plural",
+            "present",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "plural",
+            "present",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Piano",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "piano"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Piano",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "piano"
+      }
+    ],
+    "pianto": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "pianto",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "pianto"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "piangere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "pianto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piantare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "pianto"
+      }
+    ],
+    "piova": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "piova",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "piova"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "present singular subjunctive third-person",
+          "tags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "present",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piova"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "piovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piova"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present first-person singular",
+          "tags": [
+            "subjunctive",
+            "present",
+            "first-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.1s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piova"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present second-person singular",
+          "tags": [
+            "subjunctive",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.2s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piova"
+      }
+    ],
+    "piove": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "piovere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "piove"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "piova",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "piove"
       }
     ],
     "porta": [
@@ -959,6 +4975,155 @@
         "surface": "porta"
       }
     ],
+    "possa": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "possa",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "possa"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "potere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "possa"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "potere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "possa"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "potere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "possa"
+      }
+    ],
+    "qua": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "qua",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "qua"
+      }
+    ],
+    "qui": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "qui",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "qui"
+      }
+    ],
     "ragazza": [
       {
         "confidence": "high",
@@ -974,6 +5139,75 @@
         "partOfSpeech": "noun",
         "source": "kaikki",
         "surface": "ragazza"
+      }
+    ],
+    "ragione": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "ragione",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "ragione"
+      }
+    ],
+    "resto": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "resto",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "resto"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "restare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "resto"
       }
     ],
     "ricordati": [
@@ -1031,6 +5265,279 @@
         "surface": "ricordati"
       }
     ],
+    "ridotto": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "ridotto",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "ridotto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "ridotto",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "ridotto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "ridurre",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ridotto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present first-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "first-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.1s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "ridottare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ridotto"
+      }
+    ],
+    "ritorni": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "ritornare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ritorni"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "ritornare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ritorni"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "ritornare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ritorni"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "ritornare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ritorni"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "ritornare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "ritorni"
+      }
+    ],
     "riusciva": [
       {
         "confidence": "high",
@@ -1062,7 +5569,1660 @@
         "surface": "riusciva"
       }
     ],
+    "sa": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sapere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sa"
+      }
+    ],
+    "scendere": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "auxiliaries": [
+            "essere",
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "scendere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "scendere"
+      }
+    ],
+    "scommetto": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "scommettere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "scommetto"
+      }
+    ],
+    "sega": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "sega",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "sega"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "segare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sega"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "segare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sega"
+      }
+    ],
+    "sente": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sentire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sente"
+      }
+    ],
+    "seria": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "serio",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "seria"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present third-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "third-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.3s"
+          ],
+          "tense": "present"
+        },
+        "lemma": "seriare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "seria"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "conjugation-table",
+            "imperative.present.2s"
+          ]
+        },
+        "lemma": "seriare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "seria"
+      }
+    ],
+    "serve": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "servo",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "serve"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "serva",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "serve"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "servire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "serve"
+      }
+    ],
+    "si": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "si",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "si"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "si",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "si"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "si",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "si"
+      }
+    ],
+    "sia": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "sia"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "sia",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "sia"
+      }
+    ],
+    "siamo": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "siamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative plural present subjunctive",
+          "tags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "plural",
+            "present",
+            "subjunctive"
+          ],
+          "tense": "present"
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "siamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person imperative plural",
+          "tags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "imperative",
+            "plural"
+          ]
+        },
+        "lemma": "essere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "siamo"
+      }
+    ],
+    "sinché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "sinché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "sinché"
+      }
+    ],
+    "so": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sapere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "so"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "so",
+        "partOfSpeech": "prep",
+        "source": "kaikki",
+        "surface": "so"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "so",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "so"
+      }
+    ],
+    "speriamo": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "speriamo",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "speriamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present first-person plural",
+          "tags": [
+            "indicative",
+            "present",
+            "first-person",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "indicative.present.1p"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sperare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "speriamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "subjunctive present first-person plural",
+          "tags": [
+            "subjunctive",
+            "present",
+            "first-person",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "subjunctive.present.1p"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sperare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "speriamo"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative first-person plural",
+          "tags": [
+            "imperative",
+            "first-person",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "plural",
+          "person": "first",
+          "rawTags": [
+            "conjugation-table",
+            "imperative.present.1p"
+          ]
+        },
+        "lemma": "sperare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "speriamo"
+      }
+    ],
+    "spero": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person indicative present singular",
+          "tags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "indicative",
+            "present",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "sperare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "spero"
+      }
+    ],
+    "spiegarsi": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "spiegarsi",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "spiegarsi"
+      }
+    ],
+    "stanca": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "stanca",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "stanca"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "stanco",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "stanca"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present singular third-person",
+          "tags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "indicative",
+            "present",
+            "singular",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanca"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanca"
+      }
+    ],
+    "stanchi": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "masculine plural",
+          "tags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "stanco",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "stanchi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanchi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanchi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanchi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanchi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "stancare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "stanchi"
+      }
+    ],
+    "stessa": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "stesso",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "stessa"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "stesso",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "stessa"
+      }
+    ],
+    "storie": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "feminine plural",
+          "tags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "plural",
+          "rawTags": [
+            "feminine",
+            "plural"
+          ]
+        },
+        "lemma": "storia",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "storie"
+      }
+    ],
+    "sì": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "sì",
+        "partOfSpeech": "particle",
+        "source": "kaikki",
+        "surface": "sì"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "sì",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "sì"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "sì",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "sì"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "invariable",
+            "masculine"
+          ]
+        },
+        "lemma": "sì",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "sì"
+      }
+    ],
+    "talché": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "lemma": "talché",
+        "partOfSpeech": "conj",
+        "source": "kaikki",
+        "surface": "talché"
+      }
+    ],
+    "tardi": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "tardi",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "masculine plural",
+          "tags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "tardo",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "tardare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "tardare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "tardare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "tardare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "tardi"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "tardare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "tardi"
+      }
+    ],
+    "te": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "te",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "te"
+      }
+    ],
+    "terra": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "terra",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "terra"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "Terra",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "terra"
+      }
+    ],
     "tom": [],
+    "torto": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "torto",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "torto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "torto",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "torto"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "participle past",
+          "tags": [
+            "participle",
+            "past"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "participle",
+            "past"
+          ],
+          "tense": "past"
+        },
+        "lemma": "torcere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "torto"
+      }
+    ],
     "trovare": [
       {
         "confidence": "high",
@@ -1109,6 +7269,24 @@
         "surface": "tu"
       }
     ],
+    "tuo": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "tuo",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "tuo"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "tuo",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "tuo"
+      }
+    ],
     "un": [
       {
         "confidence": "high",
@@ -1146,6 +7324,567 @@
         "surface": "un"
       }
     ],
+    "una": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "num",
+        "source": "kaikki",
+        "surface": "una"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "article",
+        "source": "kaikki",
+        "surface": "una"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "uno",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "una"
+      }
+    ],
+    "vedere": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "infinitive",
+          "rawTags": []
+        },
+        "lemma": "vedere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "vedere"
+      }
+    ],
+    "verde": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "verde",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "verde"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "verde",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "verde"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "verde",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "verde"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Verde",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "verde"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "rawTags": [
+            "feminine",
+            "masculine"
+          ]
+        },
+        "lemma": "Verde",
+        "partOfSpeech": "name",
+        "source": "kaikki",
+        "surface": "verde"
+      }
+    ],
+    "veri": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "masculine plural",
+          "tags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "vero",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "veri"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "masculine plural",
+          "tags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "plural"
+          ]
+        },
+        "lemma": "vero",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "veri"
+      }
+    ],
+    "vero": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": []
+        },
+        "lemma": "vero",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "vero"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "grammar": {
+          "clitic": false,
+          "gender": "masculine",
+          "number": "singular",
+          "rawTags": [
+            "masculine"
+          ]
+        },
+        "lemma": "vero",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "vero"
+      }
+    ],
+    "vi": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "vi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "vi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "vi",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "vi"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "number": "plural",
+          "rawTags": [
+            "plural"
+          ]
+        },
+        "lemma": "Vi",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "vi"
+      }
+    ],
+    "via": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine"
+          ]
+        },
+        "lemma": "via",
+        "partOfSpeech": "noun",
+        "source": "kaikki",
+        "surface": "via"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "via",
+        "partOfSpeech": "adv",
+        "source": "kaikki",
+        "surface": "via"
+      }
+    ],
+    "vieni": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "indicative present second-person singular",
+          "tags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "indicative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "indicative",
+            "present",
+            "second-person",
+            "singular"
+          ],
+          "tense": "present"
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "vieni"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "venire",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "vieni"
+      }
+    ],
+    "viva": [
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "first",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "first-person present second-person singular subjunctive third-person",
+          "tags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "subjunctive",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "first-person",
+            "present",
+            "second-person",
+            "singular",
+            "subjunctive",
+            "third-person"
+          ],
+          "tense": "present"
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "imperative singular third-person",
+          "tags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere",
+            "essere"
+          ],
+          "clitic": false,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "third",
+          "rawTags": [
+            "imperative",
+            "singular",
+            "third-person"
+          ]
+        },
+        "lemma": "vivere",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "definition": "ready",
+        "form": {
+          "label": "feminine singular",
+          "tags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "clitic": false,
+          "gender": "feminine",
+          "number": "singular",
+          "rawTags": [
+            "feminine",
+            "singular"
+          ]
+        },
+        "lemma": "vivo",
+        "partOfSpeech": "adj",
+        "source": "kaikki",
+        "surface": "viva"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "viva",
+        "partOfSpeech": "intj",
+        "source": "kaikki",
+        "surface": "viva"
+      }
+    ],
     "volontariato": [
       {
         "confidence": "high",
@@ -1161,6 +7900,87 @@
         "partOfSpeech": "noun",
         "source": "kaikki",
         "surface": "volontariato"
+      }
+    ],
+    "voltati": [
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "imperative second-person singular",
+          "tags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": true,
+          "mood": "imperative",
+          "number": "singular",
+          "person": "second",
+          "rawTags": [
+            "imperative",
+            "second-person",
+            "singular"
+          ]
+        },
+        "lemma": "voltare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "voltati"
+      },
+      {
+        "confidence": "high",
+        "definition": "plan",
+        "form": {
+          "label": "masculine participle plural",
+          "tags": [
+            "masculine",
+            "participle",
+            "plural"
+          ]
+        },
+        "grammar": {
+          "auxiliaries": [
+            "avere"
+          ],
+          "clitic": false,
+          "formKind": "past-participle",
+          "gender": "masculine",
+          "number": "plural",
+          "rawTags": [
+            "masculine",
+            "participle",
+            "plural"
+          ],
+          "tense": "past"
+        },
+        "lemma": "voltare",
+        "partOfSpeech": "verb",
+        "source": "kaikki",
+        "surface": "voltati"
+      }
+    ],
+    "vostro": [
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "vostro",
+        "partOfSpeech": "det",
+        "source": "kaikki",
+        "surface": "vostro"
+      },
+      {
+        "confidence": "high",
+        "definition": "free",
+        "lemma": "vostro",
+        "partOfSpeech": "pron",
+        "source": "kaikki",
+        "surface": "vostro"
       }
     ],
     "è": [
