@@ -47,7 +47,7 @@ commit of master, so it can lag behind this repository.
 
 ![Word Holder's sentence page analysing "Ho dato il libro a Maria." with three interpretations](docs/word-holder-lab.png)
 
-**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 225 rules)
+**Status:** prototype, Italian. The grammar (`data/it/grammar.gram`, 246 rules)
 covers agreement and the dropped subject; articles (with the *il / lo / l'*
 choice by the next word's first sound), demonstratives, quantifiers and
 possessives; clitic pronouns before and after the verb; compound tenses, the
@@ -62,9 +62,13 @@ Regione.*); examples after a comma (*…, ad esempio le rose*); a second adjecti
 participle after *non* (*devono essere amate, non comprese*);
 infinitive complements, *che* and *cui* clauses, indirect questions,
 questions (also with an infinitive: *Come trovare le risorse?*, *non so dove
-andare*), subordinate clauses, commas, coordination and time expressions;
-sentences without a verb (*La forza del destino!*, a noun phrase after `;` or
-`:`).
+andare*), subordinate clauses, commas, coordination (also after a comma:
+*Puoi urlare, ma non risponderò*; of two infinitives or two phrases with the
+same preposition; *non solo … ma*) and time expressions; an adverb between
+the subject and the verb (*Io di solito parlo*); *sentirsi* and a few other
+reflexive verbs + a description of the subject (*Mi sento chiamato in
+causa*); sentences without a verb (*La forza del destino!*, *Ecco la città*,
+a noun phrase after `;` or `:`).
 
 On the [Tatoeba homograph set](#measuring-it-the-tatoeba-homograph-set)
 (5,000 sentences built around ambiguous verb forms) it decides the ambiguous
