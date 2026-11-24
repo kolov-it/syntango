@@ -3,6 +3,7 @@
 //!
 //! ```text
 //! start S
+//! fragments S VP NP[bare!=yes] PP
 //! # comment
 //! rule clause.subject: S -> NP[case=nom, person=?p] VP[finite=yes, person=?p]
 //!   "The verb agrees with its subject in person."
@@ -27,6 +28,11 @@
 //! ```
 //!
 //! Roles never take part in parsing; they only label the trees.
+//!
+//! `fragments` lists the phrases a sentence the grammar does not accept may
+//! be covered with, most preferred first, each with the features it must
+//! have ([`crate::syntax::parser::parse_fragments`]). Without the line, a
+//! sentence that does not parse has no fragments.
 
 use std::collections::{BTreeMap, HashSet};
 
@@ -70,6 +76,8 @@ pub struct Rule {
 #[derive(Debug)]
 pub struct Grammar {
     pub start: String,
+    /// Phrases an unparsed sentence may be covered with, most preferred first.
+    pub fragments: Vec<Cat>,
     pub rules: Vec<Rule>,
     /// The role a child marked `:case` takes for each value of its `case`.
     pub case_roles: BTreeMap<String, Role>,
@@ -90,6 +98,7 @@ impl Grammar {
 
     pub fn parse(text: &str) -> Result<Grammar, GrammarError> {
         let mut start = None;
+        let mut fragments = Vec::new();
         let mut rules: Vec<Rule> = Vec::new();
         let mut case_roles = BTreeMap::new();
         let mut by_case_line = None;
@@ -102,6 +111,11 @@ impl Grammar {
             }
             if let Some(rest) = line.strip_prefix("start ") {
                 start = Some(rest.trim().to_owned());
+            } else if let Some(rest) = line.strip_prefix("fragments ") {
+                fragments = parse_cats(rest).map_err(&err)?;
+                if fragments.iter().any(|c| c.role.is_some()) {
+                    return Err(err("a fragment takes no role".to_owned()));
+                }
             } else if let Some(rest) = line.strip_prefix("case-roles ") {
                 for pair in rest.split(',').map(str::trim).filter(|p| !p.is_empty()) {
                     let (case, role) = pair
@@ -149,7 +163,7 @@ impl Grammar {
             return Err(GrammarError { line, message: "`:case` needs a `case-roles` line".to_owned() });
         }
         let nonterminals = rules.iter().map(|r| r.lhs.name.clone()).collect();
-        Ok(Grammar { start, rules, case_roles, nonterminals })
+        Ok(Grammar { start, fragments, rules, case_roles, nonterminals })
     }
 }
 
@@ -229,6 +243,16 @@ mod tests {
         );
         assert_eq!(r.explanation, "one two");
         assert!(g.is_nonterminal("S") && !g.is_nonterminal("NP"));
+    }
+
+    #[test]
+    fn reads_fragments_with_their_features() {
+        let g = Grammar::parse("start S\nfragments S NP[bare!=yes]\nrule a: S -> NP\n").unwrap();
+        let names: Vec<&str> = g.fragments.iter().map(|c| c.name.as_str()).collect();
+        assert_eq!(names, ["S", "NP"]);
+        assert_eq!(g.fragments[1].constraints, [("bare".to_owned(), Value::NotAny(vec!["yes".to_owned()]))]);
+        assert!(Grammar::parse("start S\nrule a: S -> NP\n").unwrap().fragments.is_empty());
+        assert!(Grammar::parse("start S\nfragments NP:subject\nrule a: S -> NP\n").is_err());
     }
 
     #[test]

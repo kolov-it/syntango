@@ -7,6 +7,7 @@ use serde::Serialize;
 use crate::lang::Language;
 use crate::morph::{Lexicon, LexiconError};
 use crate::syntax::lattice::{Edge, Lattice, Morpheme};
+use crate::syntax::grammar::Rule;
 use crate::syntax::parser::{self, ChartItem, ParseError, Tree};
 use crate::syntax::role::Role;
 use crate::verb_groups::{VerbGroup, parse_groups};
@@ -101,13 +102,86 @@ pub async fn analyze(lexicon: &dyn Lexicon, language: &dyn Language, text: &str)
     let used_edges = forest.used_edges();
     let edge_rules = forest.edge_rules();
     let chosen = choices(&tokens, &lattice, &used_edges, &edge_rules, !forest.is_empty());
-    let verb_items = forest.items_where(|r| r.lhs.constraints.iter().any(|(k, _)| k.starts_with("aux_") || k == "voice"));
+    let verb_items = forest.items_where(passes_verb_features);
     let roles = token_roles(&tokens, &parses);
     let verb_groups = derivations
         .iter()
         .map(|d| parse_groups(language.grammar(), language.lang(), &lattice, &verb_items, d))
         .collect();
     Ok(SentenceAnalysis { tokens, unknown, lattice, parse_count, parses, chosen, used_edges, edge_rules, verb_items, roles, verb_groups })
+}
+
+/// A rule that passes an auxiliary's features up (`aux_mood`, `aux_tense`,
+/// …) or marks a passive (`voice`): what [`parse_groups`] reads.
+fn passes_verb_features(rule: &Rule) -> bool {
+    rule.lhs.constraints.iter().any(|(k, _)| k.starts_with("aux_") || k == "voice")
+}
+
+/// A sentence the grammar does not accept as a whole, covered by as few
+/// complete phrases as it can be ([`fragments`]).
+#[derive(Debug, Serialize)]
+pub struct SentenceFragments {
+    /// One cheapest cover, in sentence order.
+    pub fragments: Vec<Fragment>,
+    /// Tokens that cover leaves out: punctuation between fragments, and
+    /// words no fragment takes.
+    pub left_out: Vec<usize>,
+    /// Per token, the readings the cheapest covers use. `agreed` only where
+    /// every cheapest cover holds the token in a fragment of two or more
+    /// tokens and reads it the same way; a word alone or left out decides
+    /// nothing. Weaker evidence than a parse: on the homograph set, 52 of
+    /// the 59 labelled words fragments decide agree with the labels (88%),
+    /// against 99.4% for parses.
+    pub chosen: Vec<TokenChoice>,
+}
+
+/// One complete phrase of a fragment cover.
+#[derive(Debug, Serialize)]
+pub struct Fragment {
+    /// A category on the grammar's `fragments` line (`S`, `VP`, `NP`, `PP`).
+    pub cat: String,
+    /// The tokens `start..end` it spans.
+    pub start: usize,
+    pub end: usize,
+    /// Its first parse. Roles inside it are as in a sentence's parse
+    /// ([`Tree::token_roles`]); the fragment itself has none.
+    pub tree: Tree,
+    /// Its verbs, as [`SentenceAnalysis::verb_groups`] gives a parse's.
+    pub verb_groups: Vec<VerbGroup>,
+}
+
+/// Covers a sentence that did not parse with the fewest complete phrases of
+/// the categories its grammar's `fragments` line names: what the grammar
+/// does understand of it. `None` when the sentence parsed or the grammar
+/// names no fragments. A second pass over the analysis's lattice, so
+/// [`analyze`] stays as fast for callers that want parses only.
+pub fn fragments(language: &dyn Language, analysis: &SentenceAnalysis) -> Result<Option<SentenceFragments>, Error> {
+    let grammar = language.grammar();
+    if analysis.parse_count > 0 || grammar.fragments.is_empty() {
+        return Ok(None);
+    }
+    let lattice = &analysis.lattice;
+    let cover = parser::parse_fragments(grammar, lattice)?;
+    let verb_items = cover.forest.items_where(passes_verb_features);
+    let fragments = cover
+        .cover
+        .iter()
+        .map(|c| {
+            let (tree, derivation) = cover.forest.item_parse(c.item, lattice).expect("a complete chart item has a parse");
+            Fragment {
+                cat: cover.forest.item_cat(c.item).to_owned(),
+                start: c.start,
+                end: c.end,
+                tree,
+                verb_groups: parse_groups(grammar, language.lang(), lattice, &verb_items, &derivation),
+            }
+        })
+        .collect();
+    let mut chosen = choices(&analysis.tokens, lattice, &cover.forest.used_edges(), &cover.forest.edge_rules(), true);
+    for &t in &cover.undecided {
+        chosen[t].agreed = false;
+    }
+    Ok(Some(SentenceFragments { fragments, left_out: cover.left_out, chosen }))
 }
 
 fn token_roles(tokens: &[String], parses: &[Tree]) -> Vec<TokenRoles> {

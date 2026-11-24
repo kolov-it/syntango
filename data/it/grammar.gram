@@ -42,6 +42,12 @@
 
 start Text
 
+# A sentence the grammar does not accept is covered by the fewest of these
+# phrases (syntango::fragments). A bare noun phrase is left out: alone it is
+# mostly a noun cut off from its article or quantifier (giorni from tutti i
+# giorni), or an adjective or adverb read as a noun (bella, poi).
+fragments S VP NP[bare!=yes] PP
+
 # -------------------------------------------------------------- sentences
 #
 # A sentence is a clause, or a noun phrase without a verb: an exclamation, a

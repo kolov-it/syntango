@@ -109,6 +109,34 @@ ambiguity naturally, and can return every parse as a shared forest.
 - A shortcut the decks need: **"every parse agrees that token *i* is reading *r*"**.
 - A UD-style export (CoNLL-U) for evaluation.
 
+### 6. Fragments
+
+A sentence the grammar rejects still says something: most of its clauses and
+phrases are ones the grammar knows, held apart by one construction it does
+not. `syntango::fragments` returns them. The parser predicts each category on
+the grammar's `fragments` line at every token boundary. A shortest path over
+the token boundaries then picks the cheapest cover: a fragment costs 10 plus its rank, a
+left-out word 30, left-out punctuation 1. Every cheapest cover is kept, and
+a token's reading is decided only where all of them agree and none holds it
+alone.
+
+What the grammar decides here, and why:
+
+- **Not by length.** *Vieni!* is a clause of one word; *il libro di Maria*
+  is four words and only a noun phrase. A category rule replaces a length
+  rule: a bare noun phrase is no fragment, because on its own it is mostly
+  a noun cut off from its article (*giorni* from *tutti i giorni*) or an
+  adjective or adverb read as a noun.
+- **But length decides readings.** A word alone in its fragment has no
+  context, and the cover prefers a lone verb (a clause, with the subject left
+  out) to a lone adjective (no fragment at all). Counting such words as
+  decided read adjectives as verbs: in the prototype only about three in
+  four of the words fragments decided agreed with the labels. Making them
+  undecided raised this to 88%.
+- **Opt-in, a second pass.** `analyze` is unchanged; `fragments` runs over
+  the lattice `analyze` built, only when asked, only when nothing parsed.
+- **Display, not deck evidence.** 88% is far from the 99.4% of parses.
+
 ## Evaluation
 
 - **Test sentences:** start with ~50 real Italian sentences (the deck examples and

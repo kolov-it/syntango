@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 use syntango::lang::Language;
 use syntango::morph::{Lang, Lexicon};
 use syntango::verbs::{base_verb, verb_use};
-use syntango::{analyze, Error};
+use syntango::{analyze, fragments, Error};
 
 #[derive(Deserialize)]
 pub struct Item {
@@ -65,6 +65,11 @@ enum Status {
     Ambiguous,
     /// Every parse reads the word the same way.
     Decided,
+    /// Nothing parses, and the fragment covers leave the word undecided.
+    FragmentAmbiguous,
+    /// Nothing parses, and every cheapest fragment cover reads the word one
+    /// way ([`syntango::SentenceFragments::chosen`]).
+    FragmentDecided,
 }
 
 pub fn load_items(path: &Path) -> Result<Vec<Item>, Box<dyn std::error::Error>> {
@@ -141,9 +146,11 @@ async fn evaluate<'a>(
         .filter(|(_, t)| t.to_lowercase() == item.form)
         .nth(item.occurrence)
         .map(|(i, _)| i);
+    let f = fragments(language, &a)?;
+    let chosen = f.as_ref().map_or(&a.chosen, |f| &f.chosen);
     let mut readings: Vec<Reading> = token
         .map(|t| {
-            let choice = &a.chosen[t];
+            let choice = &chosen[t];
             choice
                 .readings
                 .iter()
@@ -171,6 +178,11 @@ async fn evaluate<'a>(
     readings.dedup_by(|a, b| a == b || (!a.verb && !b.verb));
     let status = if !a.unknown.is_empty() {
         Status::UnknownWord
+    } else if let Some(f) = &f {
+        match token {
+            Some(t) if f.chosen[t].agreed && readings.len() == 1 => Status::FragmentDecided,
+            _ => Status::FragmentAmbiguous,
+        }
     } else if a.parse_count == 0 {
         Status::NoParse
     } else if readings.len() == 1 {
@@ -183,7 +195,7 @@ async fn evaluate<'a>(
         None => (Some(spacy_reading(&item.spacy)), "spacy"),
     };
     let correct = match (status, &reference) {
-        (Status::Decided, Some(r)) => Some(same_for_a_verb_page(&readings[0], r, language.lang())),
+        (Status::Decided | Status::FragmentDecided, Some(r)) => Some(same_for_a_verb_page(&readings[0], r, language.lang())),
         _ => None,
     };
     Ok(ItemResult {
@@ -211,16 +223,22 @@ fn summarize(results: &[ItemResult]) {
     for (s, k) in &by_status {
         println!("  {:<13} {k:>5}  {:5.1}%", format!("{s:?}"), pct(*k));
     }
-    for source in ["label", "spacy"] {
+    for (status, source) in [
+        (Status::Decided, "label"),
+        (Status::Decided, "spacy"),
+        (Status::FragmentDecided, "label"),
+        (Status::FragmentDecided, "spacy"),
+    ] {
         let decided: Vec<&ItemResult> =
-            results.iter().filter(|r| r.status == Status::Decided && r.reference_source == source).collect();
+            results.iter().filter(|r| r.status == status && r.reference_source == source).collect();
         if decided.is_empty() {
             continue;
         }
         let right = decided.iter().filter(|r| r.correct == Some(true)).count();
         let what = if source == "label" { "labels" } else { "spaCy (provisional reference)" };
         println!(
-            "decided vs {what}: {right} of {} agree ({:.1}%)",
+            "{} vs {what}: {right} of {} agree ({:.1}%)",
+            if status == Status::Decided { "decided" } else { "fragment-decided" },
             decided.len(),
             100.0 * right as f64 / decided.len() as f64
         );

@@ -100,6 +100,25 @@ pub struct Forest<'g> {
 }
 
 pub fn parse<'g>(grammar: &'g Grammar, lattice: &Lattice) -> Result<Forest<'g>, ParseError> {
+    let (keys, back, chart) = build(grammar, lattice, &[0], std::slice::from_ref(&grammar.start))?;
+    let last = lattice.last_node();
+    let roots = chart[last]
+        .iter()
+        .copied()
+        .filter(|&id| {
+            let k = &keys[id];
+            let rule = &grammar.rules[k.rule];
+            k.start == 0 && rule.lhs.name == grammar.start && k.dot == rule.rhs.len()
+        })
+        .collect();
+    Ok(Forest { grammar, keys, back, roots })
+}
+
+/// Items, their back-pointers, and the items ending at each node.
+type Chart = (Vec<Key>, Vec<Vec<BackPointer>>, Vec<Vec<usize>>);
+
+/// Earley over the lattice, predicting each of `cats` at each of `nodes`.
+fn build(grammar: &Grammar, lattice: &Lattice, nodes: &[usize], cats: &[String]) -> Result<Chart, ParseError> {
     let mut keys: Vec<Key> = Vec::new();
     let mut back: Vec<Vec<BackPointer>> = Vec::new();
     let mut index: HashMap<Key, usize> = HashMap::new();
@@ -135,14 +154,21 @@ pub fn parse<'g>(grammar: &'g Grammar, lattice: &Lattice) -> Result<Forest<'g>, 
         Ok(())
     };
 
-    for (r, rule) in grammar.rules.iter().enumerate() {
-        if rule.lhs.name == grammar.start {
-            let key = Key { rule: r, dot: 0, start: 0, end: 0, env: Env::new() };
-            add(key, None, &mut keys, &mut back, &mut chart, &mut waiting)?;
+    let mut predicted: Vec<HashSet<String>> = vec![HashSet::new(); lattice.nodes];
+    for &node in nodes {
+        for cat in cats {
+            if !predicted[node].insert(cat.clone()) {
+                continue;
+            }
+            for (r, rule) in grammar.rules.iter().enumerate() {
+                if rule.lhs.name == *cat {
+                    let key = Key { rule: r, dot: 0, start: node, end: node, env: Env::new() };
+                    add(key, None, &mut keys, &mut back, &mut chart, &mut waiting)?;
+                }
+            }
         }
     }
 
-    let mut predicted: Vec<HashSet<String>> = vec![HashSet::new(); lattice.nodes];
     for node in 0..lattice.nodes {
         let mut i = 0;
         while i < chart[node].len() {
@@ -190,17 +216,140 @@ pub fn parse<'g>(grammar: &'g Grammar, lattice: &Lattice) -> Result<Forest<'g>, 
         }
     }
 
-    let last = lattice.last_node();
-    let roots = chart[last]
+    Ok((keys, back, chart))
+}
+
+/// What a cover pays for a token no fragment holds: little for punctuation,
+/// which breaks a sentence anyway, much for a word, so a word is left out
+/// only where no fragment can take it.
+const SKIP_PUNCT: u32 = 1;
+const SKIP_WORD: u32 = 30;
+/// What a cover pays for a fragment, plus its category's place in the
+/// grammar's `fragments` line: fewer fragments always win, and among as many
+/// the preferred categories.
+const FRAGMENT: u32 = 10;
+
+/// A sentence the grammar does not accept, covered by complete phrases
+/// ([`parse_fragments`]).
+pub struct Fragments<'g> {
+    /// The fragments of every cheapest cover, as its roots: what the forest
+    /// reports ([`Forest::used_edges`], [`Forest::items_where`]) covers all of them.
+    pub forest: Forest<'g>,
+    /// One cheapest cover, in sentence order: chart items (see
+    /// [`Forest::item_parse`]) and the tokens `start..end` each spans.
+    pub cover: Vec<CoverFragment>,
+    /// Tokens whose reading no fragment decides: some cheapest cover leaves
+    /// them out, or holds them in a fragment of that token alone. A lone
+    /// finite verb is a clause, while a lone adjective or bare noun is no
+    /// fragment, so a word alone would always be read as a verb.
+    pub undecided: HashSet<usize>,
+    /// Tokens the cover in `cover` leaves out.
+    pub left_out: Vec<usize>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct CoverFragment {
+    pub item: usize,
+    pub start: usize,
+    pub end: usize,
+}
+
+#[derive(Debug, Clone, Copy)]
+enum Step {
+    Fragment(CoverFragment),
+    Skip(usize),
+}
+
+/// Covers a sentence with the cheapest sequence of fragments and left-out
+/// tokens. A fragment is a complete phrase of a category on the grammar's
+/// `fragments` line, with its features, from one token boundary to another.
+/// Every cheapest cover is kept: a token's reading counts only where all of
+/// them agree.
+pub fn parse_fragments<'g>(grammar: &'g Grammar, lattice: &Lattice) -> Result<Fragments<'g>, ParseError> {
+    let tokens = lattice.tokens.len();
+    let boundary: Vec<usize> = std::iter::once(0).chain(lattice.token_ends.iter().copied()).collect();
+    let cats: Vec<String> = grammar.fragments.iter().map(|c| c.name.clone()).collect();
+    let (keys, back, _) = build(grammar, lattice, &boundary[..tokens], &cats)?;
+    let at: HashMap<usize, usize> = boundary.iter().enumerate().map(|(k, &node)| (node, k)).collect();
+
+    let mut steps: Vec<(usize, usize, u32, Step)> = Vec::new();
+    for (id, key) in keys.iter().enumerate() {
+        let rule = &grammar.rules[key.rule];
+        if key.dot != rule.rhs.len() {
+            continue;
+        }
+        let feats = lhs_feats(&rule.lhs, &key.env);
+        let Some(rank) =
+            grammar.fragments.iter().position(|c| c.name == rule.lhs.name && unify(c, &feats, &Env::new()).is_some())
+        else {
+            continue;
+        };
+        if let (Some(&start), Some(&end)) = (at.get(&key.start), at.get(&key.end))
+            && start < end
+        {
+            let rank = u32::try_from(rank).expect("a short fragments line");
+            steps.push((start, end, FRAGMENT + rank, Step::Fragment(CoverFragment { item: id, start, end })));
+        }
+    }
+    for t in 0..tokens {
+        let mut edges = lattice.edges.iter().filter(|e| e.token == t).peekable();
+        let punct = edges.peek().is_some() && edges.all(|e| e.morph.cat == "Punct");
+        steps.push((t, t + 1, if punct { SKIP_PUNCT } else { SKIP_WORD }, Step::Skip(t)));
+    }
+
+    // The cheapest cost from the start to each boundary, and from each to
+    // the end; a step is on a cheapest cover when the three add up to the best.
+    let mut forward = vec![u32::MAX; tokens + 1];
+    forward[0] = 0;
+    steps.sort_by_key(|s| s.0);
+    for (start, end, cost, _) in &steps {
+        if forward[*start] != u32::MAX {
+            forward[*end] = forward[*end].min(forward[*start] + cost);
+        }
+    }
+    let mut backward = vec![u32::MAX; tokens + 1];
+    backward[tokens] = 0;
+    for (start, end, cost, _) in steps.iter().rev() {
+        if backward[*end] != u32::MAX {
+            backward[*start] = backward[*start].min(backward[*end] + cost);
+        }
+    }
+    let best = forward[tokens];
+    let cheapest: Vec<(usize, usize, Step)> = steps
         .iter()
-        .copied()
-        .filter(|&id| {
-            let k = &keys[id];
-            let rule = &grammar.rules[k.rule];
-            k.start == 0 && rule.lhs.name == grammar.start && k.dot == rule.rhs.len()
-        })
+        .filter(|(s, e, c, _)| forward[*s] != u32::MAX && backward[*e] != u32::MAX && forward[*s] + c + backward[*e] == best)
+        .map(|(s, e, _, step)| (*s, *e, *step))
         .collect();
-    Ok(Forest { grammar, keys, back, roots })
+
+    let mut cover = Vec::new();
+    let mut left_out = Vec::new();
+    let mut k = 0;
+    while k < tokens {
+        // Of the cheapest steps from here, the longest: a fragment before a
+        // left-out first token.
+        let &(_, end, step) = cheapest.iter().filter(|s| s.0 == k).max_by_key(|s| s.1).expect("a cheapest cover");
+        match step {
+            Step::Fragment(f) => cover.push(f),
+            Step::Skip(t) => left_out.push(t),
+        }
+        k = end;
+    }
+    let mut roots = Vec::new();
+    let mut undecided = HashSet::new();
+    for (_, _, step) in &cheapest {
+        match *step {
+            Step::Fragment(f) => {
+                roots.push(f.item);
+                if f.end - f.start == 1 {
+                    undecided.insert(f.start);
+                }
+            }
+            Step::Skip(t) => {
+                undecided.insert(t);
+            }
+        }
+    }
+    Ok(Fragments { forest: Forest { grammar, keys, back, roots }, cover, undecided, left_out })
 }
 
 impl Forest<'_> {
@@ -346,6 +495,16 @@ impl Forest<'_> {
             }
         }
         out
+    }
+
+    /// One parse of a chart item: its tree and the items it is built from.
+    pub fn item_parse(&self, id: usize, lattice: &Lattice) -> Option<(Tree, Derivation)> {
+        self.item_trees(id, lattice, 1).into_iter().next()
+    }
+
+    /// The category a chart item builds.
+    pub fn item_cat(&self, id: usize) -> &str {
+        &self.grammar.rules[self.keys[id].rule].lhs.name
     }
 
     /// Up to `limit` parses as trees.
@@ -641,6 +800,58 @@ mod tests {
             cat: cat.to_owned(),
             feats: feats.iter().map(|(k, v)| ((*k).to_owned(), (*v).to_owned())).collect(),
         }
+    }
+
+    fn fragment_grammar() -> Grammar {
+        Grammar::parse(
+            "start S\n\
+             fragments S NP[bare!=yes]\n\
+             rule s: S -> NP V\n\
+             rule s.lone: S -> V\n\
+             rule np: NP[bare=no] -> Det N\n\
+             rule np.bare: NP[bare=yes] -> N\n",
+        )
+        .unwrap()
+    }
+
+    fn token(lattice: &mut Lattice, readings: &[&str]) {
+        lattice.push_token("w", readings.iter().map(|cat| vec![morph(cat, &[])]).collect());
+    }
+
+    /// *Det N V Adj Det N*: the clause, the left-out adjective no fragment
+    /// takes, and the noun phrase; the cheapest cover has two fragments.
+    #[test]
+    fn fewest_fragments_cover_the_sentence() {
+        let grammar = fragment_grammar();
+        let mut lattice = Lattice::new();
+        for cat in ["Det", "N", "V", "Adj", "Det", "N"] {
+            token(&mut lattice, &[cat]);
+        }
+        let f = parse_fragments(&grammar, &lattice).unwrap();
+        let spans: Vec<(&str, usize, usize)> =
+            f.cover.iter().map(|c| (f.forest.item_cat(c.item), c.start, c.end)).collect();
+        assert_eq!(spans, [("S", 0, 3), ("NP", 4, 6)]);
+        assert_eq!(f.left_out, [3]);
+        assert_eq!(f.undecided, HashSet::from([3]));
+    }
+
+    /// A word alone is a verb by default: a lone verb is a clause, a lone
+    /// noun only a bare noun phrase, which is no fragment. So its reading is
+    /// not decided.
+    #[test]
+    fn a_word_alone_decides_nothing() {
+        let grammar = fragment_grammar();
+        let mut lattice = Lattice::new();
+        token(&mut lattice, &["Det"]);
+        token(&mut lattice, &["N"]);
+        token(&mut lattice, &["Punct"]);
+        token(&mut lattice, &["N", "V"]);
+        let f = parse_fragments(&grammar, &lattice).unwrap();
+        let spans: Vec<(&str, usize, usize)> =
+            f.cover.iter().map(|c| (f.forest.item_cat(c.item), c.start, c.end)).collect();
+        assert_eq!(spans, [("NP", 0, 2), ("S", 3, 4)]);
+        assert_eq!(f.left_out, [2]);
+        assert_eq!(f.undecided, HashSet::from([2, 3]));
     }
 
     /// A chart scan lists each complete item once with its children side by

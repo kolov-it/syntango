@@ -16,7 +16,7 @@ use syntango::morph::{Lang, Lexicon};
 use syntango::syntax::feats;
 use syntango::patch::PatchedLexicon;
 use syntango::wordholder::{self, FixtureLexicon, WordHolderLexicon, BATCH_ENV, KEY_ENV, URL_ENV};
-use syntango::{analyze, SentenceAnalysis, Voice};
+use syntango::{analyze, fragments, SentenceAnalysis, SentenceFragments, TokenChoice, Voice};
 
 /// Parse sentences and print their grammar trees.
 ///
@@ -309,25 +309,48 @@ async fn run(cli: Cli) -> Result<(), Box<dyn std::error::Error>> {
     let lexicon = lexicon(args.fixture.as_deref(), &args.backend, args.no_patches)?;
     for (i, text) in sentences.iter().enumerate() {
         let a = analyze(lexicon.as_ref(), language.as_ref(), text).await?;
+        let f = fragments(language.as_ref(), &a)?;
         if args.json {
-            println!("{}", serde_json::to_string_pretty(&a)?);
+            println!("{}", serde_json::to_string_pretty(&JsonOut { analysis: &a, fragments: f.as_ref() })?);
             continue;
         }
         if i > 0 {
             println!();
         }
-        print_analysis(text, &a, args.explain, args.readings, args.roles, args.verbs);
+        print_analysis(text, &a, f.as_ref(), args.explain, args.readings, args.roles, args.verbs);
     }
     Ok(())
 }
 
-fn print_analysis(text: &str, a: &SentenceAnalysis, explain: bool, readings: bool, roles: bool, verbs: bool) {
+/// `--json`: the analysis, and its fragments when it did not parse.
+#[derive(serde::Serialize)]
+struct JsonOut<'a> {
+    #[serde(flatten)]
+    analysis: &'a SentenceAnalysis,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    fragments: Option<&'a SentenceFragments>,
+}
+
+fn print_analysis(
+    text: &str,
+    a: &SentenceAnalysis,
+    fragments: Option<&SentenceFragments>,
+    explain: bool,
+    readings: bool,
+    roles: bool,
+    verbs: bool,
+) {
     println!("{text}");
     if !a.unknown.is_empty() {
         println!("  unknown words: {}", a.unknown.join(", "));
     }
     match a.parse_count {
-        0 => println!("  no parse: the grammar does not accept this sentence"),
+        0 => {
+            println!("  no parse: the grammar does not accept this sentence");
+            if let Some(f) = fragments {
+                print_fragments(a, f);
+            }
+        }
         1 => {}
         n if n as usize > a.parses.len() => println!("  {n} parses (showing {})", a.parses.len()),
         n => println!("  {n} parses"),
@@ -350,39 +373,59 @@ fn print_analysis(text: &str, a: &SentenceAnalysis, explain: bool, readings: boo
         }
     }
     if readings {
-        println!("\nreadings (✓ = every parse agrees):");
-        for c in &a.chosen {
-            let rs: Vec<String> = c
-                .readings
-                .iter()
-                .zip(&c.uses)
-                .map(|(r, uses)| {
-                    let text = r.iter().map(|m| format!("{} {} {}", m.lemma, m.cat, feats::display(&m.feats))).collect::<Vec<_>>().join(" + ");
-                    let adjective =
-                        |u: &String| u == "ap.participle" || u == "ap.present-participle";
-                    if uses.iter().any(adjective) {
-                        let how: Vec<&str> = uses
-                            .iter()
-                            .map(|u| {
-                                if adjective(u) {
-                                    "adjective"
-                                } else {
-                                    u.as_str()
-                                }
-                            })
-                            .collect();
-                        format!("{text} [used as: {}]", how.join(", "))
-                    } else {
-                        text
-                    }
-                })
-                .collect();
-            let mark = if c.agreed { "✓" } else if rs.is_empty() { "?" } else { "~" };
-            println!("  {mark} {}: {}", c.token, rs.join("  |  "));
+        match fragments {
+            Some(f) => print_readings("fragment readings (✓ = every cheapest cover decides it alike)", &f.chosen),
+            None => print_readings("readings (✓ = every parse agrees)", &a.chosen),
         }
     }
     if roles {
         print_roles(a);
+    }
+}
+
+fn print_readings(header: &str, chosen: &[TokenChoice]) {
+    println!("\n{header}:");
+    for c in chosen {
+        let rs: Vec<String> = c
+            .readings
+            .iter()
+            .zip(&c.uses)
+            .map(|(r, uses)| {
+                let text = r.iter().map(|m| format!("{} {} {}", m.lemma, m.cat, feats::display(&m.feats))).collect::<Vec<_>>().join(" + ");
+                let adjective =
+                    |u: &String| u == "ap.participle" || u == "ap.present-participle";
+                if uses.iter().any(adjective) {
+                    let how: Vec<&str> = uses
+                        .iter()
+                        .map(|u| {
+                            if adjective(u) {
+                                "adjective"
+                            } else {
+                                u.as_str()
+                            }
+                        })
+                        .collect();
+                    format!("{text} [used as: {}]", how.join(", "))
+                } else {
+                    text
+                }
+            })
+            .collect();
+        let mark = if c.agreed { "✓" } else if rs.is_empty() { "?" } else { "~" };
+        println!("  {mark} {}: {}", c.token, rs.join("  |  "));
+    }
+}
+
+/// Each fragment of the cover with its tree, and the tokens it leaves out.
+fn print_fragments(a: &SentenceAnalysis, f: &SentenceFragments) {
+    println!("  what it does understand, in {} fragment(s):", f.fragments.len());
+    for fragment in &f.fragments {
+        println!("\n[{}] {}", fragment.cat, a.tokens[fragment.start..fragment.end].join(" "));
+        print!("{}", fragment.tree.render());
+    }
+    if !f.left_out.is_empty() {
+        let words: Vec<&str> = f.left_out.iter().map(|&t| a.tokens[t].as_str()).collect();
+        println!("\nleft out: {}", words.join(" "));
     }
 }
 
