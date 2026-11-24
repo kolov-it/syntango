@@ -30,11 +30,15 @@ pub struct Lattice {
     pub tokens: Vec<String>,
     pub nodes: usize,
     pub edges: Vec<Edge>,
+    /// The node each token ends at, in token order: token `t` spans
+    /// `token_ends[t - 1]` (node 0 for the first) to `token_ends[t]`.
+    #[serde(skip)]
+    pub token_ends: Vec<usize>,
 }
 
 impl Lattice {
     pub fn new() -> Self {
-        Self { tokens: Vec::new(), nodes: 1, edges: Vec::new() }
+        Self { tokens: Vec::new(), nodes: 1, edges: Vec::new(), token_ends: Vec::new() }
     }
 
     pub fn last_node(&self) -> usize {
@@ -55,6 +59,7 @@ impl Lattice {
             paths.push((inner, morphs));
         }
         let end = self.alloc();
+        self.token_ends.push(end);
         for (inner, morphs) in paths {
             let mut from = start;
             for (i, morph) in morphs.into_iter().enumerate() {

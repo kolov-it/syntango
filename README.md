@@ -270,6 +270,49 @@ auxiliary's features up (`aux_mood`, `aux_tense`, `aux_person`,
 `aux_progressive=yes`. `--json` includes `verb_groups`; `--verbs` prints them
 after each tree.
 
+## Fragments: what the grammar understands of a sentence it rejects
+
+When nothing parses, `syntango::fragments(language, &analysis)` covers the
+sentence with the fewest complete phrases the grammar can build. The
+categories come from the grammar's `fragments` line, most preferred first
+(Italian: `fragments S VP NP[bare!=yes] PP`). A fragment costs 10, plus 1
+for each place it stands down that line; a word no fragment holds costs 30,
+punctuation 1. So a cover with fewer fragments always wins, and a word is
+left out only where no phrase can hold it. The command line prints the fragments
+under "no parse":
+
+```text
+$ syntango --fixture tests/fixtures/it-handwritten.json it "La ragazza è arrivato."
+La ragazza è arrivato.
+  no parse: the grammar does not accept this sentence
+  what it does understand, in 2 fragment(s):
+
+[S] La ragazza è
+S[]  ← clause.subject
+…
+[VP] arrivato
+VP[finite=no,form=pastpart,gender=m,number=sg,…]  ← vp.intransitive-verb
+…
+```
+
+Each fragment has its category, its tokens, its first parse and its verbs.
+The cover's `chosen` gives each token's readings over **every** cheapest cover.
+`agreed` is set only where all of those covers hold the token in a fragment
+of at least two tokens and read it the same way. A word alone decides
+nothing: a lone finite verb is a clause (the subject can be dropped), but a
+lone adjective or bare noun is no fragment, so a word on its own would always
+come out a verb (*stanca*, *rimedi*, *libero*).
+
+The fragments are for showing, not for deciding. On *Le avventure di Pinocchio*
+(1,747 sentences, 22,545 words), 23% of the words are in a parse and another
+68% are in a fragment, and 10% are left out, mostly *e* and *ma* between
+fragments. On the homograph set, fragments decide the word in a further 520
+sentences, but only 52 of the 59 labelled ones agree with the label (88%),
+against 99.4% for parses. `eval` reports them separately
+(`FragmentDecided`, `FragmentAmbiguous`). `analyze` does not compute
+fragments, so callers that want parses only, like the deck builders, pay
+nothing for them.
+
 ## Lexicon patches
 
 Every lexicon has defects: a reading it lacks (*scorsero* without *scorrere*), a
@@ -671,7 +714,8 @@ src/
                     parse forest: all parses, polynomial work)
   lang/             the Language trait; it/ = Italian (tokenizer, function
                     words, clitics, first sounds, participles); es/ = Spanish
-  analysis.rs       the pipeline: analyze(lexicon, language, sentence)
+  analysis.rs       the pipeline: analyze(lexicon, language, sentence), and
+                    fragments(language, &analysis) when it does not parse
   verb_groups.rs    each parse's verbs: simple, compound, passive, progressive
   verbs.rs          what a verb page asks of a reading: base verb, participle use
   examples/         example sentences for a verb: Extractor, the tense list
@@ -738,6 +782,9 @@ sentence → tokenizer → lexicon → morpheme lattice → Earley parser + feat
 - **Parser**: Earley over the lattice with a shared parse forest: every parse is
   counted, the first ones are kept as trees, and the readings any parse uses are
   reported per word.
+- **Fragments**: for a sentence that does not parse, the same parser predicts
+  the grammar's fragment categories at every word and keeps the cheapest
+  cover of the sentence ([above](#fragments-what-the-grammar-understands-of-a-sentence-it-rejects)).
 
 Design notes: [doc/design.md](doc/design.md). What the parser needs from the
 lexicon and the gaps found in the live API:

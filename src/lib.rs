@@ -29,6 +29,6 @@ pub mod verbs;
 #[cfg_attr(docsrs, doc(cfg(feature = "wordholder")))]
 pub mod wordholder;
 
-pub use analysis::{analyze, Error, SentenceAnalysis, TokenChoice, TokenRoles};
+pub use analysis::{analyze, fragments, Error, Fragment, SentenceAnalysis, SentenceFragments, TokenChoice, TokenRoles};
 pub use verb_groups::{VerbGroup, Voice};
 pub use syntax::role::Role;

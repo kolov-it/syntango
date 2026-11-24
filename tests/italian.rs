@@ -8,7 +8,7 @@ use std::path::Path;
 
 use syntango::lang::it::Italian;
 use syntango::wordholder::FixtureLexicon;
-use syntango::{analyze, SentenceAnalysis};
+use syntango::{analyze, fragments, SentenceAnalysis, SentenceFragments};
 
 async fn run(text: &str) -> SentenceAnalysis {
     let lexicon = FixtureLexicon::load(Path::new("tests/fixtures/it-handwritten.json")).unwrap();
@@ -51,6 +51,41 @@ async fn weekday_and_part_of_day() {
 async fn participle_agrees_after_essere() {
     assert!(!run("La ragazza è arrivata.").await.parses.is_empty());
     assert!(run("La ragazza è arrivato.").await.parses.is_empty());
+}
+
+fn fragments_of(a: &SentenceAnalysis) -> Option<SentenceFragments> {
+    fragments(&Italian::load().unwrap(), a).unwrap()
+}
+
+/// The participle does not agree, so nothing parses; the fragments are the
+/// clause before it and the participle alone, which decides nothing.
+#[tokio::test]
+async fn an_unparsed_sentence_is_covered_by_fragments() {
+    let a = run("La ragazza è arrivato.").await;
+    assert_eq!(a.parse_count, 0);
+    let f = fragments_of(&a).unwrap();
+    let spans: Vec<(&str, usize, usize)> = f.fragments.iter().map(|x| (x.cat.as_str(), x.start, x.end)).collect();
+    assert_eq!(spans, [("S", 0, 3), ("VP", 3, 4)]);
+    assert!(f.left_out.is_empty());
+    let decided: Vec<(&str, bool)> = f.chosen.iter().map(|c| (c.token.as_str(), c.agreed)).collect();
+    assert_eq!(decided, [("La", true), ("ragazza", true), ("è", true), ("arrivato", false)]);
+    assert_eq!(f.fragments[0].verb_groups.len(), 1);
+}
+
+/// An unknown word is left out of the fragments.
+#[tokio::test]
+async fn fragments_leave_out_an_unknown_word() {
+    let a = run("Il ragazzo ama la ragazza.").await;
+    assert_eq!(a.unknown, ["ragazzo"]);
+    let f = fragments_of(&a).unwrap();
+    let spans: Vec<(&str, usize, usize)> = f.fragments.iter().map(|x| (x.cat.as_str(), x.start, x.end)).collect();
+    assert_eq!(spans, [("S", 2, 5)]);
+    assert_eq!(f.left_out, [0, 1]);
+}
+
+#[tokio::test]
+async fn a_parsed_sentence_has_no_fragments() {
+    assert!(fragments_of(&run("La ragazza ama il cane.").await).is_none());
 }
 
 #[tokio::test]
